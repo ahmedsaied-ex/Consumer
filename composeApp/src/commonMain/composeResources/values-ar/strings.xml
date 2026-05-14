@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+<!--    default error messages -->
+    <string name="error_disk_full">عذراً، يبدو أن مساحة التخزين ممتلئة.</string>
+    <string name="error_request_timeout">انتهت مهلة الطلب.</string>
+    <string name="error_no_internet"> يرجى التحقق من اتصالك بالإنترنت.</string>
+    <string name="error_too_many_requests">انتظر دقيقة وحاول مرة أخرى!</string>
+    <string name="error_serialization">تعذر تحليل البيانات.</string>
+    <string name="error_insufficient_balance">رصيد غير كافٍ!</string>
+    <string name="error_socket_unknown">حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.</string>
+    <string name="error_socket_auth_failed">فشلت عملية التحقق. يرجى تسجيل الدخول مرة أخرى.</string>
+    <string name="error_socket_bid_rejected">تم رفض مزايدتك. قد تكون أقل من أعلى مزايدة حالية.</string>
+    <string name="error_socket_connection_failed">تعذر الاتصال بالخادم. يرجى التحقق من اتصال الإنترنت</string>
+    <string name="error_socket_join_failed">تعذر الانضمام إلى غرفة المزاد. يرجى المحاولة مرة أخرى.</string>
+    <string name="error_socket_parse_error">حدث خطأ أثناء معالجة البيانات. يرجى المحاولة مرة أخرى.</string>
+    <string name="error_socket_price_not_valid">مبلغ المزايدة المدخل غير صالح. يرجى إدخال قيمة أعلى.</string>
+    <string name="error_socket_auction_not_valid">هذا المزاد لم يعد متاحا بعد الان</string>
+    <string name="otp_verified_successfully">تم التحقق من حسابك بنجاح</string>
+</resources>
