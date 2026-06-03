@@ -17,7 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.consumer.core.presentation.components.test
+import com.example.consumer.core.presentation.theme.ConsumerTheme
 import org.jetbrains.compose.resources.painterResource
 
 import consumer.composeapp.generated.resources.Res
@@ -26,8 +26,7 @@ import consumer.composeapp.generated.resources.compose_multiplatform
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
+    ConsumerTheme {
         Column(
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.primaryContainer)
@@ -35,21 +34,7 @@ fun App() {
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
-            }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Spacer(modifier = Modifier.fillMaxWidth().height(50.dp))
-                    Text("Test koin down here ")
-                    test()
-                }
-            }
+
         }
     }
 }
