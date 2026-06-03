@@ -102,6 +102,13 @@ data class ExtendedColors(
 
     val completedMissionTextColor: Color,
     val completedMissionBackgroundColor: Color,
+
+    // circles
+    val unAssignedCircleColor: Color,
+    val inProgressCircleColor: Color,
+    val completedCircleColor: Color,
+    val reevaluateCircleColor: Color,
+    val newCircleColor: Color,
 )
 
 val extendedColors = ExtendedColors(
@@ -118,7 +125,14 @@ val extendedColors = ExtendedColors(
     completedMissionBackgroundColor = Color(0xFFECF5EC),
 
     reevaluateMissionTextColor = Color(0xFFC00097),
-    reevaluateMissionBackgroundColor = Color(0xFFFFDEF8)
+    reevaluateMissionBackgroundColor = Color(0xFFFFDEF8),
+
+    //circles
+    unAssignedCircleColor = Color(0xFFC6C7D0),
+    inProgressCircleColor = Color(0xFFEFC900),
+    completedCircleColor = Color(0xFF2E7D32),
+    reevaluateCircleColor = Color(0xFFC00097),
+    newCircleColor = Color(0xFF1B6397),
 )
 
 // Brand color schemes
