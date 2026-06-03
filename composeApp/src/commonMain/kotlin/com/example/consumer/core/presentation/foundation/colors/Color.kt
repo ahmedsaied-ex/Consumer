@@ -21,7 +21,7 @@ internal val TertiaryContainerLight = Color(0xFFEFEFF2)
 internal val OnTertiaryContainerLight = Color(0xFF555673)
 
 // Error - Used for alerts, wallet amount, auction timer ends
-internal val ErrorLight = Color(0xFFC70000) // Red for critical states
+internal val ErrorLight = Color(0xFFDC3545) // Red for critical states
 
 internal val OnErrorLight = Color(0xFFFFFFFF)
 internal val ErrorContainerLight = Color(0xFFFFE5E5)
