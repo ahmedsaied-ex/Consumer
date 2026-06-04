@@ -7,7 +7,6 @@ import com.example.consumer.core.data.network.NetworkFactory
 import com.example.consumer.core.domain.model.DefaultDispatcherProvider
 import com.example.consumer.core.domain.model.DispatcherProvider
 import com.example.consumer.core.domain.utils.CostumeLogger
-import com.example.consumer.core.presentation.components.SubmitFormViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -34,5 +33,4 @@ val coreModule =
         }
         single<CostumeLogger> { KermitLogger }
         singleOf(::NetworkFactory)
-        viewModelOf(::SubmitFormViewModel)
     }
