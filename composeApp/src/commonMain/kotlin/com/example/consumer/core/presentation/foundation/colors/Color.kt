@@ -1,18 +1,15 @@
 package com.example.consumer.core.presentation.foundation.colors
-
 import androidx.compose.ui.graphics.Color
-
 
 
 internal val PrimaryLight = Color(0xFF133346) // Main brand purple
 internal val OnPrimaryLight = Color(0xFFEFEFF2) // White text on purple
 internal val PrimaryContainerLight = Color(0xFF2B5B5B) // Lighter purple for containers
 internal val OnPrimaryContainerLight = Color(0xFF4EA5A5)
-
-internal val SecondaryLight = Color(0xFF70639E) // Currency symbol, secondary text
+internal val SecondaryLight = Color(0xFFD3E9E9) // Currency symbol, secondary text
 internal val OnSecondaryLight = Color(0xFFFFFFFF)
 internal val SecondaryContainerLight = Color(0xFF9ECECE) // Filter chips background (peach)
-internal val OnSecondaryContainerLight = Color(0xFF1E1346)
+internal val OnSecondaryContainerLight = Color(0xFFEDF6F6)
 
 // Tertiary - Used for accents, timer, prices
 internal val TertiaryLight = Color(0xFF2B5B5B)
@@ -21,7 +18,7 @@ internal val TertiaryContainerLight = Color(0xFFEFEFF2)
 internal val OnTertiaryContainerLight = Color(0xFF555673)
 
 // Error - Used for alerts, wallet amount, auction timer ends
-internal val ErrorLight = Color(0xFFDC3545) // Red for critical states
+internal val ErrorDark = Color(0xFFDC3545) // Red for critical states
 
 internal val OnErrorLight = Color(0xFFFFFFFF)
 internal val ErrorContainerLight = Color(0xFFFFE5E5)
@@ -74,9 +71,8 @@ internal val TertiaryDark = Color(0xFFFFAB7D) // Lighter orange
 internal val OnTertiaryDark = Color(0xFF5C2800)
 internal val TertiaryContainerDark = Color(0xFF4A2000) // Dark orange container
 internal val OnTertiaryContainerDark = Color(0xFFFFDBCC)
-
 // Error
-internal val ErrorDark = Color(0xFFFFB3B3) // Light red
+internal val ErrorBackground = Color(0xFFFCEBED)
 internal val OnErrorDark = Color(0xFF680000)
 internal val ErrorContainerDark = Color(0xFF930000)
 internal val OnErrorContainerDark = Color(0xFFFFDADA)
@@ -93,7 +89,6 @@ internal val OnSurfaceVariantDark = Color(0xFFBFBCC8)
 
 // Outlines
 internal val OutlineDark = Color(0xFF4CAF50) // Lighter green for dark mode
-
 // Other surfaces
 internal val ScrimDark = Color(0xFF000000)
 internal val InverseSurfaceDark = Color(0xFFE8E6EE)
@@ -108,6 +103,8 @@ internal val SurfaceContainerLowDark = Color(0xFF221E2D)
 internal val SurfaceContainerDark = Color(0xFF2A2635) // Bottom sheet background, elevated surfaces (dark mode)
 internal val SurfaceContainerHighDark = Color(0xFF353140)
 internal val SurfaceContainerHighestDark = Color(0xFF403C4A)
-
-
-
+//added
+internal val OnDisablePrimaryLight = Color(0xFFDDDDE3)
+internal val OnDisableTextTertiary = Color(0xFF8E8FA2)
+internal val OnDisableTextDestructive = Color(0xFFEE9AA2)
+internal val buttonBorderColorAuth = Color(0xFFE8E9EC)
