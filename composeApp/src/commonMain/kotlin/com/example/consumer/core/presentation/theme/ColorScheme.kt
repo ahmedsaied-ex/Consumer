@@ -114,8 +114,19 @@ data class ExtendedColors(
     val tabBarColorTabsBackground: Color,
     val tabUnselectedBackgroundColor: Color,
 
-    // profile change photo background
+    // profile 
     val profileChangePhotoBackground: Color,
+    val profileSectionEvenItemBackgroundColor: Color,
+    val profileSectionOddItemBackgroundColor: Color,
+
+    // other colors
+    val darkBlue650: Color,
+    val darkBlue450: Color,
+    val darkBlue150: Color,
+
+    // tex field
+    val focusedTextField : Color,
+
 )
 
 val extendedColors = ExtendedColors(
@@ -145,6 +156,20 @@ val extendedColors = ExtendedColors(
     tabBarColorTabsBackground = Color(0xFFE9EFF2),
     tabUnselectedBackgroundColor = Color(0xFFE8E9EC),
     profileChangePhotoBackground = Color(0xFFC8D6DF),
+
+
+    //profile
+    profileSectionEvenItemBackgroundColor = Color(0xFFF4F7F9),
+    profileSectionOddItemBackgroundColor = Color(0xFFFBFCFC),
+
+
+    // other colors
+    darkBlue650 = Color(0xFF6B6D85),
+    darkBlue450 = Color(0xFFB0B0BE),
+    darkBlue150 = Color(0xFFEFEFF2),
+
+    // text field
+    focusedTextField = Color(0xFF377373),
 )
 
 // Brand color schemes

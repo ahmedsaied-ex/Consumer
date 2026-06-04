@@ -1,4 +1,4 @@
-package com.example.consumer.core.presentation.components.profile
+package com.example.consumer.features.profile.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
