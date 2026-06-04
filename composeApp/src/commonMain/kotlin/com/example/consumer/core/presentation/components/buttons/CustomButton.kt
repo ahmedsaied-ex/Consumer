@@ -1,4 +1,4 @@
-package com.example.consumer.core.presentation.components.Buttons
+package com.example.consumer.core.presentation.components.buttons
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -258,7 +258,7 @@ fun ConsumerTextButton(
     }
 }
 
-@Preview(name = "Buttons Preview", showBackground = true)
+@Preview(name = "Buttons Preview", showBackground = true, heightDp = 1000)
 @Composable
 private fun ConsumerButtonsPreview() {
     ConsumerTheme {
@@ -266,20 +266,20 @@ private fun ConsumerButtonsPreview() {
             modifier = Modifier.fillMaxSize().padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-//            ConsumerFilledButton(
-//                text = "اضغط هنا",
-//                type = ButtonsTypes.PRIMARY,
-//                enabled = true,
-//                onClick = {},
-//                modifier = Modifier.fillMaxWidth(),
-//            )
-//            ConsumerFilledButton(
-//                text = "اضغط هنا",
-//                type = ButtonsTypes.PRIMARY,
-//                enabled = false,
-//                onClick = {},
-//                modifier = Modifier.fillMaxWidth(),
-//            )
+            ConsumerFilledButton(
+                text = "اضغط هنا",
+                type = ButtonsTypes.PRIMARY,
+                enabled = true,
+                onClick = {},
+                modifier = Modifier.fillMaxWidth(),
+            )
+            ConsumerFilledButton(
+                text = "اضغط هنا",
+                type = ButtonsTypes.PRIMARY,
+                enabled = false,
+                onClick = {},
+                modifier = Modifier.fillMaxWidth(),
+            )
 
             ConsumerFilledButton(
                 text = "اضغط هنا",

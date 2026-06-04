@@ -1,4 +1,4 @@
-package com.example.consumer.core.presentation.components.Buttons
+package com.example.consumer.core.presentation.components.buttons
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
