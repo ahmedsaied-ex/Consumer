@@ -109,6 +109,13 @@ data class ExtendedColors(
     val completedCircleColor: Color,
     val reevaluateCircleColor: Color,
     val newCircleColor: Color,
+
+    //tabBar
+    val tabBarColorTabsBackground: Color,
+    val tabUnselectedBackgroundColor: Color,
+
+    // profile change photo background
+    val profileChangePhotoBackground: Color,
 )
 
 val extendedColors = ExtendedColors(
@@ -133,6 +140,11 @@ val extendedColors = ExtendedColors(
     completedCircleColor = Color(0xFF2E7D32),
     reevaluateCircleColor = Color(0xFFC00097),
     newCircleColor = Color(0xFF1B6397),
+
+    //tabBar
+    tabBarColorTabsBackground = Color(0xFFE9EFF2),
+    tabUnselectedBackgroundColor = Color(0xFFE8E9EC),
+    profileChangePhotoBackground = Color(0xFFC8D6DF),
 )
 
 // Brand color schemes

@@ -1,19 +1,9 @@
 package com.example.consumer.core.presentation.foundation.typography
 
-import androidx.compose.foundation.layout.Arrangement.spacedBy
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.consumer.core.presentation.components.ConsumerTextField
-import com.example.consumer.core.presentation.theme.ConsumerTheme
 
 
 val H1 @Composable get() = TextStyle(
@@ -98,48 +88,3 @@ val consumerTypography @Composable get() = Typography(
     labelLarge =Button2,
 )
 
-@Preview(showBackground = true)
-@Composable
-private fun ConsumerTextFieldPreviewColoumn() {
-    ConsumerTheme {
-        Column(
-            verticalArrangement = spacedBy(16.dp),
-            modifier = Modifier.padding(16.dp)
-        ) {
-
-            Text("Unfocused")
-
-            ConsumerTextField(
-                labelText = "Empty"
-            )
-
-            ConsumerTextField(
-                initialValue = "Ahmed",
-                labelText = "Filled"
-            )
-
-            Text("Error")
-
-            ConsumerTextField(
-                initialValue = "Ahmed",
-                isError = true,
-                labelText = "Error"
-            )
-
-            Text("Disabled filled")
-
-            ConsumerTextField(
-                initialValue = "Ahmed",
-                enabled = false,
-                labelText =  "Disabled"
-            )
-            Text("Disabled empty")
-
-            ConsumerTextField(
-                initialValue = "",
-                enabled = false,
-                labelText = "Disabled"
-            )
-        }
-    }
-}

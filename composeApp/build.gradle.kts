@@ -65,7 +65,10 @@ kotlin {
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.ktor)
             implementation(libs.coil.network.ktor)
-
+            implementation(libs.coil.compose.core)
+            implementation(libs.coil.compose)
+            implementation(libs.coil.core)
+            implementation(libs.coil.svg)
             implementation(libs.kermit)
 
             api(libs.koin.core)
