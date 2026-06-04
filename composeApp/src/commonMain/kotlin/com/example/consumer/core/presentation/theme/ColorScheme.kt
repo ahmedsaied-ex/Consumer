@@ -13,7 +13,6 @@ import com.example.consumer.core.presentation.foundation.colors.BackgroundLight
 import com.example.consumer.core.presentation.foundation.colors.ErrorContainerDark
 import com.example.consumer.core.presentation.foundation.colors.ErrorContainerLight
 import com.example.consumer.core.presentation.foundation.colors.ErrorDark
-import com.example.consumer.core.presentation.foundation.colors.ErrorLight
 import com.example.consumer.core.presentation.foundation.colors.InverseOnSurfaceDark
 import com.example.consumer.core.presentation.foundation.colors.InverseOnSurfaceLight
 import com.example.consumer.core.presentation.foundation.colors.InversePrimaryDark
@@ -136,7 +135,7 @@ internal val LightColorScheme =
         onTertiary = OnTertiaryLight,
         tertiaryContainer = TertiaryContainerLight,
         onTertiaryContainer = OnTertiaryContainerLight,
-        error = ErrorLight,
+        error = ErrorDark,
         onError = OnErrorLight,
         errorContainer = ErrorContainerLight,
         onErrorContainer = OnErrorContainerLight,
