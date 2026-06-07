@@ -15,5 +15,6 @@
     <string name="error_socket_parse_error">A data processing error occurred. Please try again.</string>
     <string name="error_socket_price_not_valid">The entered bid amount is not valid. Please enter a higher value.</string>
     <string name="error_socket_auction_not_valid">This Auction is no longer valid</string>
+    <string name="confirm">تاكيد</string>
 
 </resources>

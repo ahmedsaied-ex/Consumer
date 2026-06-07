@@ -16,4 +16,7 @@
     <string name="error_socket_price_not_valid">مبلغ المزايدة المدخل غير صالح. يرجى إدخال قيمة أعلى.</string>
     <string name="error_socket_auction_not_valid">هذا المزاد لم يعد متاحا بعد الان</string>
     <string name="otp_verified_successfully">تم التحقق من حسابك بنجاح</string>
+
+
+    <string name="confirm">تأكيد</string>
 </resources>
