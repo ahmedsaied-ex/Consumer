@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun CostumeScaffold(
     modifier: Modifier = Modifier,
-    snackbarHostState: SnackbarHostState,
+    snackbarHostState: SnackbarHostState= SnackbarHostState(),
     content: @Composable () -> Unit
 ) {
     Scaffold(

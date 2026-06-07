@@ -10,7 +10,7 @@ import com.example.consumer.core.presentation.foundation.typography.AppTypograph
 fun ConsumerTheme(content: @Composable () -> Unit){
     val extendedColors = extendedColors
 
-    CompositionLocalProvider(LocalExtendedColors     provides extendedColors){
+    CompositionLocalProvider(LocalExtendedColors provides extendedColors){
         MaterialTheme(
             colorScheme = LightColorScheme,
             typography = AppTypography,

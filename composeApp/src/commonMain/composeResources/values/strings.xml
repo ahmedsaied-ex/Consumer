@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
+<!--    general errors -->
     <string name="error_disk_full">Oops, it seems like your disk is full.</string>
     <string name="error_unknown">Oops, something went wrong.</string>
     <string name="error_request_timeout">The request timed out.</string>
@@ -15,5 +16,12 @@
     <string name="error_socket_parse_error">A data processing error occurred. Please try again.</string>
     <string name="error_socket_price_not_valid">The entered bid amount is not valid. Please enter a higher value.</string>
     <string name="error_socket_auction_not_valid">This Auction is no longer valid</string>
+
+    <!-- OnBoarding -->
+    <string name="consumer_voice">صوت المستهلك</string>
+    <string name="shop_smart_title">تسوّق بذكاء، ووفر وقتك</string>
+    <string name="shop_smart_description">ابحث عن أي منتج وقارن سعره بين مختلف المتاجر لتضمن الحصول على أفضل صفقة دائماً</string>
+    <string name="compare_your_bucket_title">قارن سلتك بالكامل</string>
+    <string name="compare_your_bucket_description">بلمحة واحدة، اكتشف المتجر الذي يوفر لك أفضل سعر لمجموعة منتجاتك المختارة في سلة واحدة</string>
 
 </resources>
