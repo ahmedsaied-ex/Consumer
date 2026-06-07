@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement.Absolute.spacedBy
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.consumer.core.presentation.foundation.DesignSystem.DesignSystem
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
 
@@ -28,11 +30,11 @@ fun TabBar(
 ) {
     Row(
         modifier
-            .clip(MaterialTheme.shapes.small)
+            .clip(RoundedCornerShape(DesignSystem.Radius.RadiusMd))
             .background(
                 MaterialTheme.colorScheme.extendedColors.tabBarColorTabsBackground
             )
-            .padding(4.dp),
+            .padding(DesignSystem.Padding.Padding1xs),
         horizontalArrangement = spacedBy(1.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -115,7 +117,7 @@ fun TabCard(
             }
         ),
         modifier = modifier
-            .clip(MaterialTheme.shapes.small)
+            .clip(RoundedCornerShape(DesignSystem.Radius.RadiusMd))
             .background(
                 if (selected) {
                     MaterialTheme.colorScheme.tertiary
@@ -123,7 +125,7 @@ fun TabCard(
                     MaterialTheme.colorScheme.extendedColors.tabUnselectedBackgroundColor
                 }
             )
-            .padding(vertical = 2.dp, horizontal = 4.dp)
+            .padding(vertical = DesignSystem.Padding.Padding2xs, horizontal = DesignSystem.Padding.Padding1xs)
             .clickable(onClick = onClick)
     )
 }

@@ -61,6 +61,11 @@ object DesignSystem {
         val Radius6XL: Dp = ConsumerDimensions.radius.radius6xl
     }
 
+    object Shadow{
+        val DialogShadow = ConsumerDimensions.dropShadow.DialogShadow
+    }
+
+
 
 
 }

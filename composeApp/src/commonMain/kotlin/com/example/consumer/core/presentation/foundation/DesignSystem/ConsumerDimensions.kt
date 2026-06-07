@@ -1,5 +1,8 @@
 package com.example.consumer.core.presentation.foundation.DesignSystem
 
+import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.shadow.Shadow
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 
 /**
@@ -10,7 +13,7 @@ object ConsumerDimensions {
     val baseUnit = 8.dp
     val padding = Padding
     val radius = Radius
-
+    val dropShadow = DropShadow
     object Padding {
         val none = 0.dp
         val padding2xs = 2.dp
@@ -44,6 +47,15 @@ object ConsumerDimensions {
 
 
 
+    }
+
+    object DropShadow{
+        val DialogShadow =Shadow(
+            radius = DesignSystem.Radius.Radius6XL,
+            spread = DesignSystem.Radius.RadiusMd,
+            offset =  DpOffset(x = 0.dp, y = 0.dp),
+            color = Black,
+        )
     }
 }
 

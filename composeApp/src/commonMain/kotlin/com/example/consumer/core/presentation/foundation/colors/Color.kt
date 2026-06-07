@@ -74,7 +74,7 @@ internal val OnTertiaryContainerDark = Color(0xFFFFDBCC)
 // Error
 internal val ErrorBackground = Color(0xFFFCEBED)
 internal val OnErrorDark = Color(0xFF680000)
-internal val ErrorContainerDark = Color(0xFF930000)
+internal val ErrorContainerDark = Color(0xFFFCEBED)
 internal val OnErrorContainerDark = Color(0xFFFFDADA)
 
 // Background & Surface
@@ -104,7 +104,4 @@ internal val SurfaceContainerDark = Color(0xFF2A2635) // Bottom sheet background
 internal val SurfaceContainerHighDark = Color(0xFF353140)
 internal val SurfaceContainerHighestDark = Color(0xFF403C4A)
 //added
-internal val OnDisablePrimaryLight = Color(0xFFDDDDE3)
-internal val OnDisableTextTertiary = Color(0xFF8E8FA2)
-internal val OnDisableTextDestructive = Color(0xFFEE9AA2)
-internal val buttonBorderColorAuth = Color(0xFFE8E9EC)
+

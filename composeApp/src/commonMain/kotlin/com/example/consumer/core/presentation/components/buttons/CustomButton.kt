@@ -31,9 +31,9 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.example.consumer.core.presentation.foundation.DesignSystem.ConsumerDimensions
 import com.example.consumer.core.presentation.foundation.DesignSystem.DesignSystem
-import com.example.consumer.core.presentation.foundation.colors.buttonBorderColorAuth
 import com.example.consumer.core.presentation.foundation.typography.Button1
 import com.example.consumer.core.presentation.theme.ConsumerTheme
+import com.example.consumer.core.presentation.theme.extendedColors
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.group
 import org.jetbrains.compose.resources.DrawableResource
@@ -160,7 +160,7 @@ fun ConsumerBorderIconButton(
     corner: Dp = ConsumerDimensions.Radius.radiusMd,
     fontStyle: TextStyle = Button1.copy(fontWeight = FontWeight.SemiBold),
     size: ButtonSize = ButtonSize.LARGE,
-    borderColor: Color = buttonBorderColorAuth,
+    borderColor: Color = MaterialTheme.colorScheme.extendedColors.buttonBorderColorAuth,
     textColor: Color = MaterialTheme.colorScheme.tertiary,
 ) {
     val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl

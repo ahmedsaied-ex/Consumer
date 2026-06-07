@@ -122,10 +122,17 @@ data class ExtendedColors(
     val darkBlue650: Color,
     val darkBlue450: Color,
     val darkBlue150: Color,
+    val darkBlue100: Color,
+
+
 
     // tex field
     val focusedTextField : Color,
 
+    val onDisablePrimaryLight : Color,
+    val onDisableTextTertiary  : Color,
+    val onDisableTextDestructive   : Color,
+    val buttonBorderColorAuth  : Color,
 )
 
 val extendedColors = ExtendedColors(
@@ -166,9 +173,15 @@ val extendedColors = ExtendedColors(
     darkBlue650 = Color(0xFF6B6D85),
     darkBlue450 = Color(0xFFB0B0BE),
     darkBlue150 = Color(0xFFEFEFF2),
+    darkBlue100 = Color(0xFFF4F4F6),
 
     // text field
     focusedTextField = Color(0xFF377373),
+
+    onDisablePrimaryLight = Color(0xFFDDDDE3),
+    onDisableTextTertiary = Color(0xFF8E8FA2),
+    onDisableTextDestructive = Color(0xFFEE9AA2),
+    buttonBorderColorAuth = Color(0xFFE8E9EC),
 )
 
 // Brand color schemes
