@@ -1,4 +1,4 @@
-package com.example.consumer.features.presentation.components
+package com.example.consumer.features.otp.presentation.components
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable

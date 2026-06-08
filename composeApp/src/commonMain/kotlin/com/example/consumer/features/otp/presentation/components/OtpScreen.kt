@@ -1,10 +1,10 @@
-package com.example.consumer.features.presentation.components
+package com.example.consumer.features.otp.presentation.components
 
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.auctionex.expertapps.features.auth_feature.otp.presentation.components.OtpContent
-import com.example.consumer.features.presentation.viewModel.OtpSource
+import com.example.consumer.features.otp.presentation.viewModel.OtpSource
 
 
 @Composable

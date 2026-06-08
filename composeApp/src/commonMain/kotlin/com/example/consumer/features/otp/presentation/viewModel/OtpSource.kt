@@ -1,4 +1,4 @@
-package com.example.consumer.features.presentation.viewModel
+package com.example.consumer.features.otp.presentation.viewModel
 
 import kotlinx.serialization.Serializable
 

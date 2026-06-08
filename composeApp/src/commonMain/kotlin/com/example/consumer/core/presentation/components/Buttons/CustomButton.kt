@@ -22,12 +22,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.example.consumer.core.presentation.foundation.DesignSystem.ConsumerDimensions
 import com.example.consumer.core.presentation.foundation.DesignSystem.DesignSystem
@@ -163,7 +161,6 @@ fun ConsumerBorderIconButton(
     borderColor: Color = buttonBorderColorAuth,
     textColor: Color = MaterialTheme.colorScheme.tertiary,
 ) {
-    val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
     Button(
         onClick = onClick,
         modifier = modifier.height(size.toHeight()),
@@ -191,7 +188,6 @@ fun ConsumerBorderIconButton(
                 horizontalArrangement = Arrangement.Center,
             ) {
 
-                if (!isRtl) {
                     Text(
                         text = text,
                         style = fontStyle,
@@ -202,19 +198,11 @@ fun ConsumerBorderIconButton(
                         painter = painterResource(iconRes),
                         contentDescription = null,
                     )
-                }
 
 
 
-                if (isRtl) {
-                    Spacer(modifier = Modifier.width(16.dp))
-                    Image(
-                        painter = painterResource(iconRes),
-                        contentDescription = null,
-                    )
 
 
-                }
             }
         }
     }

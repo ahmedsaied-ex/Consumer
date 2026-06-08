@@ -1,4 +1,4 @@
-package com.example.consumer.features.presentation.components
+package com.example.consumer.features.otp.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

@@ -1,5 +1,8 @@
 package com.example.consumer.core.presentation.foundation.colors
 import androidx.compose.ui.graphics.Color
+
+
+
 internal val PrimaryLight = Color(0xFF133346) // Main brand purple
 internal val OnPrimaryLight = Color(0xFFEFEFF2) // White text on purple
 internal val PrimaryContainerLight = Color(0xFF2B5B5B) // Lighter purple for containers
@@ -107,3 +110,7 @@ internal val OnDisableTextTertiary = Color(0xFF8E8FA2)
 internal val OnDisableTextDestructive = Color(0xFFEE9AA2)
 internal val buttonBorderColorAuth = Color(0xFFE8E9EC)
 internal val OTPBoxBorderColor = Color(0xFF6B6D85)
+internal val LanguageCardBackground = Color(0xFFF4F7F9)
+internal val SelectedLanguageItemBackground = Color(0xFF225C80)
+internal val UnSelectedLanguageItemBackground = Color(0xFFE9EFF2)
+internal val UnSelectedIRadioIndicatorBorder = Color(0xFFB0B0BE)

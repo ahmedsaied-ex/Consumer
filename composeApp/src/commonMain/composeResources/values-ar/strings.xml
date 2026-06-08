@@ -19,4 +19,10 @@
 
 
     <string name="confirm">تأكيد</string>
+    <string name="language">اختر اللغة</string>
+    <string name="modify_language">يمكن تغيير اللغة من داخل اعدادات التطبيق في أي وقت</string>
+    <string name="Continue">التالي</string>
+    <string name="AppName">صوت المستهلك</string>
+
+
 </resources>

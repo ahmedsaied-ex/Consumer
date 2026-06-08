@@ -14,8 +14,6 @@ import com.example.consumer.core.presentation.foundation.colors.OTPBoxBorderColo
 import com.example.consumer.core.presentation.foundation.typography.Button2
 import com.example.consumer.core.presentation.foundation.typography.Subtitle2
 
-import com.example.consumer.features.presentation.viewModel.OtpState
-import org.jetbrains.compose.resources.stringResource
 @Composable
 fun ResendCodeText(
 //    state: OtpState,
