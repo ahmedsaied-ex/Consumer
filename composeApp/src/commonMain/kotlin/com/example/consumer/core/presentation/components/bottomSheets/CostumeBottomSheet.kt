@@ -59,6 +59,7 @@ fun CostumeBottomSheet(
         onDismissRequest = onDismiss,
         modifier = modifier.systemBarsPadding(),
         contentWindowInsets = { WindowInsets() },
+        sheetState = sheetState
     ) {
         content()
     }

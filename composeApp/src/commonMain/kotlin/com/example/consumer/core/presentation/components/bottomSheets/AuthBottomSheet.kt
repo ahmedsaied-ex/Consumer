@@ -1,5 +1,8 @@
 package com.example.consumer.core.presentation.components.bottomSheets
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -83,6 +86,12 @@ fun AuthBottomSheetContent(
 ) {
     Column(
         modifier = modifier
+//            .animateContentSize(
+//                animationSpec = tween(
+//                    durationMillis = 100,
+//                    easing = FastOutSlowInEasing
+//                )
+//            )
     ) {
         Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 4.dp)) {
             Image(
@@ -104,17 +113,25 @@ fun AuthBottomSheetContent(
             )
         }
         Spacer(modifier = Modifier.height(28.dp))
-        when (selectedTabId) {
-            AuthTabs.CONSUMER.name -> {
-                ConsumerBodyBottomSheet(
-                    onLoginClick = onLoginClick,
-                    onAppleClick = onAppleClick,
-                    onGoogleClick = onGoogleClick
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .animateContentSize(
+                    animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
                 )
-            }
+        ) {
+            when (selectedTabId) {
+                AuthTabs.CONSUMER.name -> {
+                    ConsumerBodyBottomSheet(
+                        onLoginClick = onLoginClick,
+                        onAppleClick = onAppleClick,
+                        onGoogleClick = onGoogleClick
+                    )
+                }
 
-            AuthTabs.AMBASSADOR.name -> {
-                AmbassadorBodyBottomSheet()
+                AuthTabs.AMBASSADOR.name -> {
+                    AmbassadorBodyBottomSheet()
+                }
             }
         }
         Spacer(modifier = Modifier.height(16.dp))
