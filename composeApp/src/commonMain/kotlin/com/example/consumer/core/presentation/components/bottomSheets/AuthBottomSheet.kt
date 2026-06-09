@@ -84,7 +84,7 @@ fun AuthBottomSheetContent(
     Column(
         modifier = modifier
     ) {
-        Row(modifier = Modifier.background(MaterialTheme.colorScheme.extendedColors.darkBlue650).fillMaxWidth().padding(horizontal = 20.dp)) {
+        Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 4.dp)) {
             Image(
                 painterResource(Res.drawable.close_icon),
                 modifier = Modifier.clickable(onClick = { onDismiss() }),
@@ -129,49 +129,49 @@ fun AmbassadorBodyBottomSheet(
     val emailState = rememberTextFieldState()
     val passwordState = rememberTextFieldState()
     Column(
-            modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            ConsumerTextField(
-                modifier = Modifier.fillMaxWidth(),
-                state = emailState,
-                label = {
-                    Text(
-                        text = stringResource(resource = Res.string.email),
-                    )
-                },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            )
-            Spacer(modifier = Modifier.height(10.dp))
-            ConsumerTextField(
-                label = {
-                    Text(
-                        text = stringResource(resource = Res.string.password),
-                    )
-                },
+        modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        ConsumerTextField(
+            modifier = Modifier.fillMaxWidth(),
+            state = emailState,
+            label = {
+                Text(
+                    text = stringResource(resource = Res.string.email),
+                )
+            },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        ConsumerTextField(
+            label = {
+                Text(
+                    text = stringResource(resource = Res.string.password),
+                )
+            },
 
-                modifier = Modifier.fillMaxWidth(),
-                state = passwordState,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            )
-            Spacer(modifier = Modifier.height(10.dp))
-            ConsumerFilledButton(
-                text = "تسجيل الدخول",
-                type = ButtonsTypes.PRIMARY,
-                enabled = true,
-                onClick = onLoginClick,
-                modifier = Modifier.fillMaxWidth(),
-            )
-        }
+            modifier = Modifier.fillMaxWidth(),
+            state = passwordState,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        ConsumerFilledButton(
+            text = "تسجيل الدخول",
+            type = ButtonsTypes.PRIMARY,
+            enabled = true,
+            onClick = onLoginClick,
+            modifier = Modifier.fillMaxWidth(),
+        )
+    }
 }
 
 @Composable
-@Preview(showBackground=true , locale = "ar")
+@Preview(showBackground = true, locale = "ar")
 fun AmbassadorBodyBottomSheetPreview() {
     ConsumerTheme {
         AmbassadorBodyBottomSheet()
     }
-    
+
 }
 
 @Composable
@@ -219,7 +219,7 @@ fun ConsumerBodyBottomSheet(
 }
 
 @Composable
-@Preview(showBackground=true , locale = "ar")
+@Preview(showBackground = true, locale = "ar")
 fun ConsumerBodyBottomSheetPreview() {
     ConsumerTheme {
         ConsumerBodyBottomSheet(
@@ -228,7 +228,7 @@ fun ConsumerBodyBottomSheetPreview() {
             onGoogleClick = {}
         )
     }
-    
+
 }
 
 @Composable

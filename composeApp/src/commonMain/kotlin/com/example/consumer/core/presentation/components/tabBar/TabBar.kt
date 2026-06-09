@@ -1,7 +1,12 @@
 package com.example.consumer.core.presentation.components.tabBar
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement.Absolute.spacedBy
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -9,10 +14,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.input.pointer.PointerId
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,8 +30,6 @@ import com.example.consumer.core.presentation.theme.extendedColors
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.ambassador
 import consumer.composeapp.generated.resources.consumer
-import consumer.composeapp.generated.resources.shop_smart_description
-import consumer.composeapp.generated.resources.shop_smart_title
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -126,31 +131,66 @@ fun TabCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val durationTime = 400
+    val backgroundColor by animateColorAsState(
+        targetValue = if (selected) {
+            MaterialTheme.colorScheme.tertiary
+        } else {
+            MaterialTheme.colorScheme.extendedColors.tabUnselectedBackgroundColor
+        },
+        animationSpec = tween(
+            durationMillis = durationTime,
+            easing = FastOutSlowInEasing
+        ),
+        label = "tab_background"
+    )
+
+    val textColor by animateColorAsState(
+        targetValue = if (selected) {
+            MaterialTheme.colorScheme.onTertiary
+        } else {
+            MaterialTheme.colorScheme.onBackground
+        },
+        animationSpec = tween(
+            durationMillis = durationTime,
+            easing = FastOutSlowInEasing
+        ),
+        label = "tab_text"
+    )
+
+    val scale by animateFloatAsState(
+        targetValue = if (selected) 1f else 0.96f,
+        animationSpec = tween(
+            durationMillis = durationTime,
+            easing = FastOutSlowInEasing
+        ),
+        label = "tab_scale"
+    )
     Text(
         text = text,
         textAlign = TextAlign.Center,
         style = MaterialTheme.typography.titleSmall.copy(
             fontWeight = FontWeight.Medium,
-            color = if (selected) {
-                MaterialTheme.colorScheme.onTertiary
-            } else {
-                MaterialTheme.colorScheme.onBackground
-            }
+            color=textColor
         ),
         modifier = modifier
+            .graphicsLayer {
+                scaleX = scale
+                scaleY = scale
+            }
             .clip(RoundedCornerShape(DesignSystem.Radius.RadiusMd))
             .background(
-                if (selected) {
-                    MaterialTheme.colorScheme.tertiary
-                } else {
-                    MaterialTheme.colorScheme.extendedColors.tabUnselectedBackgroundColor
-                }
+                backgroundColor
             )
             .padding(
                 vertical = DesignSystem.Padding.Padding2xs,
                 horizontal = DesignSystem.Padding.Padding1xs
             )
-            .clickable(onClick = onClick)
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null,
+                onClick = onClick
+            )
     )
 }
 
