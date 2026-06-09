@@ -31,4 +31,9 @@
     <string name="complete_with_email">اكمل باستخدام البريد الإلكتروني</string>
     <string name="complete_with_google">اكمل باستخدام Google</string>
     <string name="complete_with_apple">اكمل باستخدام Apple</string>
+
+    <!--  Cards -->
+    <string name="price_start_with">سعر يبدأ من</string>
+    <string name="sold_from">يباع من</string>
+
 </resources>

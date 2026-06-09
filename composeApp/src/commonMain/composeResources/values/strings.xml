@@ -31,5 +31,12 @@
     <string name="complete_with_google">Complete with Google</string>
     <string name="complete_with_apple">Complete with Apple</string>
 
+    <!--  Cards -->
+    <string name="price_start_with">سعر يبدأ من</string>
+    <string name="sold_from">يباع من</string>
+
+
+
+
 
 </resources>
