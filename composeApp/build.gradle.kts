@@ -60,12 +60,25 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
+
+            // lottie
+//            implementation("io.github.alexzhirkevich:compottie:2.0.0")
+            implementation(libs.compottie.resources)
+            implementation(libs.compottie.network)
+            implementation(libs.compottie.dot)
+            implementation(libs.compottie.lite)
+
+
+
             implementation(libs.kotlinx.serialization.json)
 
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.ktor)
             implementation(libs.coil.network.ktor)
-
+            implementation(libs.coil.compose.core)
+            implementation(libs.coil.compose)
+            implementation(libs.coil.core)
+            implementation(libs.coil.svg)
             implementation(libs.kermit)
 
             api(libs.koin.core)

@@ -105,10 +105,6 @@ internal val SurfaceContainerDark = Color(0xFF2A2635) // Bottom sheet background
 internal val SurfaceContainerHighDark = Color(0xFF353140)
 internal val SurfaceContainerHighestDark = Color(0xFF403C4A)
 //added
-internal val OnDisablePrimaryLight = Color(0xFFDDDDE3)
-internal val OnDisableTextTertiary = Color(0xFF8E8FA2)
-internal val OnDisableTextDestructive = Color(0xFFEE9AA2)
-internal val buttonBorderColorAuth = Color(0xFFE8E9EC)
 internal val OTPBoxBorderColor = Color(0xFF6B6D85)
 internal val LanguageCardBackground = Color(0xFFF4F7F9)
 internal val SelectedLanguageItemBackground = Color(0xFF225C80)

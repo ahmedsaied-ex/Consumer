@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.consumer.core.presentation.foundation.DesignSystem.DesignSystem
 import com.example.consumer.core.presentation.foundation.typography.Subtitle3
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
@@ -28,9 +30,9 @@ fun MissionStatus(
 ) {
     Box(
         modifier = modifier
-            .clip(shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
+            .clip(shape = RoundedCornerShape( DesignSystem.Radius.RadiusMd))
             .background(backgroundColor)
-            .padding(horizontal = 12.dp, vertical = 2.dp),
+            .padding(horizontal = DesignSystem.Padding.PaddingXL, vertical = DesignSystem.Padding.Padding2xs),
         contentAlignment = Alignment.Center
     ) {
         Text(text, style = Subtitle3.copy(color = textColor, fontWeight = FontWeight.Medium))

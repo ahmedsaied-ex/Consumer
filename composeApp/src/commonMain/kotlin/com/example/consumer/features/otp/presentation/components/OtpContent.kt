@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.consumer.core.presentation.components.Bars.TransparentToolbar
+import com.example.consumer.core.presentation.components.bars.TransparentToolbar
 import com.example.consumer.core.presentation.foundation.colors.OTPBoxBorderColor
 import com.example.consumer.core.presentation.foundation.typography.H4
 import com.example.consumer.core.presentation.foundation.typography.Subtitle2

@@ -1,4 +1,4 @@
-package com.example.consumer.core.presentation.components.Bars
+package com.example.consumer.core.presentation.components.bars
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,7 +21,6 @@ import com.example.consumer.core.presentation.components.Buttons.LocalizedIconBu
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.ic_back
 import org.jetbrains.compose.resources.painterResource
-import kotlin.math.sign
 
 @Composable
 fun TransparentToolbar(

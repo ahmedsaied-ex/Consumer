@@ -101,6 +101,39 @@ data class ExtendedColors(
 
     val completedMissionTextColor: Color,
     val completedMissionBackgroundColor: Color,
+
+    // circles
+    val unAssignedCircleColor: Color,
+    val inProgressCircleColor: Color,
+    val completedCircleColor: Color,
+    val reevaluateCircleColor: Color,
+    val newCircleColor: Color,
+
+    //tabBar
+    val tabBarColorTabsBackground: Color,
+    val tabUnselectedBackgroundColor: Color,
+
+    // profile 
+    val profileChangePhotoBackground: Color,
+    val profileSectionEvenItemBackgroundColor: Color,
+    val profileSectionOddItemBackgroundColor: Color,
+
+    // other colors
+    val darkBlue650: Color,
+    val darkBlue450: Color,
+    val darkBlue150: Color,
+    val darkBlue100: Color,
+    val cadetBlue: Color,
+
+
+
+    // tex field
+    val focusedTextField : Color,
+
+    val onDisablePrimaryLight : Color,
+    val onDisableTextTertiary  : Color,
+    val onDisableTextDestructive   : Color,
+    val buttonBorderColorAuth  : Color,
 )
 
 val extendedColors = ExtendedColors(
@@ -117,7 +150,40 @@ val extendedColors = ExtendedColors(
     completedMissionBackgroundColor = Color(0xFFECF5EC),
 
     reevaluateMissionTextColor = Color(0xFFC00097),
-    reevaluateMissionBackgroundColor = Color(0xFFFFDEF8)
+    reevaluateMissionBackgroundColor = Color(0xFFFFDEF8),
+
+    //circles
+    unAssignedCircleColor = Color(0xFFC6C7D0),
+    inProgressCircleColor = Color(0xFFEFC900),
+    completedCircleColor = Color(0xFF2E7D32),
+    reevaluateCircleColor = Color(0xFFC00097),
+    newCircleColor = Color(0xFF1B6397),
+
+    //tabBar
+    tabBarColorTabsBackground = Color(0xFFE9EFF2),
+    tabUnselectedBackgroundColor = Color(0xFFE8E9EC),
+    profileChangePhotoBackground = Color(0xFFC8D6DF),
+
+
+    //profile
+    profileSectionEvenItemBackgroundColor = Color(0xFFF4F7F9),
+    profileSectionOddItemBackgroundColor = Color(0xFFFBFCFC),
+
+
+    // other colors
+    darkBlue650 = Color(0xFF6B6D85),
+    darkBlue450 = Color(0xFFB0B0BE),
+    darkBlue150 = Color(0xFFEFEFF2),
+    darkBlue100 = Color(0xFFF4F4F6),
+    cadetBlue = Color(0xFF83C0C0),
+
+    // text field
+    focusedTextField = Color(0xFF377373),
+
+    onDisablePrimaryLight = Color(0xFFDDDDE3),
+    onDisableTextTertiary = Color(0xFF8E8FA2),
+    onDisableTextDestructive = Color(0xFFEE9AA2),
+    buttonBorderColorAuth = Color(0xFFE8E9EC),
 )
 
 // Brand color schemes

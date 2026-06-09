@@ -17,6 +17,21 @@
     <string name="error_socket_auction_not_valid">هذا المزاد لم يعد متاحا بعد الان</string>
     <string name="otp_verified_successfully">تم التحقق من حسابك بنجاح</string>
 
+    <!-- OnBoarding -->
+    <string name="consumer_voice">صوت المستهلك</string>
+    <string name="shop_smart_title">تسوّق بذكاء، ووفر وقتك</string>
+    <string name="shop_smart_description">ابحث عن أي منتج وقارن سعره بين مختلف المتاجر لتضمن الحصول على أفضل صفقة دائماً</string>
+    <string name="compare_your_bucket_title">قارن سلتك بالكامل</string>
+    <string name="compare_your_bucket_description">بلمحة واحدة، اكتشف المتجر الذي يوفر لك أفضل سعر لمجموعة منتجاتك المختارة في سلة واحدة</string>
+    <string name="ambassador">سفير مستهلك</string>
+    <string name="consumer">مستهلك</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">كلمة المرور</string>
+
+    <string name="complete_with_email">اكمل باستخدام البريد الإلكتروني</string>
+    <string name="complete_with_google">اكمل باستخدام Google</string>
+    <string name="complete_with_apple">اكمل باستخدام Apple</string>
+
 
     <string name="confirm">تأكيد</string>
     <string name="language">اختر اللغة</string>

@@ -1,13 +1,9 @@
-package com.example.consumer.core.presentation.components.Buttons
+package com.example.consumer.core.presentation.components.buttons
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.example.consumer.core.presentation.foundation.colors.ErrorBackground
-import com.example.consumer.core.presentation.foundation.colors.ErrorDark
-import com.example.consumer.core.presentation.foundation.colors.OnDisablePrimaryLight
-import com.example.consumer.core.presentation.foundation.colors.OnDisableTextDestructive
-import com.example.consumer.core.presentation.foundation.colors.OnDisableTextTertiary
+import com.example.consumer.core.presentation.theme.extendedColors
 
 enum class ButtonsTypes {
     PRIMARY,
@@ -41,15 +37,15 @@ fun ButtonsTypes.getFeatures(): ButtonFeatures {
         )
         ButtonsTypes.TERTIARY -> ButtonFeatures(
             containerColor = colorScheme.onPrimary,
-            disabledContainerColor = OnDisablePrimaryLight,
+            disabledContainerColor = colorScheme.extendedColors.onDisablePrimaryLight,
             contentColor= colorScheme.onTertiaryContainer,
-            disabledContentColor = OnDisableTextTertiary
+            disabledContentColor =colorScheme.extendedColors.onDisableTextTertiary
         )
         ButtonsTypes.DESTRUCTIVE -> ButtonFeatures(
-            containerColor = ErrorBackground,
-            disabledContainerColor = ErrorBackground,
-            contentColor = ErrorDark,
-            disabledContentColor = OnDisableTextDestructive
+            containerColor =  colorScheme.errorContainer,
+            disabledContainerColor = colorScheme.errorContainer,
+            contentColor = colorScheme.error,
+            disabledContentColor = colorScheme.extendedColors.onDisableTextDestructive
         )
     }
 }
