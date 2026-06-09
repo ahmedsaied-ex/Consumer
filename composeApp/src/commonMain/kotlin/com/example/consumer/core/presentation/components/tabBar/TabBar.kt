@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.input.pointer.PointerId
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,14 +20,25 @@ import androidx.compose.ui.unit.dp
 import com.example.consumer.core.presentation.foundation.DesignSystem.DesignSystem
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
+import consumer.composeapp.generated.resources.Res
+import consumer.composeapp.generated.resources.ambassador
+import consumer.composeapp.generated.resources.consumer
+import consumer.composeapp.generated.resources.shop_smart_description
+import consumer.composeapp.generated.resources.shop_smart_title
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 
+data class TabItem(
+    val id: String,
+    val title: StringResource,
+)
 
 @Composable
 fun TabBar(
     modifier: Modifier = Modifier,
-    tabs: List<String>,
-    selectedIndex: Int,
-    onTabSelected: (Int) -> Unit
+    tabs: List<TabItem>,
+    selectedTabId: String,
+    onTabSelected: (TabItem) -> Unit
 ) {
     Row(
         modifier
@@ -40,10 +52,10 @@ fun TabBar(
     ) {
         tabs.forEachIndexed { index, tab ->
             TabCard(
-                text = tab,
-                selected = index == selectedIndex,
-                onClick = { onTabSelected(index) },
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
+                text = stringResource(tab.title),
+                selected = tab.id == selectedTabId,
+                onClick = { onTabSelected(tab) }
             )
         }
     }
@@ -55,9 +67,9 @@ fun TabBar(
 fun TabBarPreview1Tab() {
     ConsumerTheme {
         TabBar(
-            tabs = listOf("Tab 3"),
-            selectedIndex = 0,
-            onTabSelected = {}
+            tabs = listOf(TabItem(id = "1", title = Res.string.consumer)),
+            selectedTabId = "1",
+            onTabSelected = {},
         )
     }
 }
@@ -67,9 +79,9 @@ fun TabBarPreview1Tab() {
 fun TabBarPreview2Tabs() {
     ConsumerTheme {
         TabBar(
-            tabs = listOf("Tab 2", "Tab 3"),
-            selectedIndex = 0,
-            onTabSelected = {}
+            tabs = listOf(TabItem(id = "1", title = Res.string.consumer), TabItem(id = "2", title = Res.string.ambassador)),
+            selectedTabId = "2",
+            onTabSelected = {},
         )
     }
 }
@@ -79,9 +91,13 @@ fun TabBarPreview2Tabs() {
 fun TabBarPreview3tabs() {
     ConsumerTheme {
         TabBar(
-            tabs = listOf("Tab 1", "Tab 2", "Tab 3"),
-            selectedIndex = 0,
-            onTabSelected = {}
+            tabs = listOf(
+                TabItem(id = "1", title = Res.string.consumer),
+                TabItem(id = "2", title = Res.string.ambassador),
+                TabItem(id = "3", title = Res.string.consumer)
+            ),
+            selectedTabId = "1",
+            onTabSelected = {},
         )
     }
 }
@@ -91,9 +107,14 @@ fun TabBarPreview3tabs() {
 fun TabBarPreview4tab() {
     ConsumerTheme {
         TabBar(
-            tabs = listOf("Tab 1", "Tab 2", "Tab 3", "Tab 4"),
-            selectedIndex = 0,
-            onTabSelected = {}
+            tabs = listOf(
+                TabItem(id = "1", title = Res.string.consumer),
+                TabItem(id = "2", title = Res.string.ambassador),
+                TabItem(id = "3", title = Res.string.consumer),
+                TabItem(id = "4", title = Res.string.ambassador)
+            ),
+            selectedTabId = "1",
+            onTabSelected = {},
         )
     }
 }
@@ -125,7 +146,10 @@ fun TabCard(
                     MaterialTheme.colorScheme.extendedColors.tabUnselectedBackgroundColor
                 }
             )
-            .padding(vertical = DesignSystem.Padding.Padding2xs, horizontal = DesignSystem.Padding.Padding1xs)
+            .padding(
+                vertical = DesignSystem.Padding.Padding2xs,
+                horizontal = DesignSystem.Padding.Padding1xs
+            )
             .clickable(onClick = onClick)
     )
 }

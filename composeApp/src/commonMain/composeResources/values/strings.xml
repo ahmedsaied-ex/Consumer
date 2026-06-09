@@ -23,5 +23,13 @@
     <string name="shop_smart_description">ابحث عن أي منتج وقارن سعره بين مختلف المتاجر لتضمن الحصول على أفضل صفقة دائماً</string>
     <string name="compare_your_bucket_title">قارن سلتك بالكامل</string>
     <string name="compare_your_bucket_description">بلمحة واحدة، اكتشف المتجر الذي يوفر لك أفضل سعر لمجموعة منتجاتك المختارة في سلة واحدة</string>
+    <string name="ambassador">سفير مستهلك</string>
+    <string name="consumer">مستهلك</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="complete_with_email">Complete with Email</string>
+    <string name="complete_with_google">Complete with Google</string>
+    <string name="complete_with_apple">Complete with Apple</string>
+
 
 </resources>

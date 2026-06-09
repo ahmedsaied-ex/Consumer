@@ -207,12 +207,15 @@ fun ConsumerBorderIconButton(
 
 
                 if (isRtl) {
-                    Spacer(modifier = Modifier.width(16.dp))
                     Image(
                         painter = painterResource(iconRes),
                         contentDescription = null,
                     )
-
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Text(
+                        text = text,
+                        style = fontStyle,
+                    )
 
                 }
             }
@@ -258,7 +261,7 @@ fun ConsumerTextButton(
     }
 }
 
-@Preview(name = "Buttons Preview", showBackground = true, heightDp = 1000)
+@Preview(name = "Buttons Preview", showBackground = true, heightDp = 1000, locale = "ar")
 @Composable
 private fun ConsumerButtonsPreview() {
     ConsumerTheme {

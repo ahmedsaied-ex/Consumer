@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.consumer.core.presentation.theme.ConsumerTheme
+import com.example.consumer.features.onBoarding.presintation.components.OnBoardingScreen
 import org.jetbrains.compose.resources.painterResource
 
 import consumer.composeapp.generated.resources.Res
@@ -27,15 +28,7 @@ import consumer.composeapp.generated.resources.compose_multiplatform
 @Preview
 fun App() {
     ConsumerTheme {
-        Column(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primaryContainer)
-                .safeContentPadding()
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-
-        }
+        OnBoardingScreen()
     }
 }
 

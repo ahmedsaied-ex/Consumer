@@ -3,6 +3,7 @@ package com.example.consumer.core.presentation.components
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.MaterialTheme
@@ -29,10 +30,14 @@ fun ConsumerTextField(
     enabled: Boolean = true,
     state: TextFieldState,
     isError: Boolean = false,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    trailingIcon: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     label:  @Composable (TextFieldLabelScope.() -> Unit)? = null
 ) {
     TextField(
+        trailingIcon = trailingIcon,
+        keyboardOptions= keyboardOptions,
         enabled = enabled,
         isError = isError,
         state = state,

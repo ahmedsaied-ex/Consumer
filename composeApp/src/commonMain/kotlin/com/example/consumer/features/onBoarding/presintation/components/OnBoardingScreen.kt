@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -28,16 +27,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.consumer.core.presentation.components.CostumeScaffold
+import com.example.consumer.core.presentation.components.bottomSheets.AuthBottomSheet
 import com.example.consumer.core.presentation.components.buttons.ButtonsTypes
-import com.example.consumer.core.presentation.components.buttons.ConsumerBorderTransparentButton
 import com.example.consumer.core.presentation.components.buttons.ConsumerFilledButton
 import com.example.consumer.core.presentation.components.dotsIndecator.DotIndicator
-import com.example.consumer.core.presentation.foundation.DesignSystem.DesignSystem
-import com.example.consumer.core.presentation.foundation.typography.H1
+import com.example.consumer.core.presentation.components.tabBar.TabItem
 import com.example.consumer.core.presentation.foundation.typography.H4
 import com.example.consumer.core.presentation.foundation.typography.Subtitle2
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
+import com.example.consumer.features.onBoarding.domain.models.AuthTabs
 import com.example.consumer.features.onBoarding.domain.models.OnBoardingData
 import com.example.consumer.features.onBoarding.presintation.viewModels.OnBoardingViewModel
 import consumer.composeapp.generated.resources.Res
@@ -57,31 +56,63 @@ fun OnBoardingScreen(
     modifier: Modifier = Modifier,
     viewModel: OnBoardingViewModel = koinViewModel()
 ) {
-    val items by viewModel.item.collectAsState()
+    val items by viewModel.onBoardingUiState.collectAsState()
+
+    OnBoardingScreenContent(
+        modifier = modifier,
+        items = items.onBoardingScreens,
+        isBottomSheetOpened = items.isBottomSheetOpened,
+        tabs = items.tabs,
+        selectedTabId =  items.selectedTabId ?: AuthTabs.CONSUMER.name,
+        onDismiss = { viewModel.closeBottomSheet() },
+        onSelected = { viewModel.onTabSelected(it) },
+
+        onContinueClick = { viewModel.openBottomSheet() }
+    )
 
 }
-
 
 @Composable
 fun OnBoardingScreenContent(
     modifier: Modifier = Modifier,
-    items: List<OnBoardingData> = emptyList()
+    items: List<OnBoardingData> = emptyList(),
+    onContinueClick: () -> Unit,
+    isBottomSheetOpened: Boolean = false,
+    onDismiss: () -> Unit = {},
+    tabs: List<TabItem> = emptyList(),
+    onSelected: (TabItem) -> Unit = {},
+    selectedTabId: String = AuthTabs.CONSUMER.name
 ) {
+    if (isBottomSheetOpened) {
+        AuthBottomSheet(
+            onDismiss = onDismiss,
+            onTabSelected = onSelected,
+            onLoginClick = {},
+            onAppleClick = {},
+            onGoogleClick = {},
+            tabs = tabs,
+            selectedTabId = selectedTabId,
+        )
+    }
+
     val pagerState = rememberPagerState(
         initialPage = 0,
         pageCount = { items.size }
     )
-    CostumeScaffold{
+
+    CostumeScaffold {
         BottomGlow()
+
+        // ✅ Guard against empty state before rendering anything
+        if (items.isEmpty()) return@CostumeScaffold
+
         Column(
-            modifier = modifier.fillMaxSize()
+            modifier = modifier
+                .fillMaxSize()
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.SpaceBetween
-        )
-        {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+        ) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Spacer(modifier = Modifier.height(40.dp))
                 Text(
                     stringResource(Res.string.consumer_voice),
@@ -96,7 +127,6 @@ fun OnBoardingScreenContent(
                     modifier = Modifier.fillMaxWidth()
                 ) { page ->
                     val item = items[page]
-
                     Box(
                         modifier = Modifier.fillMaxWidth().height(300.dp),
                         contentAlignment = Alignment.Center
@@ -104,7 +134,6 @@ fun OnBoardingScreenContent(
                         Image(
                             painter = painterResource(item.image),
                             contentDescription = stringResource(item.title),
-                            modifier = Modifier,
                             contentScale = ContentScale.FillWidth,
                         )
                     }
@@ -112,6 +141,7 @@ fun OnBoardingScreenContent(
             }
 
             Column {
+                // ✅ Safe now — items is guaranteed non-empty above
                 Text(
                     stringResource(items[pagerState.currentPage].title),
                     style = H4.copy(
@@ -131,25 +161,16 @@ fun OnBoardingScreenContent(
                     totalDots = items.size,
                     selectedIndex = pagerState.currentPage
                 )
-
             }
+
             Column(modifier = Modifier.padding(bottom = 16.dp)) {
                 ConsumerFilledButton(
                     text = "اضغط هنا",
                     type = ButtonsTypes.PRIMARY,
                     enabled = true,
-                    onClick = {},
+                    onClick = onContinueClick,
                     modifier = Modifier.fillMaxWidth(),
                 )
-                Spacer(modifier = Modifier.height(12.dp))
-
-                ConsumerBorderTransparentButton(
-                    text = "اضغط هنا",
-                    onClick = {},
-                    enabled = true,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-
             }
         }
     }
@@ -160,6 +181,7 @@ fun OnBoardingScreenContent(
 fun OnBoardingScreenContentPreview() {
     ConsumerTheme {
         OnBoardingScreenContent(
+            onContinueClick = {},
             items = listOf(
                 OnBoardingData(
                     image = Res.drawable.illustration_smart_shopping,
@@ -190,7 +212,7 @@ fun OnBoardingScreenContentPreview() {
 
 @Composable
 fun BottomGlow() {
-    val mainColor= MaterialTheme.colorScheme.extendedColors.cadetBlue
+    val mainColor = MaterialTheme.colorScheme.extendedColors.cadetBlue
     Canvas(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -201,15 +223,15 @@ fun BottomGlow() {
                     Color.Transparent
                 ),
                 center = Offset(
-                    x = size.width ,
-                    y = size.height
+                    x = size.width - 100,
+                    y = size.height + 100
                 ),
                 radius = size.width * 0.5f
             ),
             radius = size.width * 0.5f,
             center = Offset(
-                x = size.width,
-                y = size.height
+                x = size.width - 100,
+                y = size.height + 100
             )
         )
     }
