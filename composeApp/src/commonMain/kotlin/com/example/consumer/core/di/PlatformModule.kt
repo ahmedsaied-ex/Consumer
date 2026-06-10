@@ -1,5 +1,6 @@
 package com.example.consumer.core.di
 
+import com.example.consumer.features.completeProfile.di.CompleteProfileDi
 import com.example.consumer.features.onBoarding.di.OnBoardingModule
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -11,7 +12,8 @@ fun initKoin(config: KoinAppDeclaration? = null) =
         modules(
             platformModule,
             coreModule,
-            OnBoardingModule
+            OnBoardingModule,
+            CompleteProfileDi
             )
     }
 

@@ -17,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,20 +31,25 @@ fun ConsumerTextField(
     enabled: Boolean = true,
     state: TextFieldState,
     isError: Boolean = false,
+    supportingText: @Composable (() -> Unit)? = null,
+    onFocusChanged: ((Boolean) -> Unit)? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     trailingIcon: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
-    label:  @Composable (TextFieldLabelScope.() -> Unit)? = null
+    label: @Composable (TextFieldLabelScope.() -> Unit)? = null
 ) {
     TextField(
         trailingIcon = trailingIcon,
-        keyboardOptions= keyboardOptions,
+        keyboardOptions = keyboardOptions,
         enabled = enabled,
         isError = isError,
         state = state,
         placeholder = placeholder,
+        supportingText = supportingText,
         label = label,
-        modifier = modifier,
+        modifier = modifier.onFocusChanged {
+            onFocusChanged?.invoke(it.isFocused)
+        },
         colors = TextFieldDefaults.colors(
             cursorColor = MaterialTheme.colorScheme.extendedColors.focusedTextField,
             focusedContainerColor = MaterialTheme.colorScheme.extendedColors.darkBlue150,
@@ -117,7 +123,7 @@ private fun ConsumerTextFieldPreviewColoumn() {
                 },
                 state = state,
 
-            )
+                )
 
             Text("Error")
 
@@ -145,7 +151,7 @@ private fun ConsumerTextFieldPreviewColoumn() {
             )
 
             Text("Focused")
-            ConsumerTextField (
+            ConsumerTextField(
                 state = focusedState,
                 label = { Text("Email") },
                 modifier = Modifier.focusRequester(focusRequester)

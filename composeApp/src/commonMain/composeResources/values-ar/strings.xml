@@ -32,6 +32,14 @@
     <string name="complete_with_google">اكمل باستخدام Google</string>
     <string name="complete_with_apple">اكمل باستخدام Apple</string>
 
+    <string name="confirm">تأكيد</string>
+    <string name="language">اختر اللغة</string>
+    <string name="modify_language">يمكن تغيير اللغة من داخل اعدادات التطبيق في أي وقت</string>
+    <string name="Continue">التالي</string>
+    <string name="AppName">صوت المستهلك</string>
+    <string name="firstName">الاسم الأول</string>
+    <string name="LastName">الاسم الأخير</string>
+
     <!--  Cards -->
     <string name="price_start_with">سعر يبدأ من</string>
     <string name="sold_from">يباع من</string>

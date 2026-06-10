@@ -2,6 +2,7 @@ package com.example.consumer.core.presentation.foundation.colors
 import androidx.compose.ui.graphics.Color
 
 
+
 internal val PrimaryLight = Color(0xFF133346) // Main brand purple
 internal val OnPrimaryLight = Color(0xFFEFEFF2) // White text on purple
 internal val PrimaryContainerLight = Color(0xFF2B5B5B) // Lighter purple for containers
@@ -74,7 +75,7 @@ internal val OnTertiaryContainerDark = Color(0xFFFFDBCC)
 // Error
 internal val ErrorBackground = Color(0xFFFCEBED)
 internal val OnErrorDark = Color(0xFF680000)
-internal val ErrorContainerDark = Color(0xFFFCEBED)
+internal val ErrorContainerDark = Color(0xFF930000)
 internal val OnErrorContainerDark = Color(0xFFFFDADA)
 
 // Background & Surface
@@ -104,4 +105,8 @@ internal val SurfaceContainerDark = Color(0xFF2A2635) // Bottom sheet background
 internal val SurfaceContainerHighDark = Color(0xFF353140)
 internal val SurfaceContainerHighestDark = Color(0xFF403C4A)
 //added
-
+internal val OTPBoxBorderColor = Color(0xFF6B6D85)
+internal val LanguageCardBackground = Color(0xFFF4F7F9)
+internal val SelectedLanguageItemBackground = Color(0xFF225C80)
+internal val UnSelectedLanguageItemBackground = Color(0xFFE9EFF2)
+internal val UnSelectedIRadioIndicatorBorder = Color(0xFFB0B0BE)

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
-<!--    general errors -->
     <string name="error_disk_full">Oops, it seems like your disk is full.</string>
     <string name="error_unknown">Oops, something went wrong.</string>
     <string name="error_request_timeout">The request timed out.</string>
@@ -16,6 +15,7 @@
     <string name="error_socket_parse_error">A data processing error occurred. Please try again.</string>
     <string name="error_socket_price_not_valid">The entered bid amount is not valid. Please enter a higher value.</string>
     <string name="error_socket_auction_not_valid">This Auction is no longer valid</string>
+
 
     <!-- OnBoarding -->
     <string name="consumer_voice">صوت المستهلك</string>
@@ -39,5 +39,14 @@
 
 
 
+
+    <string name="confirm">تاكيد</string>
+    <string name="language">اختر اللغة</string>
+    <string name="modify_language">يمكن تغيير اللغة من داخل اعدادات التطبيق في أي وقت</string>
+    <string name="Continue">التالي</string>
+    <string name="AppName">صوت المستهلك</string>
+
+    <string name="firstName">First Name</string>
+    <string name="LastName">Last Name</string>
 
 </resources>

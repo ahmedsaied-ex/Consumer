@@ -4,7 +4,8 @@ import com.example.consumer.features.onBoarding.data.dataSource.OnBoardingDataSo
 import com.example.consumer.features.onBoarding.domain.models.OnBoardingData
 import com.example.consumer.features.onBoarding.domain.repository.GetOnBoardingRepositoryInterface
 
-class GetOnBoardingRepositoryImplementation(val onBoardingDataSource: OnBoardingDataSource) : GetOnBoardingRepositoryInterface {
+class GetOnBoardingRepositoryImplementation(val onBoardingDataSource: OnBoardingDataSource) :
+    GetOnBoardingRepositoryInterface {
     override fun getOnBoardingData(): List<OnBoardingData> {
         return onBoardingDataSource.getOnBoardingData()
     }
