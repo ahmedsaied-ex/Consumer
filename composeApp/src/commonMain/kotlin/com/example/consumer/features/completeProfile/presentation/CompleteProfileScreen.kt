@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.Text
@@ -24,6 +25,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.consumer.core.presentation.components.bars.TransparentToolbar
 import com.example.consumer.core.presentation.components.ConsumerTextField
 import com.example.consumer.core.presentation.components.CostumeScaffold
+import com.example.consumer.core.presentation.components.SearchableCountryDropdown
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.features.completeProfile.viewModel.CompleteProfileViewModel
 import com.example.consumer.features.onBoarding.presintation.viewModels.OnBoardingViewModel
@@ -43,6 +45,7 @@ fun CompleteProfileScreen(
 ) {
 
     val uiState by viewModel.state.collectAsState()
+    val countrySearchState = rememberTextFieldState(initialText = "")
 
     val firstNameState = rememberTextFieldState(initialText = "")
     val lastNameState = rememberTextFieldState(initialText = "")
@@ -114,7 +117,28 @@ fun CompleteProfileScreen(
                                 uiState.lastName.error?.let { Text(text = it) }
                             },
                         )
+
+
+//                        ConsumerTextField(
+//                            state = rememberTextFieldState(),
+//                            trailingIcon = ,
+//                            label =
+//                        )
                     }
+                    SearchableCountryDropdown(
+                            searchState      = countrySearchState,
+                    selectedCountry  = uiState.selectedCountry,
+                    countriesState   = uiState.countriesState,
+                    expanded         = uiState.countryDropdownOpen,
+                    onToggleExpanded = viewModel::toggleCountryDropdown,
+                    onCountrySelected = { country ->
+                        viewModel.onCountrySelected(country.id)
+                    },
+                    onRetry          = viewModel::retryLoadCountries,
+                    placeholder      = "Country",
+                    error            = uiState.countryError,
+                    modifier         = Modifier.fillMaxWidth(),
+                    )
                 }
             }
         }

@@ -61,6 +61,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
 
+
             // lottie
 //            implementation("io.github.alexzhirkevich:compottie:2.0.0")
             implementation(libs.compottie.resources)
