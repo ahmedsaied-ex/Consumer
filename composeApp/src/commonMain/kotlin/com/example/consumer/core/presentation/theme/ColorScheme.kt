@@ -128,6 +128,10 @@ data class ExtendedColors(
     val blueSapphire700: Color,
     val buttonSecondaryLabelIcon:Color,
 
+
+    //Log out backGround
+    val logOutButtonBackground: Color,
+
     // tex field
     val focusedTextField : Color,
 
@@ -181,6 +185,8 @@ val extendedColors = ExtendedColors(
     blueSapphire700 = Color(0xFF225C80),
     buttonSecondaryLabelIcon = Color(0xFF1F4242),
 
+    // Logout button colors  #DC3545 #DC3545
+    logOutButtonBackground = Color(0xFFfdf5f6),
 
     // text field
     focusedTextField = Color(0xFF377373),

@@ -37,6 +37,24 @@
     <string name="questions">questions</string>
 
 
+<!--Profile -->
+
+
+    <string name="basic_info">بياناتي الأساسية</string>
+    <string name="country">الدولة</string>
+    <string name="id_number">رقم الهوية / رقم الإقامة</string>
+    <string name="birth_date">تاريخ الميلاد</string>
+    <string name="gender">تاكيد</string>
+
+    <string name="settings">الإعدادات</string>
+    <string name="edit_info">تعديل بياناتي</string>
+    <string name="change_email">تغيير البريد الإلكتروني</string>
+    <string name="app_lang">لغة التطبيق</string>
+
+    <string name="usage_policy">سياسية الاستخدام</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="terms_and_conditions">الشروط والأحكام</string>
+    <string name="log_out">تسجيل الخروج</string>
 
 
 

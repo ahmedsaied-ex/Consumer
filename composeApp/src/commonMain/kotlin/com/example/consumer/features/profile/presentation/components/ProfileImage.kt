@@ -13,8 +13,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import coil3.compose.AsyncImage
+import com.example.consumer.core.presentation.foundation.typography.H1
+import com.example.consumer.core.presentation.foundation.typography.H4
+import com.example.consumer.core.presentation.foundation.typography.H5
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.ic_profile_active
@@ -68,7 +72,7 @@ fun ProfileInitials(
     ) {
         Text(
             text = firstCharsOfName,
-            style = MaterialTheme.typography.titleMedium,
+            style = H4.copy(fontWeight = FontWeight.SemiBold),
             color = MaterialTheme.colorScheme.primary
         )
     }

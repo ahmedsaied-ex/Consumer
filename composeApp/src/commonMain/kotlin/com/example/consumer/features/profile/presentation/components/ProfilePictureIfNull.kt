@@ -31,17 +31,22 @@ fun ProfilePictureOrInitials(
     isUploadingImage: Boolean = false,
     onImageClick: () -> Unit = {},
 ) {
-    Box(modifier = Modifier.height(115.dp)) {
+    Box(modifier = modifier.height(115.dp)) {
         if (isUploadingImage) {
             Box(
-                modifier = Modifier.size(75.dp)
+                modifier = Modifier.size(100.dp)
                     .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                    .border(
+                        width = 1.5.dp,
+                        color = MaterialTheme.colorScheme.outline,
+                        shape = CircleShape
+                    )
+                    .background(MaterialTheme.colorScheme.tertiaryContainer),
                 contentAlignment = Alignment.Center
             ) {
                 CircularProgressIndicator(
                     modifier = Modifier.size(30.dp),
-                    color = MaterialTheme.colorScheme.primary
+                    color = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             }
         } else {
@@ -69,7 +74,7 @@ fun ProfilePictureOrInitials(
 @Composable
 @Preview
 fun ProfilePictureOrInitialsPreview() {
-    ConsumerTheme { ProfilePictureOrInitials() }
+    ConsumerTheme { ProfilePictureOrInitials(isUploadingImage = true) }
 }
 
 @Composable

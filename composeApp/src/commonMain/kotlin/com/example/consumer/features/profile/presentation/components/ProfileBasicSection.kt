@@ -27,18 +27,32 @@ import com.example.consumer.core.presentation.theme.extendedColors
 import com.example.consumer.features.profile.domain.models.SectionItem
 import com.example.consumer.features.profile.domain.models.SuffixType
 import consumer.composeapp.generated.resources.Res
+import consumer.composeapp.generated.resources.app_lang
+import consumer.composeapp.generated.resources.basic_info
+import consumer.composeapp.generated.resources.birth_date
+import consumer.composeapp.generated.resources.change_email
 import consumer.composeapp.generated.resources.chevron_left
+import consumer.composeapp.generated.resources.country
+import consumer.composeapp.generated.resources.edit_info
+import consumer.composeapp.generated.resources.gender
+import consumer.composeapp.generated.resources.id_number
+import consumer.composeapp.generated.resources.privacy_policy
+import consumer.composeapp.generated.resources.settings
+import consumer.composeapp.generated.resources.terms_and_conditions
+import consumer.composeapp.generated.resources.usage_policy
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun ProfileSection(
     modifier: Modifier = Modifier,
-    title: String,
+    title: StringResource,
     items: List<SectionItem>,
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
         Text(
-            text = title,
+            text = stringResource(title),
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.extendedColors.darkBlue650
         )
@@ -77,7 +91,7 @@ fun ProfileSectionItem(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = item.key,
+                    text = stringResource(item.key),
                     style = MaterialTheme.typography.titleSmall,
                     color = MaterialTheme.colorScheme.extendedColors.darkBlue650
                 )
@@ -97,7 +111,7 @@ fun ProfileSectionItem(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = item.title,
+                    text = stringResource(item.title),
                     style = MaterialTheme.typography.titleSmall,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onBackground
@@ -135,25 +149,25 @@ fun ProfileSectionItem(
 fun ProfileBasicSectionsPreview() {
     ConsumerTheme {
         val basicItems = listOf(
-            SectionItem.Static("الدولة", "المملكة العربية السعودية"),
-            SectionItem.Static("رقم الهوية / رقم الإقامة", "9545121704552255"),
-            SectionItem.Static("تاريخ الميلاد", "19/5/2000"),
-            SectionItem.Static("الجنس", "ذكر"),
+            SectionItem.Static(Res.string.country, "المملكة العربية السعودية"),
+            SectionItem.Static(Res.string.id_number, "9545121704552255"),
+            SectionItem.Static(Res.string.birth_date, "19/5/2000"),
+            SectionItem.Static(Res.string.gender, "ذكر"),
         )
 
         val settingsItems = listOf(
             SectionItem.Clickable(
-                title = "تعديل بياناتي",
+                title = Res.string.edit_info,
                 suffix = SuffixType.ChevronOnly,
                 onClick = { /* navigate */ }
             ),
             SectionItem.Clickable(
-                title = "تغيير البريد الإلكتروني",
+                title =  Res.string.change_email,
                 suffix = SuffixType.ChevronOnly,
                 onClick = { /* navigate */ }
             ),
             SectionItem.Clickable(
-                title = "اللغة",
+                title =  Res.string.app_lang,
                 suffix = SuffixType.TextAndChevron("العربية"),
                 onClick = { /* open language picker */ }
             ),
@@ -161,12 +175,12 @@ fun ProfileBasicSectionsPreview() {
 
         val privacyAndterms = listOf(
             SectionItem.Clickable(
-                title = "سياسة الخصوصية",
+                title =  Res.string.privacy_policy,
                 suffix = SuffixType.ChevronOnly,
                 onClick = { /* navigate */ }
             ),
             SectionItem.Clickable(
-                title = "الشروط والأحكام",
+                title = Res.string.terms_and_conditions,
                 suffix = SuffixType.ChevronOnly,
                 onClick = { /* navigate */ }
             ),
@@ -175,19 +189,19 @@ fun ProfileBasicSectionsPreview() {
         LazyColumn {
             item {
                 ProfileSection(
-                    title = "بياناتي الأساسية",
+                    title = Res.string.basic_info,
                     items = basicItems
                 )
             }
             item {
                 ProfileSection(
-                    title = "الإعدادات",
+                    title = Res.string.settings,
                     items = settingsItems
                 )
             }
             item {
                 ProfileSection(
-                    title = "سياسية الاستخدام",
+                    title =Res.string.usage_policy,
                     items = privacyAndterms
                 )
             }
