@@ -129,40 +129,40 @@ fun AmbassadorBodyBottomSheet(
     val emailState = rememberTextFieldState()
     val passwordState = rememberTextFieldState()
     Column(
-            modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            ConsumerTextField(
-                modifier = Modifier.fillMaxWidth(),
-                state = emailState,
-                label = {
-                    Text(
-                        text = stringResource(resource = Res.string.email),
-                    )
-                },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            )
-            Spacer(modifier = Modifier.height(10.dp))
-            ConsumerTextField(
-                label = {
-                    Text(
-                        text = stringResource(resource = Res.string.password),
-                    )
-                },
+        modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        ConsumerTextField(
+            modifier = Modifier.fillMaxWidth(),
+            state = emailState,
+            label = {
+                Text(
+                    text = stringResource(resource = Res.string.email),
+                )
+            },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        ConsumerTextField(
+            label = {
+                Text(
+                    text = stringResource(resource = Res.string.password),
+                )
+            },
 
-                modifier = Modifier.fillMaxWidth(),
-                state = passwordState,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            )
-            Spacer(modifier = Modifier.height(10.dp))
-            ConsumerFilledButton(
-                text = "تسجيل الدخول",
-                type = ButtonsTypes.PRIMARY,
-                enabled = true,
-                onClick = onLoginClick,
-                modifier = Modifier.fillMaxWidth(),
-            )
-        }
+            modifier = Modifier.fillMaxWidth(),
+            state = passwordState,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        ConsumerFilledButton(
+            text = "تسجيل الدخول",
+            type = ButtonsTypes.PRIMARY,
+            enabled = true,
+            onClick = onLoginClick,
+            modifier = Modifier.fillMaxWidth(),
+        )
+    }
 }
 
 @Composable
@@ -171,7 +171,7 @@ fun AmbassadorBodyBottomSheetPreview() {
     ConsumerTheme {
         AmbassadorBodyBottomSheet()
     }
-    
+
 }
 
 @Composable
@@ -228,7 +228,7 @@ fun ConsumerBodyBottomSheetPreview() {
             onGoogleClick = {}
         )
     }
-    
+
 }
 
 @Composable

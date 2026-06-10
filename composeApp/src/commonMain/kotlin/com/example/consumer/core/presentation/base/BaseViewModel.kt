@@ -5,14 +5,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.consumer.core.domain.model.AnalyticsLogger
 import com.example.consumer.core.domain.model.DispatcherProvider
 import com.example.consumer.core.domain.utils.CostumeLogger
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlin.coroutines.cancellation.CancellationException
 import kotlin.time.TimeSource
+
 
 
 /**
@@ -86,7 +87,7 @@ abstract class BaseViewModel(
         preventDuplicates: Boolean = false,
         onError: (Throwable) -> Unit = { handleUnexpectedError(it) },
         block: suspend CoroutineScope.() -> Unit,
-    ) : Job{
+    ) : Job {
         return viewModelScope.launch(dispatcherProvider.default + exceptionHandler) {
             val opName = operationName ?: "anonymous_operation"
 

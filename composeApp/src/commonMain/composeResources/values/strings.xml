@@ -37,4 +37,8 @@
     <string name="modify_language">يمكن تغيير اللغة من داخل اعدادات التطبيق في أي وقت</string>
     <string name="Continue">التالي</string>
     <string name="AppName">صوت المستهلك</string>
+
+    <string name="firstName">First Name</string>
+    <string name="LastName">Last Name</string>
+
 </resources>

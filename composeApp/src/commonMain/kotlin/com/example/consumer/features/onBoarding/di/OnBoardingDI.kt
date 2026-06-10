@@ -5,6 +5,7 @@ import com.example.consumer.features.onBoarding.data.repository.GetOnBoardingRep
 import com.example.consumer.features.onBoarding.data.useCases.GetOnBoardingInterfaceImplementation
 import com.example.consumer.features.onBoarding.domain.repository.GetOnBoardingRepositoryInterface
 import com.example.consumer.features.onBoarding.domain.useCases.GetOnBoardingDataInterface
+
 import com.example.consumer.features.onBoarding.presintation.viewModels.OnBoardingViewModel
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf

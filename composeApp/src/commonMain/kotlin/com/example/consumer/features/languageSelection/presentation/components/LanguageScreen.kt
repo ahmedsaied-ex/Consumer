@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.consumer.core.data.AppLang
-import com.example.consumer.core.presentation.components.Buttons.ConsumerFilledButton
+import com.example.consumer.core.presentation.components.buttons.ConsumerFilledButton
 import com.example.consumer.core.presentation.foundation.colors.OTPBoxBorderColor
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import consumer.composeapp.generated.resources.Continue

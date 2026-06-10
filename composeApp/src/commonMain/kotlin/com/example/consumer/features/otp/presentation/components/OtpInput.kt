@@ -38,9 +38,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.consumer.core.presentation.foundation.DesignSystem.ConsumerDimensions
 import com.example.consumer.core.presentation.foundation.colors.OTPBoxBorderColor
-import com.example.consumer.core.presentation.foundation.colors.OnDisablePrimaryLight
 import com.example.consumer.core.presentation.foundation.typography.H5
 import com.example.consumer.core.presentation.theme.ConsumerTheme
+import com.example.consumer.core.presentation.theme.extendedColors
 import kotlinx.coroutines.delay
 
 /**
@@ -180,7 +180,7 @@ private fun OtpDigitBox(
 //        isComplete -> SuccessLight
         digit.isNotEmpty() -> OTPBoxBorderColor
         isFocused -> MaterialTheme.colorScheme.tertiary
-        else -> OnDisablePrimaryLight
+        else -> MaterialTheme.colorScheme.extendedColors.onDisablePrimaryLight
     }
     val borderSize = when {
         isFocused -> 2.dp
