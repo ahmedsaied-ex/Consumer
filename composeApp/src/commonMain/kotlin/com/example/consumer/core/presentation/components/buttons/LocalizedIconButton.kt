@@ -1,4 +1,4 @@
-package com.example.consumer.core.presentation.components.Buttons
+package com.example.consumer.core.presentation.components.buttons
 
 import androidx.compose.foundation.Image
 import androidx.compose.material3.IconButton
@@ -22,7 +22,7 @@ fun LocalizedIconButton(
         Image(
             painter = painter,
             contentDescription = contentDescription,
-            modifier = if (layoutDirection == LayoutDirection.Rtl) {
+            modifier = if (layoutDirection == LayoutDirection.Ltr) {
                 Modifier.scale(scaleX = -1f, scaleY = 1f)
             } else {
                 Modifier
