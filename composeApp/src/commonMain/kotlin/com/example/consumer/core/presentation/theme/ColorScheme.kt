@@ -121,12 +121,12 @@ data class ExtendedColors(
     // other colors
     val darkBlue650: Color,
     val darkBlue450: Color,
+    val darkBlue400: Color,
     val darkBlue150: Color,
     val darkBlue100: Color,
     val cadetBlue: Color,
     val blueSapphire700: Color,
-
-
+    val buttonSecondaryLabelIcon:Color,
 
     // tex field
     val focusedTextField : Color,
@@ -174,10 +174,12 @@ val extendedColors = ExtendedColors(
     // other colors
     darkBlue650 = Color(0xFF6B6D85),
     darkBlue450 = Color(0xFFB0B0BE),
+    darkBlue400 = Color(0xFFC6C7D0),
     darkBlue150 = Color(0xFFEFEFF2),
     darkBlue100 = Color(0xFFF4F4F6),
     cadetBlue = Color(0xFF83C0C0),
     blueSapphire700 = Color(0xFF225C80),
+    buttonSecondaryLabelIcon = Color(0xFF1F4242),
 
 
     // text field
