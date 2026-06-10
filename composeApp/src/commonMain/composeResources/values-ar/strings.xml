@@ -41,5 +41,6 @@
 
     <string name="firstName">الاسم الأول</string>
     <string name="LastName">الاسم الأخير</string>
+    <string name="ID_Iqama_Number">رقم الهوية / رقم الإقامة</string>
 
 </resources>

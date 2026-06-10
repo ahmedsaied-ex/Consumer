@@ -47,6 +47,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextOverflow
@@ -164,7 +165,7 @@ private fun CountryInputField(
     Box(modifier = Modifier.fillMaxWidth()) {
         ConsumerTextField(
             state = state,
-            enabled = enabled && expanded,   // editable only while expanded
+            enabled = enabled,   // Keep enabled to use "unfocused" colors when closed
             isError = isError,
             supportingText = supportingText,
             placeholder = if (!expanded && state.text.isEmpty()) {
@@ -180,7 +181,9 @@ private fun CountryInputField(
 
                 }
             },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .focusProperties { canFocus = expanded }, // Prevent focus when closed
         )
 
         // Invisible overlay so tapping the collapsed field opens the dropdown

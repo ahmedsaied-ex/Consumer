@@ -40,5 +40,7 @@
 
     <string name="firstName">First Name</string>
     <string name="LastName">Last Name</string>
+    <string name="ID_Iqama_Number">ID / Iqama Number</string>
+
 
 </resources>

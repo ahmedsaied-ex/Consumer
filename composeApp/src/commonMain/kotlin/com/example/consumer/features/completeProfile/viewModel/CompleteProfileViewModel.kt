@@ -6,6 +6,7 @@ import com.example.consumer.core.domain.model.DispatcherProvider
 import com.example.consumer.core.domain.utils.CostumeLogger
 import com.example.consumer.core.presentation.base.BaseViewModel
 import com.example.consumer.core.domain.model.FirstNameValidator
+import com.example.consumer.core.domain.model.IqamaValidator
 import com.example.consumer.core.domain.model.LastNameValidator
 import com.example.consumer.features.completeProfile.domain.CountryRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,6 +20,7 @@ class CompleteProfileViewModel(
     val firstNameValidator: FirstNameValidator,
     val lastNameValidator: LastNameValidator,
     private val countryRepository: CountryRepository,
+    val iqamaValidator: IqamaValidator,
     analytics: AnalyticsLogger,
 ) : BaseViewModel(dispatcherProvider = dispatcherProvider, logger = logger, analytics = analytics) {
 
@@ -107,5 +109,19 @@ class CompleteProfileViewModel(
         }
         return valid
     }
+
+    fun validateIqama(value: String) {
+        val digitsOnly = value.filter { it.isDigit() }
+        val result = iqamaValidator.validate(digitsOnly)
+        _state.update {
+            it.copy(
+                iqamaNumber = it.iqamaNumber.copy(
+                    value = digitsOnly,
+                    error = result.errorMessage,
+                )
+            )
+        }
+    }
+
 
 }
