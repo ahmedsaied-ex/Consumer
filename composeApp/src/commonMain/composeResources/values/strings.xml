@@ -62,6 +62,15 @@
     <string name="branches">فروع</string>
     <string name="free_discovery_mission">مهمة اكتشاف مفتوحة</string>
 
+    <!--Assessment Task-->
+    <string name="branch">فرع</string>
+    <string name="sector">القطاع</string>
+    <string name="implementation_date">تاريخ التنفيذ المستهدف</string>
+
+
+
+
+
 
 
     <string name="log_out">تسجيل الخروج</string>
