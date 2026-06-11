@@ -54,10 +54,17 @@
     <string name="usage_policy">سياسية الاستخدام</string>
     <string name="privacy_policy">سياسة الخصوصية</string>
     <string name="terms_and_conditions">الشروط والأحكام</string>
+
+    <!--    priority types-->
+    <string name="low_priority">أولوية منخفضة</string>
+    <string name="mid_priority">أولوية متوسطة</string>
+    <string name="high_priority">عاجل ومهم</string>
+    <string name="branches">فروع</string>
+    <string name="free_discovery_mission">مهمة اكتشاف مفتوحة</string>
+
+
+
     <string name="log_out">تسجيل الخروج</string>
-
-
-
     <string name="confirm">تاكيد</string>
     <string name="language">اختر اللغة</string>
     <string name="modify_language">يمكن تغيير اللغة من داخل اعدادات التطبيق في أي وقت</string>

@@ -127,6 +127,9 @@ data class ExtendedColors(
     val cadetBlue: Color,
     val blueSapphire700: Color,
     val buttonSecondaryLabelIcon:Color,
+    val lowPriorityColor: Color,
+    val midPriorityColor: Color,
+    val highPriorityColor: Color,
 
 
     //Log out backGround
@@ -184,7 +187,9 @@ val extendedColors = ExtendedColors(
     cadetBlue = Color(0xFF83C0C0),
     blueSapphire700 = Color(0xFF225C80),
     buttonSecondaryLabelIcon = Color(0xFF1F4242),
-
+    lowPriorityColor = Color(0xFF43A047),
+    midPriorityColor = Color(0xFFFB8C00),
+    highPriorityColor = Color(0xFFE53935),
     // Logout button colors  #DC3545 #DC3545
     logOutButtonBackground = Color(0xFFfdf5f6),
 
@@ -195,6 +200,7 @@ val extendedColors = ExtendedColors(
     onDisableTextTertiary = Color(0xFF8E8FA2),
     onDisableTextDestructive = Color(0xFFEE9AA2),
     buttonBorderColorAuth = Color(0xFFE8E9EC),
+
 )
 
 // Brand color schemes
