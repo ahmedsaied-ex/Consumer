@@ -57,6 +57,7 @@ import com.example.consumer.features.completeProfile.data.CountryData
 import com.example.consumer.features.completeProfile.viewModel.CountryListState
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.ic_back
+import consumer.composeapp.generated.resources.ic_drop_down
 import org.jetbrains.compose.resources.painterResource
 import kotlin.collections.emptyList
 
@@ -177,7 +178,7 @@ private fun CountryInputField(
                     onClick = onToggleExpanded,
                     enabled = enabled,
                 ) {
-                    Image(painter = painterResource( Res.drawable.ic_back),"", )
+                    Image(painter = painterResource( Res.drawable.ic_drop_down),"", )
 
                 }
             },
@@ -387,12 +388,8 @@ private fun DropdownCountryList(
                     ),
                     trailingIcon = {
                         if (isSelected) {
-                            Image(painter = painterResource( Res.drawable.ic_back),"", )
-//                            Icon(
-//                                imageVector = Icons.Default.Check,
-//                                contentDescription = "Selected",
-//                                tint = MaterialTheme.colorScheme.primary,
-//                            )
+                            Image(painter = painterResource( Res.drawable.ic_drop_down),"", )
+//
                         }
                     },
                     onClick = { onCountrySelected(country) },

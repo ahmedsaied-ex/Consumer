@@ -1,5 +1,6 @@
 package com.example.consumer.features.completeProfile.viewModel
 
+import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.viewModelScope
 import com.example.consumer.core.domain.model.AnalyticsLogger
 import com.example.consumer.core.domain.model.DispatcherProvider
@@ -13,6 +14,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Instant
 
 class CompleteProfileViewModel(
     dispatcherProvider: DispatcherProvider,
@@ -26,6 +30,7 @@ class CompleteProfileViewModel(
 
     private val _state = MutableStateFlow(CompleteProfileStates())
     val state = _state.asStateFlow()
+
 
     init {
         loadCountries()
@@ -93,11 +98,24 @@ class CompleteProfileViewModel(
     }
 
     fun toggleCountryDropdown() {
-        _state.update { it.copy(countryDropdownOpen = !it.countryDropdownOpen) }
+        _state.update {
+            val nextOpen = !it.countryDropdownOpen
+            val nextError = if (!nextOpen && it.selectedCountry == null) "Country is required." else it.countryError
+            it.copy(
+                countryDropdownOpen = nextOpen,
+                countryError = nextError
+            )
+        }
     }
 
     fun closeCountryDropdown() {
-        _state.update { it.copy(countryDropdownOpen = false) }
+        _state.update {
+            val nextError = if (it.countryDropdownOpen && it.selectedCountry == null) "Country is required." else it.countryError
+            it.copy(
+                countryDropdownOpen = false,
+                countryError = nextError
+            )
+        }
     }
 
     // ── validation on submit ──────────────────────────────────────────────────
@@ -105,7 +123,7 @@ class CompleteProfileViewModel(
     fun validateCountry(): Boolean {
         val valid = _state.value.selectedCountry != null
         if (!valid) {
-            _state.update { it.copy(countryError = "Please select a country") }
+            _state.update { it.copy(countryError = "Country is required.") }
         }
         return valid
     }
@@ -122,6 +140,38 @@ class CompleteProfileViewModel(
             )
         }
     }
+    // ── date of birth ─────────────────────────────────────────────────────────
+    fun formatDate(epochMillis: Long): String {
+        val date = Instant.fromEpochMilliseconds(epochMillis)
+            .toLocalDateTime(TimeZone.currentSystemDefault())
 
+        return "${date.dayOfMonth.toString().padStart(2, '0')} / " +
+                "${date.monthNumber.toString().padStart(2, '0')} / " +
+                date.year
+    }
+    fun openDatePicker()  = _state.update { it.copy(datePickerOpen = true) }
+    fun closeDatePicker() = _state.update { it.copy(datePickerOpen = false) }
+
+    fun onDateSelected(epochMillis: Long) {
+        val formatted = formatDate(epochMillis)
+
+        _state.update {
+            it.copy(
+                dateOfBirthMillis = epochMillis,
+                dateOfBirthDisplay = formatted,
+                dateOfBirthError = null
+            )
+        }
+    }
+
+    private fun validateDateOfBirth(): Boolean {
+        val selected = _state.value.dateOfBirthMillis
+        return if (selected == null) {
+            _state.update { it.copy(dateOfBirthError = "Date of birth is required") }
+            false
+        } else {
+            true
+        }
+    }
 
 }

@@ -11,4 +11,10 @@ data class CompleteProfileStates(
     val selectedCountry:     CountryData?     = null,
     val countryDropdownOpen: Boolean          = false,
     val countryError:        String?          = null,
+
+    // ── date of birth ─────────────────────────────────────────────────────────
+    val dateOfBirthMillis:   Long?   = null,   // raw value used for logic/submit
+    val dateOfBirthDisplay:  String  = "",     // formatted string shown in the field
+    val dateOfBirthError:    String? = null,
+    val datePickerOpen:      Boolean = false,
     )

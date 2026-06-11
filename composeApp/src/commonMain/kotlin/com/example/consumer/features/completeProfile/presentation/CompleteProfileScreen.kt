@@ -1,5 +1,7 @@
 package com.example.consumer.features.completeProfile.presentation
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +25,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,13 +38,15 @@ import com.example.consumer.core.presentation.components.CostumeScaffold
 import com.example.consumer.core.presentation.components.SearchableCountryDropdown
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.features.completeProfile.viewModel.CompleteProfileViewModel
-import com.example.consumer.features.onBoarding.presintation.viewModels.OnBoardingViewModel
 import consumer.composeapp.generated.resources.ID_Iqama_Number
 import consumer.composeapp.generated.resources.LastName
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.firstName
+import consumer.composeapp.generated.resources.ic_drop_down
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
+import kotlin.time.Clock
 
 
 @Composable
@@ -61,7 +68,7 @@ fun CompleteProfileScreen(
     var lastNameTouched by remember { mutableStateOf(false) }
     var iqamaFocused by remember { mutableStateOf(false) }
     val iqamaState = rememberTextFieldState()
-    var iqamaTouched     by remember { mutableStateOf(false) }
+    var iqamaTouched by remember { mutableStateOf(false) }
 
     LaunchedEffect(firstNameState) {
         snapshotFlow { firstNameState.text.toString() }
@@ -80,11 +87,31 @@ fun CompleteProfileScreen(
                 }
             }
     }
-
+    LaunchedEffect(iqamaState) {
+        snapshotFlow { iqamaState.text.toString() }.collect { v ->
+            if (iqamaTouched) viewModel.validateIqama(v)
+        }
+    }
+    val dateOfBirthDisplayState = rememberTextFieldState()
+    LaunchedEffect(uiState.dateOfBirthDisplay) {
+        dateOfBirthDisplayState.edit {
+            replace(0, length, uiState.dateOfBirthDisplay)
+        }
+    }
+    val focusManager = LocalFocusManager.current
 
     ConsumerTheme {
         CostumeScaffold {
-            Column(modifier = Modifier.fillMaxSize()) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .pointerInput(Unit) {
+                        detectTapGestures(onTap = {
+                            focusManager.clearFocus()
+                            viewModel.closeCountryDropdown()
+                        })
+                    }
+            ) {
                 TransparentToolbar(
                     title = "أدخل معلوماتك الأساسية",
                     navController = navController
@@ -97,11 +124,9 @@ fun CompleteProfileScreen(
                         ConsumerTextField(
                             label = { Text(stringResource(Res.string.firstName)) },
                             state = firstNameState,
-                            supportingText = {
-                                uiState.firstName.error?.let {
-                                    Text(text = it)
-                                }
-                            },
+                            supportingText = if (firstNameTouched && uiState.firstName.error != null) {
+                                { Text(text = uiState.firstName.error!!) }
+                            } else null,
                             isError = firstNameTouched &&
                                     uiState.firstName.error != null,
                             modifier = Modifier.weight(1f).onFocusChanged { focusState ->
@@ -126,18 +151,15 @@ fun CompleteProfileScreen(
                             },
                             isError = lastNameTouched && uiState.lastName.error != null,
                             state = lastNameState,
-                            supportingText = {
-                                uiState.lastName.error?.let { Text(text = it) }
-                            },
+                            supportingText = if (lastNameTouched && uiState.lastName.error != null) {
+                                { Text(text = uiState.lastName.error!!) }
+                            } else null,
                         )
 
 
-//                        ConsumerTextField(
-//                            state = rememberTextFieldState(),
-//                            trailingIcon = ,
-//                            label =
-//                        )
                     }
+                    Spacer(modifier = Modifier.height(20.dp))
+
                     SearchableCountryDropdown(
                         searchState = countrySearchState,
                         selectedCountry = uiState.selectedCountry,
@@ -158,16 +180,14 @@ fun CompleteProfileScreen(
                         label = { Text(stringResource(Res.string.ID_Iqama_Number)) },
                         state = iqamaState,
                         isError = iqamaTouched && uiState.iqamaNumber.error != null,
-                        supportingText = {
-                            // Always show character counter + error in the same slot
-                            val count = iqamaState.text.length
-                            val error = if (iqamaTouched) uiState.iqamaNumber.error else null
-                            Text(
-                                text = error ?: "$count / 10",
-                                color = if (error != null) MaterialTheme.colorScheme.error
-                                else MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        },
+                        supportingText = if (iqamaTouched && uiState.iqamaNumber.error != null) {
+                            {
+                                Text(
+                                    text = uiState.iqamaNumber.error!!,
+                                    color = MaterialTheme.colorScheme.error,
+                                )
+                            }
+                        } else null,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         modifier = Modifier
                             .fillMaxWidth()
@@ -181,6 +201,20 @@ fun CompleteProfileScreen(
                             },
                     )
                     Spacer(modifier = Modifier.height(20.dp))
+                    ConsumerDateField(
+                        displayState = dateOfBirthDisplayState,
+                        label = "Date of Birth  •  تاريخ الميلاد",
+                        dialogOpen = uiState.datePickerOpen,
+                        onOpenDialog = viewModel::openDatePicker,
+                        onDismiss = viewModel::closeDatePicker,
+                        onDateSelected = viewModel::onDateSelected,
+                        trailingIcon = {
+                                Image(painter = painterResource( Res.drawable.ic_drop_down),"", )
+                        },
+                        error = uiState.dateOfBirthError,
+                        maxDateMillis = Clock.System.now().toEpochMilliseconds(),
+                        modifier = Modifier.fillMaxWidth(),
+                    )
 
                 }
             }

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.MaterialTheme
@@ -47,6 +48,7 @@ fun ConsumerTextField(
         placeholder = placeholder,
         supportingText = supportingText,
         label = label,
+        lineLimits = TextFieldLineLimits.SingleLine,
         modifier = modifier.onFocusChanged {
             onFocusChanged?.invoke(it.isFocused)
         },
