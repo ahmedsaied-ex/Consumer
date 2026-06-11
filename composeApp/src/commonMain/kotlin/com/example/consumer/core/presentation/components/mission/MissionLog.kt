@@ -25,6 +25,7 @@ import com.example.consumer.core.presentation.foundation.typography.Subtitle3
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
 import com.example.consumer.features.profile.presentation.components.ProfilePictureOrInitials
+import org.koin.core.logger.MESSAGE
 
 enum class MissionStatus {
     STARTER,
@@ -38,7 +39,10 @@ enum class MissionStatus {
 @Composable
 fun MissionLog(
     modifier: Modifier = Modifier,
-    missionStatus: MissionStatus
+    missionStatus: MissionStatus,
+    date: String,
+    senderName: String,
+    message: String
 ) {
 
     Row(modifier.fillMaxWidth().padding(horizontal = 16.dp).height(IntrinsicSize.Min)) {
@@ -54,12 +58,12 @@ fun MissionLog(
                 }
             }
             Text(
-                "25 ابريل 2026 - 09:00 ص",
+                date,
                 style = Subtitle3.copy(color = MaterialTheme.colorScheme.extendedColors.darkBlue650)
             )
             Spacer(Modifier.height(8.dp))
             Text(
-                "تم إرسال المهمة",
+                message,
                 style = Subtitle1.copy(
                     fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.onBackground
@@ -69,7 +73,7 @@ fun MissionLog(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 ProfilePictureOrInitials(canPick = false, size = 28.dp, thickness = 0.5.dp)
                 Spacer(Modifier.width(8.dp))
-                Text("اسم الشخص", style = Subtitle3.copy(MaterialTheme.colorScheme.extendedColors.darkBlue650))
+                Text(senderName, style = Subtitle3.copy(MaterialTheme.colorScheme.extendedColors.darkBlue650))
             }
         }
     }
@@ -133,11 +137,28 @@ fun Preview() {
 fun MissionLogPreview() {
     Column(Modifier.padding(DesignSystem.Padding.Padding2XL)) {
         ConsumerTheme {
-            MissionLog(missionStatus = MissionStatus.STARTER)
-            MissionLog(missionStatus = MissionStatus.SURVEY_STARTED)
-            MissionLog(missionStatus = MissionStatus.SENT_FOR_EVALUATION)
-            MissionLog(missionStatus = MissionStatus.RE_EVALUATION_NEEDED)
-            MissionLog(missionStatus = MissionStatus.APPROVED)
+            MissionLog(
+                missionStatus = MissionStatus.STARTER,
+                date = "30 ابريل 2026 - 11:00 ص",
+                senderName = "حسن فهد",
+                message = "المهمة قيد التنفيذ",
+            )
+            MissionLog(missionStatus = MissionStatus.SURVEY_STARTED,
+                date = "30 ابريل 2026 - 11:00 ص",
+                senderName = "حسن فهد",
+                message = "المهمة قيد التنفيذ",)
+            MissionLog(missionStatus = MissionStatus.SENT_FOR_EVALUATION,
+                date = "30 ابريل 2026 - 11:00 ص",
+                senderName = "حسن فهد",
+                message = "المهمة قيد التنفيذ",)
+            MissionLog(missionStatus = MissionStatus.RE_EVALUATION_NEEDED,
+                date = "30 ابريل 2026 - 11:00 ص",
+                senderName = "حسن فهد",
+                message = "المهمة قيد التنفيذ",)
+            MissionLog(missionStatus = MissionStatus.APPROVED,
+                date = "30 ابريل 2026 - 11:00 ص",
+                senderName = "حسن فهد",
+                message = "المهمة قيد التنفيذ",)
         }
     }
 }
