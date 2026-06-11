@@ -35,7 +35,7 @@ fun BottomSheetSelectableCard(
         modifier = modifier.fillMaxWidth()
             .clip(shape = RoundedCornerShape(DesignSystem.Radius.RadiusXL)).border(
                 width = if (isSelected) 2.dp else 1.dp,
-                brush = SolidColor(if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.extendedColors.unAssignedCircleColor),
+                brush = SolidColor(if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.extendedColors.starterCircleColor),
                 shape = RoundedCornerShape(DesignSystem.Radius.RadiusXL)
             ).padding(DesignSystem.Padding.Padding3XL)
     ) {

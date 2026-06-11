@@ -22,7 +22,6 @@ import com.example.consumer.core.presentation.theme.ConsumerTheme
 fun ProfileTopPart(
     modifier: Modifier = Modifier,
     name: String,
-    firstCharsOfName: String,
     imageUrl: String,
     selectedImageBytes: ByteArray? = null,
     isUploadingImage: Boolean = false,
@@ -30,7 +29,6 @@ fun ProfileTopPart(
 ) {
     Column(modifier = modifier.fillMaxWidth().padding(vertical = DesignSystem.Padding.Padding2XL), horizontalAlignment = Alignment.CenterHorizontally) {
         ProfilePictureOrInitials(
-            firstCharsOfName = firstCharsOfName,
             imageUrl = imageUrl,
             selectedImageBytes = selectedImageBytes,
             isUploadingImage = isUploadingImage,
@@ -53,7 +51,6 @@ fun ProfileTopPartPreview() {
     ConsumerTheme {
             ProfileTopPart(
                 name = "عمرو عبد الله",
-                firstCharsOfName = "AD",
                 imageUrl = "",
                 selectedImageBytes = null,
                 isUploadingImage = false,

@@ -103,11 +103,11 @@ data class ExtendedColors(
     val completedMissionBackgroundColor: Color,
 
     // circles
-    val unAssignedCircleColor: Color,
-    val inProgressCircleColor: Color,
-    val completedCircleColor: Color,
-    val reevaluateCircleColor: Color,
-    val newCircleColor: Color,
+    val starterCircleColor: Color,
+    val serveyStartedCircleColor: Color,
+    val approvedCircleColor: Color,
+    val reevaluationNeededCircleColor: Color,
+    val sentForEvaluationCircleColor: Color,
 
     //tabBar
     val tabBarColorTabsBackground: Color,
@@ -161,11 +161,11 @@ val extendedColors = ExtendedColors(
     reevaluateMissionBackgroundColor = Color(0xFFFFDEF8),
 
     //circles
-    unAssignedCircleColor = Color(0xFFC6C7D0),
-    inProgressCircleColor = Color(0xFFEFC900),
-    completedCircleColor = Color(0xFF2E7D32),
-    reevaluateCircleColor = Color(0xFFC00097),
-    newCircleColor = Color(0xFF1B6397),
+    starterCircleColor = Color(0xFFC6C7D0),
+    serveyStartedCircleColor = Color(0xFFEFC900),
+    approvedCircleColor = Color(0xFF2E7D32),
+    reevaluationNeededCircleColor = Color(0xFFC00097),
+    sentForEvaluationCircleColor = Color(0xFF1B6397),
 
     //tabBar
     tabBarColorTabsBackground = Color(0xFFE9EFF2),

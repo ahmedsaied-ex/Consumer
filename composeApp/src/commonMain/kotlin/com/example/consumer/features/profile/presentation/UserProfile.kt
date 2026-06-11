@@ -114,7 +114,6 @@ fun UserProfile(
             item {
                 ProfileTopPart(
                     name = "عمرو عبد الله",
-                    firstCharsOfName = "AD",
                     imageUrl = "",
                     selectedImageBytes = null,
                     isUploadingImage = false,
