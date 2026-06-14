@@ -10,8 +10,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -23,10 +25,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -36,13 +40,20 @@ import com.example.consumer.core.presentation.components.bars.TransparentToolbar
 import com.example.consumer.core.presentation.components.ConsumerTextField
 import com.example.consumer.core.presentation.components.CostumeScaffold
 import com.example.consumer.core.presentation.components.SearchableCountryDropdown
+import com.example.consumer.core.presentation.components.buttons.ButtonsTypes
+import com.example.consumer.core.presentation.components.buttons.ConsumerFilledButton
 import com.example.consumer.core.presentation.theme.ConsumerTheme
+import com.example.consumer.features.completeProfile.domain.Gender
 import com.example.consumer.features.completeProfile.viewModel.CompleteProfileViewModel
 import consumer.composeapp.generated.resources.ID_Iqama_Number
 import consumer.composeapp.generated.resources.LastName
 import consumer.composeapp.generated.resources.Res
+import consumer.composeapp.generated.resources.female
 import consumer.composeapp.generated.resources.firstName
+import consumer.composeapp.generated.resources.gender
 import consumer.composeapp.generated.resources.ic_drop_down
+import consumer.composeapp.generated.resources.male
+import consumer.composeapp.generated.resources.save_and_continue
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -110,25 +121,36 @@ fun CompleteProfileScreen(
                             focusManager.clearFocus()
                             viewModel.closeCountryDropdown()
                         })
-                    }
+                    },
             ) {
                 TransparentToolbar(
                     title = "أدخل معلوماتك الأساسية",
                     navController = navController
 
                 )
-                Spacer(modifier = Modifier.height(28.dp))
 
-                Column(modifier = Modifier.padding(horizontal = 16.dp)) {
+
+                Column(
+                    modifier = Modifier.padding(horizontal = 16.dp).weight(1f)
+                        .verticalScroll(rememberScrollState()),
+                ) {
+
+                    Spacer(modifier = Modifier.height(28.dp))
                     Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                         ConsumerTextField(
                             label = { Text(stringResource(Res.string.firstName)) },
                             state = firstNameState,
                             supportingText = if (firstNameTouched && uiState.firstName.error != null) {
-                                { Text(text = uiState.firstName.error!!) }
+                                {
+                                    Text(
+                                        text = uiState.firstName.error!!,
+                                        color = MaterialTheme.colorScheme.error
+                                    )
+                                }
                             } else null,
                             isError = firstNameTouched &&
                                     uiState.firstName.error != null,
+                            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
                             modifier = Modifier.weight(1f).onFocusChanged { focusState ->
                                 if (focusState.isFocused) {
                                     firstNameFocused = true   // user entered the field
@@ -152,8 +174,14 @@ fun CompleteProfileScreen(
                             isError = lastNameTouched && uiState.lastName.error != null,
                             state = lastNameState,
                             supportingText = if (lastNameTouched && uiState.lastName.error != null) {
-                                { Text(text = uiState.lastName.error!!) }
+                                {
+                                    Text(
+                                        text = uiState.lastName.error!!,
+                                        color = MaterialTheme.colorScheme.error
+                                    )
+                                }
                             } else null,
+                            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
                         )
 
 
@@ -188,7 +216,10 @@ fun CompleteProfileScreen(
                                 )
                             }
                         } else null,
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Number,
+                            imeAction = ImeAction.Next
+                        ),
                         modifier = Modifier
                             .fillMaxWidth()
                             .onFocusChanged { fs ->
@@ -209,14 +240,43 @@ fun CompleteProfileScreen(
                         onDismiss = viewModel::closeDatePicker,
                         onDateSelected = viewModel::onDateSelected,
                         trailingIcon = {
-                                Image(painter = painterResource( Res.drawable.ic_drop_down),"", )
+                            Image(painter = painterResource(Res.drawable.ic_drop_down), "")
                         },
                         error = uiState.dateOfBirthError,
                         maxDateMillis = Clock.System.now().toEpochMilliseconds(),
                         modifier = Modifier.fillMaxWidth(),
+                        confirmedDateMillis = uiState.dateOfBirthMillis,
                     )
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        Text(stringResource(Res.string.gender))
+                        GenderCard(
+                            text = stringResource(Res.string.male),
+                            selected = uiState.selectedGender == Gender.MALE,
+                            onClick = { viewModel.selectGender(Gender.MALE) })
+                        GenderCard(
+                            text = stringResource(Res.string.female),
+                            selected = uiState.selectedGender == Gender.FEMALE,
+                            onClick = { viewModel.selectGender(Gender.FEMALE) })
+                    }
 
                 }
+                Spacer(modifier = Modifier.height(16.dp))
+                ConsumerFilledButton(
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                    text = stringResource(Res.string.save_and_continue),
+                    onClick = { },
+                    enabled = uiState.isFormValid,
+
+                    type = ButtonsTypes.PRIMARY,
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+
             }
         }
 

@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -51,6 +52,7 @@ fun ConsumerDateField(
     maxDateMillis: Long = Clock.System.now().toEpochMilliseconds(),
     minDateMillis: Long = -2_208_988_800_000L,
     trailingIcon: @Composable (() -> Unit)? = null,
+    confirmedDateMillis: Long? = null,
 ) {
     val datePickerState = rememberDatePickerState(
         selectableDates = object : SelectableDates {
@@ -60,12 +62,20 @@ fun ConsumerDateField(
         }
     )
 
+    LaunchedEffect(dialogOpen) {
+        if (dialogOpen) {
+            datePickerState.selectedDateMillis = confirmedDateMillis
+            datePickerState.displayedMonthMillis = confirmedDateMillis ?: Clock.System.now().toEpochMilliseconds()
+        }
+    }
+
     // ── field + invisible overlay (identical to CountryInputField) ────────────
     Box(modifier = modifier) {
         ConsumerTextField(
             state = displayState,
             trailingIcon= trailingIcon,
-            enabled = false,          // always read-only; user picks via dialog
+            enabled = enabled,
+            readOnly = true,
             isError = error != null,
             label = { Text(label) },
             supportingText = error?.let { msg ->
@@ -111,7 +121,10 @@ fun ConsumerDateField(
                 }
             },
         ) {
-            DatePicker(state = datePickerState)
+            DatePicker(
+                state = datePickerState,
+                showModeToggle = false
+            )
         }
     }
 }

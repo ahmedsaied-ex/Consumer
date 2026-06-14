@@ -48,14 +48,7 @@ fun LanguageItem(title: String, selected: Boolean, onClick: () -> Unit) {
         Spacer(modifier = Modifier.width(6.dp))
 
         RadioIndicator(selected = selected, borderColor = SelectedLanguageItemBackground)
-//        RadioButton(
-//            selected = selected,
-//            onClick = null,
-//            colors = RadioButtonDefaults.colors(
-//                selectedColor = MaterialTheme.colorScheme.primary,
-//                unselectedColor = Color.White
-//            )
-//        )
+
 
     }
 }

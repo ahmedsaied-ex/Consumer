@@ -10,6 +10,7 @@ import com.example.consumer.core.domain.model.FirstNameValidator
 import com.example.consumer.core.domain.model.IqamaValidator
 import com.example.consumer.core.domain.model.LastNameValidator
 import com.example.consumer.features.completeProfile.domain.CountryRepository
+import com.example.consumer.features.completeProfile.domain.Gender
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -129,12 +130,11 @@ class CompleteProfileViewModel(
     }
 
     fun validateIqama(value: String) {
-        val digitsOnly = value.filter { it.isDigit() }
-        val result = iqamaValidator.validate(digitsOnly)
+        val result = iqamaValidator.validate(value)
         _state.update {
             it.copy(
                 iqamaNumber = it.iqamaNumber.copy(
-                    value = digitsOnly,
+                    value = value,
                     error = result.errorMessage,
                 )
             )
@@ -150,7 +150,19 @@ class CompleteProfileViewModel(
                 date.year
     }
     fun openDatePicker()  = _state.update { it.copy(datePickerOpen = true) }
-    fun closeDatePicker() = _state.update { it.copy(datePickerOpen = false) }
+    fun closeDatePicker() {
+        _state.update {
+            val nextError = if (it.dateOfBirthMillis == null) {
+                "Date of birth is required and must be valid."
+            } else {
+                it.dateOfBirthError
+            }
+            it.copy(
+                datePickerOpen = false,
+                dateOfBirthError = nextError
+            )
+        }
+    }
 
     fun onDateSelected(epochMillis: Long) {
         val formatted = formatDate(epochMillis)
@@ -167,11 +179,28 @@ class CompleteProfileViewModel(
     private fun validateDateOfBirth(): Boolean {
         val selected = _state.value.dateOfBirthMillis
         return if (selected == null) {
-            _state.update { it.copy(dateOfBirthError = "Date of birth is required") }
+            _state.update { it.copy(dateOfBirthError = "Date of birth is required and must be valid.") }
             false
         } else {
             true
         }
+    }
+    fun selectGender(gender: Gender) {
+        _state.update {
+            it.copy(selectedGender = gender)
+        }
+    }
+    fun isFormValid(): Boolean {
+        val state = _state.value
+
+        return state.firstName.value.isNotBlank() &&
+                state.firstName.error == null &&
+                state.lastName.value.isNotBlank() &&
+                state.lastName.error == null &&
+                state.selectedCountry != null &&
+                state.iqamaNumber.value.isNotBlank() &&
+                state.iqamaNumber.error == null &&
+                state.dateOfBirthMillis != null
     }
 
 }

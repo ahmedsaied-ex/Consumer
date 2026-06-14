@@ -16,7 +16,7 @@ class IqamaValidator : Validator {
             !trimmed.all { it.isDigit() } ->
                 ValidationResult(
                     isValid = false,
-                    errorMessage = "Numbers only"
+                    errorMessage = "ID / Iqama number must contain numbers only"
                 )
 
             trimmed.length != 10 ->
