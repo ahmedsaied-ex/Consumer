@@ -91,7 +91,7 @@ fun ProfileSectionItem(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = stringResource(item.key),
+                    text = item.key,
                     style = MaterialTheme.typography.titleSmall,
                     color = MaterialTheme.colorScheme.extendedColors.darkBlue650
                 )
@@ -149,10 +149,10 @@ fun ProfileSectionItem(
 fun ProfileBasicSectionsPreview() {
     ConsumerTheme {
         val basicItems = listOf(
-            SectionItem.Static(Res.string.country, "المملكة العربية السعودية"),
-            SectionItem.Static(Res.string.id_number, "9545121704552255"),
-            SectionItem.Static(Res.string.birth_date, "19/5/2000"),
-            SectionItem.Static(Res.string.gender, "ذكر"),
+            SectionItem.Static(stringResource(Res.string.country), "المملكة العربية السعودية"),
+            SectionItem.Static(stringResource(Res.string.id_number), "9545121704552255"),
+            SectionItem.Static(stringResource(Res.string.birth_date), "19/5/2000"),
+            SectionItem.Static(stringResource(Res.string.gender), "ذكر"),
         )
 
         val settingsItems = listOf(

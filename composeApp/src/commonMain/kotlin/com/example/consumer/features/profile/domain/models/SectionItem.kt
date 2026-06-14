@@ -4,7 +4,7 @@ import org.jetbrains.compose.resources.StringResource
 
 sealed class SectionItem {
     data class Static(
-        val key: StringResource,
+        val key: String,
         val value: String
     ) : SectionItem()
 
