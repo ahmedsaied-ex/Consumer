@@ -1,9 +1,7 @@
 package com.example.consumer.core.presentation.components.cards
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,27 +35,15 @@ fun ProductPrices(
     selected: Boolean,
     isBEstPrice: Boolean,
     soldFrom: String,
-    price:Any
-
+    price: Any,
+    imageUrl : String?
 ) {
-    val borderColor = if (selected)  MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.extendedColors.starterCircleColor
-    val selectedBorderThickness=  if (selected) 2.dp else  1.dp
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(DesignSystem.Radius.RadiusXL))
-            .border(
-                width =selectedBorderThickness ,
-                brush = SolidColor(borderColor),
-                shape = RoundedCornerShape(DesignSystem.Radius.RadiusXL)
-            )
-    )
-    {
+    BaseSelectableBox(
+        modifier = modifier,
+        isSelected = selected
+    ){
         Row(
-            Modifier.fillMaxWidth().padding(
-                DesignSystem.Padding
-                    .Padding3XL
-            ),
+            Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
@@ -71,7 +56,9 @@ fun ProductPrices(
                         value = price
                     )
                     Spacer(Modifier.width(8.dp))
-                    if (isBEstPrice){ BestPriceTag() }
+                    if (isBEstPrice) {
+                        BestPriceTag()
+                    }
                 }
                 Row {
                     Text(
@@ -88,7 +75,7 @@ fun ProductPrices(
                     )
                 }
             }
-            AsyncImageProduct(imageUrl = "", size = 80)
+            AsyncImageProduct(imageUrl = imageUrl, size = 80)
         }
     }
 }
@@ -97,19 +84,24 @@ fun ProductPrices(
 @Composable
 @Preview(showBackground = true, locale = "ar")
 fun ProductPricesSelectedPreview() {
-    Column(Modifier.padding(DesignSystem.Padding.Padding2XL), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+    Column(
+        Modifier.padding(DesignSystem.Padding.Padding2XL),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
         ConsumerTheme {
             ProductPrices(
                 selected = true,
                 isBEstPrice = true,
                 soldFrom = "مكتة جرير",
                 price = 12545.31,
+                imageUrl = null
             )
             ProductPrices(
-                selected = false   ,
+                selected = false,
                 isBEstPrice = false,
                 soldFrom = "مكتة جرير",
                 price = 12545.31,
+                imageUrl = ""
             )
         }
     }

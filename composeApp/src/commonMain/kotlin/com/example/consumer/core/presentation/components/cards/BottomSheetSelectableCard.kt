@@ -3,6 +3,7 @@ package com.example.consumer.core.presentation.components.cards
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -31,13 +32,9 @@ fun BottomSheetSelectableCard(
     imageUrl: String,
     productName: String
 ) {
-    Box(
-        modifier = modifier.fillMaxWidth()
-            .clip(shape = RoundedCornerShape(DesignSystem.Radius.RadiusXL)).border(
-                width = if (isSelected) 2.dp else 1.dp,
-                brush = SolidColor(if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.extendedColors.starterCircleColor),
-                shape = RoundedCornerShape(DesignSystem.Radius.RadiusXL)
-            ).padding(DesignSystem.Padding.Padding3XL)
+    BaseSelectableBox(
+        modifier = modifier,
+        isSelected = isSelected
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -62,7 +59,47 @@ fun BottomSheetSelectableCard(
 @Preview(showBackground = true, locale = "ar")
 fun BottomSheetSelectableCardPreview() {
     ConsumerTheme {
-        BottomSheetSelectableCard(isSelected = true, imageUrl = "", productName = "شاشة تلفزيون سمارت سامسونج ، مقاس 65 بوصة ، ليد ، دقة 4K UHD ، بريسيفر داخلي")
+        Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(20.dp)){
+            BottomSheetSelectableCard(
+                isSelected = true,
+                imageUrl = "",
+                productName = "شاشة تلفزيون سمارت سامسونج ، مقاس 65 بوصة ، ليد ، دقة 4K UHD ، بريسيفر داخلي"
+            )
+            BottomSheetSelectableCard(
+                isSelected = false ,
+                imageUrl = "",
+                productName = "شاشة تلفزيون سمارت سامسونج ، مقاس 65 بوصة ، ليد ، دقة 4K UHD ، بريسيفر داخلي"
+            )
+        }
     }
 
+}
+
+@Composable
+fun BaseSelectableBox(
+    modifier: Modifier = Modifier,
+    isSelected: Boolean,
+    content :@Composable () ->Unit
+) {
+    Box(
+        modifier = modifier.fillMaxWidth()
+            .clip(shape = RoundedCornerShape(DesignSystem.Radius.RadiusXL)).border(
+                width = if (isSelected) 2.dp else 1.dp,
+                brush = SolidColor(if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.extendedColors.starterCircleColor),
+                shape = RoundedCornerShape(DesignSystem.Radius.RadiusXL)
+            )
+            .padding(DesignSystem.Padding.Padding3XL)
+    ) {
+        content()
+    }
+}
+
+@Composable
+@Preview(showBackground=true , locale = "ar")
+fun BaseSelectableBoxPreview() {
+    Column(Modifier.padding(DesignSystem.Padding.Padding2XL)){
+        ConsumerTheme {
+        BaseSelectableBox( isSelected = false ){}
+    }
+}
 }

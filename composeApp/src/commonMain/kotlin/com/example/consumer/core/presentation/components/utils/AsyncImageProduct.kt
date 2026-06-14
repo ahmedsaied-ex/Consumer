@@ -19,7 +19,7 @@ import com.example.consumer.core.presentation.theme.ConsumerTheme
 fun AsyncImageProduct(
     modifier: Modifier = Modifier,
     size: Int = 60,
-    imageUrl: String
+    imageUrl: String?
 ) {
     Box(
         modifier = modifier.size(size.dp).border(
