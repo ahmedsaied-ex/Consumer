@@ -3,7 +3,6 @@ package com.example.consumer.features.profile.presentation
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,7 +15,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,8 +27,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.consumer.core.presentation.components.CostumeScaffold
 import com.example.consumer.core.presentation.components.bars.TransparentToolbar
 import com.example.consumer.core.presentation.components.cards.AIAssistantCard
+import com.example.consumer.core.presentation.components.lines.HorizontalLine
 import com.example.consumer.core.presentation.foundation.DesignSystem.DesignSystem
-import com.example.consumer.core.presentation.foundation.colors.ErrorBackground
 import com.example.consumer.core.presentation.foundation.typography.Subtitle3
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
@@ -121,21 +119,21 @@ fun UserProfile(
                 )
             }
             item { AIAssistantCard() }
-            item { HorizontalDivider(color = MaterialTheme.colorScheme.extendedColors.onDisablePrimaryLight) }
+            item { HorizontalLine() }
             item {
                 ProfileSection(
                     title = Res.string.basic_info,
                     items = basicItems
                 )
             }
-            item { HorizontalDivider(color = MaterialTheme.colorScheme.extendedColors.onDisablePrimaryLight) }
+            item { HorizontalLine() }
             item {
                 ProfileSection(
                     title = Res.string.settings,
                     items = settingsItems
                 )
             }
-            item { HorizontalDivider(color = MaterialTheme.colorScheme.extendedColors.onDisablePrimaryLight) }
+            item { HorizontalLine() }
             item {
                 ProfileSection(
                     title = Res.string.usage_policy,

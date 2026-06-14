@@ -33,13 +33,12 @@
 
     <!--  Cards -->
     <string name="price_start_with">سعر يبدأ من</string>
-    <string name="sold_from">يباع من</string>
     <string name="questions">questions</string>
+    <string name="best_price">أفضل سعر</string>
+    <string name="sold_from">يباع من</string>
 
 
 <!--Profile -->
-
-
     <string name="basic_info">بياناتي الأساسية</string>
     <string name="country">الدولة</string>
     <string name="id_number">رقم الهوية / رقم الإقامة</string>
@@ -66,6 +65,8 @@
     <string name="branch">فرع</string>
     <string name="sector">القطاع</string>
     <string name="implementation_date">تاريخ التنفيذ المستهدف</string>
+
+
 
 
 
