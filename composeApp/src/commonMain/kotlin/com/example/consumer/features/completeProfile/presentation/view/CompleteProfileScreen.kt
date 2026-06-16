@@ -1,4 +1,4 @@
-package com.example.consumer.features.completeProfile.presentation
+package com.example.consumer.features.completeProfile.presentation.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -14,7 +14,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,15 +35,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.consumer.core.presentation.components.bars.TransparentToolbar
 import com.example.consumer.core.presentation.components.ConsumerTextField
 import com.example.consumer.core.presentation.components.CostumeScaffold
-import com.example.consumer.core.presentation.components.SearchableCountryDropdown
+import com.example.consumer.core.presentation.components.bars.TransparentToolbar
 import com.example.consumer.core.presentation.components.buttons.ButtonsTypes
 import com.example.consumer.core.presentation.components.buttons.ConsumerFilledButton
 import com.example.consumer.core.presentation.theme.ConsumerTheme
-import com.example.consumer.features.completeProfile.domain.Gender
-import com.example.consumer.features.completeProfile.viewModel.CompleteProfileViewModel
+import com.example.consumer.features.completeProfile.data.model.Gender
+import com.example.consumer.features.completeProfile.presentation.view.components.ConsumerDateField
+import com.example.consumer.features.completeProfile.presentation.view.components.GenderCard
+import com.example.consumer.features.completeProfile.presentation.view.components.SearchableCountryDropdown
+import com.example.consumer.features.completeProfile.presentation.viewModel.CompleteProfileViewModel
 import consumer.composeapp.generated.resources.ID_Iqama_Number
 import consumer.composeapp.generated.resources.LastName
 import consumer.composeapp.generated.resources.Res
@@ -59,10 +60,9 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import kotlin.time.Clock
 
-
 @Composable
 fun CompleteProfileScreen(
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.Companion,
     navController: NavHostController = rememberNavController(),
     viewModel: CompleteProfileViewModel = koinViewModel()
 
@@ -114,7 +114,7 @@ fun CompleteProfileScreen(
     ConsumerTheme {
         CostumeScaffold {
             Column(
-                modifier = Modifier
+                modifier = Modifier.Companion
                     .fillMaxSize()
                     .pointerInput(Unit) {
                         detectTapGestures(onTap = {
@@ -131,11 +131,11 @@ fun CompleteProfileScreen(
 
 
                 Column(
-                    modifier = Modifier.padding(horizontal = 16.dp).weight(1f)
+                    modifier = Modifier.Companion.padding(horizontal = 16.dp).weight(1f)
                         .verticalScroll(rememberScrollState()),
                 ) {
 
-                    Spacer(modifier = Modifier.height(28.dp))
+                    Spacer(modifier = Modifier.Companion.height(28.dp))
                     Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                         ConsumerTextField(
                             label = { Text(stringResource(Res.string.firstName)) },
@@ -150,8 +150,8 @@ fun CompleteProfileScreen(
                             } else null,
                             isError = firstNameTouched &&
                                     uiState.firstName.error != null,
-                            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
-                            modifier = Modifier.weight(1f).onFocusChanged { focusState ->
+                            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Companion.Next),
+                            modifier = Modifier.Companion.weight(1f).onFocusChanged { focusState ->
                                 if (focusState.isFocused) {
                                     firstNameFocused = true   // user entered the field
                                 } else if (firstNameFocused) {
@@ -163,7 +163,7 @@ fun CompleteProfileScreen(
                         )
                         ConsumerTextField(
                             label = { Text(stringResource(Res.string.LastName)) },
-                            modifier = Modifier.weight(1f).onFocusChanged { focusState ->
+                            modifier = Modifier.Companion.weight(1f).onFocusChanged { focusState ->
                                 if (focusState.isFocused) {
                                     lastNameFocused = true
                                 } else if (lastNameFocused) {
@@ -181,12 +181,12 @@ fun CompleteProfileScreen(
                                     )
                                 }
                             } else null,
-                            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+                            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Companion.Next),
                         )
 
 
                     }
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Spacer(modifier = Modifier.Companion.height(20.dp))
 
                     SearchableCountryDropdown(
                         searchState = countrySearchState,
@@ -200,9 +200,9 @@ fun CompleteProfileScreen(
                         onRetry = viewModel::retryLoadCountries,
                         placeholder = "Country",
                         error = uiState.countryError,
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.Companion.fillMaxWidth(),
                     )
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Spacer(modifier = Modifier.Companion.height(20.dp))
 
                     ConsumerTextField(
                         label = { Text(stringResource(Res.string.ID_Iqama_Number)) },
@@ -217,10 +217,10 @@ fun CompleteProfileScreen(
                             }
                         } else null,
                         keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Number,
-                            imeAction = ImeAction.Next
+                            keyboardType = KeyboardType.Companion.Number,
+                            imeAction = ImeAction.Companion.Next
                         ),
-                        modifier = Modifier
+                        modifier = Modifier.Companion
                             .fillMaxWidth()
                             .onFocusChanged { fs ->
                                 if (fs.isFocused) {
@@ -231,7 +231,7 @@ fun CompleteProfileScreen(
                                 }
                             },
                     )
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Spacer(modifier = Modifier.Companion.height(20.dp))
                     ConsumerDateField(
                         displayState = dateOfBirthDisplayState,
                         label = "Date of Birth  •  تاريخ الميلاد",
@@ -244,14 +244,14 @@ fun CompleteProfileScreen(
                         },
                         error = uiState.dateOfBirthError,
                         maxDateMillis = Clock.System.now().toEpochMilliseconds(),
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.Companion.fillMaxWidth(),
                         confirmedDateMillis = uiState.dateOfBirthMillis,
                     )
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Spacer(modifier = Modifier.Companion.height(20.dp))
 
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.Companion.fillMaxWidth(),
+                        verticalAlignment = Alignment.Companion.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
                         Text(stringResource(Res.string.gender))
@@ -266,16 +266,16 @@ fun CompleteProfileScreen(
                     }
 
                 }
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.Companion.height(16.dp))
                 ConsumerFilledButton(
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                    modifier = Modifier.Companion.fillMaxWidth().padding(horizontal = 16.dp),
                     text = stringResource(Res.string.save_and_continue),
                     onClick = { },
                     enabled = uiState.isFormValid,
 
                     type = ButtonsTypes.PRIMARY,
                 )
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.Companion.height(16.dp))
 
             }
         }

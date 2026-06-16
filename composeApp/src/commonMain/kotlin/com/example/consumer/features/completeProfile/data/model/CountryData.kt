@@ -1,4 +1,4 @@
-package com.example.consumer.features.completeProfile.data
+package com.example.consumer.features.completeProfile.data.model
 
 data class CountryData(
     val id: Int,

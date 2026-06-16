@@ -1,4 +1,4 @@
-package com.example.consumer.features.completeProfile.presentation
+package com.example.consumer.features.completeProfile.presentation.view.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -22,8 +22,8 @@ import com.example.consumer.core.presentation.components.ConsumerTextField
 import kotlin.time.Clock
 
 /**
- * A read-only [com.example.consumer.core.presentation.components.ConsumerTextField] that opens a [DatePickerDialog] on tap —
- * same overlay pattern used by [com.example.consumer.core.presentation.components.SearchableCountryDropdown].
+ * A read-only [ConsumerTextField] that opens a [DatePickerDialog] on tap —
+ * same overlay pattern used by [SearchableCountryDropdown].
  *
  * @param displayState   A [TextFieldState] whose text is the formatted date
  *                       shown inside the field.  The caller formats the date

@@ -1,4 +1,4 @@
-package com.example.consumer.core.presentation.components
+package com.example.consumer.features.completeProfile.presentation.view.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
@@ -35,7 +35,6 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DividerDefaults
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -45,18 +44,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import coil3.Image
-import com.example.consumer.features.completeProfile.data.CountryData
-import com.example.consumer.features.completeProfile.viewModel.CountryListState
+import com.example.consumer.core.presentation.components.ConsumerTextField
+import com.example.consumer.features.completeProfile.data.model.CountryData
+import com.example.consumer.features.completeProfile.presentation.viewModel.CountryListState
 import consumer.composeapp.generated.resources.Res
-import consumer.composeapp.generated.resources.ic_back
 import consumer.composeapp.generated.resources.ic_drop_down
 import org.jetbrains.compose.resources.painterResource
 import kotlin.collections.emptyList
@@ -178,7 +174,7 @@ private fun CountryInputField(
                     onClick = onToggleExpanded,
                     enabled = enabled,
                 ) {
-                    Image(painter = painterResource( Res.drawable.ic_drop_down),"", )
+                    Image(painter = painterResource(Res.drawable.ic_drop_down), "",)
 
                 }
             },

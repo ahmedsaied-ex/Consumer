@@ -1,6 +1,5 @@
-package com.example.consumer.features.completeProfile.viewModel
+package com.example.consumer.features.completeProfile.presentation.viewModel
 
-import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.viewModelScope
 import com.example.consumer.core.domain.model.AnalyticsLogger
 import com.example.consumer.core.domain.model.DispatcherProvider
@@ -9,8 +8,8 @@ import com.example.consumer.core.presentation.base.BaseViewModel
 import com.example.consumer.core.domain.model.FirstNameValidator
 import com.example.consumer.core.domain.model.IqamaValidator
 import com.example.consumer.core.domain.model.LastNameValidator
-import com.example.consumer.features.completeProfile.domain.CountryRepository
-import com.example.consumer.features.completeProfile.domain.Gender
+import com.example.consumer.features.completeProfile.domain.repository.CountryRepository
+import com.example.consumer.features.completeProfile.data.model.Gender
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update

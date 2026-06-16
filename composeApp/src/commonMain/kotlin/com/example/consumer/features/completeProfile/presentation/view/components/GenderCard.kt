@@ -1,4 +1,4 @@
-package com.example.consumer.features.completeProfile.presentation
+package com.example.consumer.features.completeProfile.presentation.view.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background

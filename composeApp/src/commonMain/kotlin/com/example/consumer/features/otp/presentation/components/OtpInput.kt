@@ -37,7 +37,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.consumer.core.presentation.foundation.DesignSystem.ConsumerDimensions
-import com.example.consumer.core.presentation.foundation.colors.OTPBoxBorderColor
 import com.example.consumer.core.presentation.foundation.typography.H5
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
@@ -178,7 +177,7 @@ private fun OtpDigitBox(
     val borderColor = when {
         isError -> MaterialTheme.colorScheme.error
 //        isComplete -> SuccessLight
-        digit.isNotEmpty() -> OTPBoxBorderColor
+        digit.isNotEmpty() -> _root_ide_package_.androidx.compose.material3.MaterialTheme.colorScheme.extendedColors.OTPBoxBorderColor
         isFocused -> MaterialTheme.colorScheme.tertiary
         else -> MaterialTheme.colorScheme.extendedColors.onDisablePrimaryLight
     }

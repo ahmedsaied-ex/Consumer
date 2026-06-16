@@ -1,6 +1,6 @@
-package com.example.consumer.features.completeProfile.viewModel
+package com.example.consumer.features.completeProfile.presentation.viewModel
 
-import com.example.consumer.features.completeProfile.data.CountryData
+import com.example.consumer.features.completeProfile.data.model.CountryData
 
 
 /**
