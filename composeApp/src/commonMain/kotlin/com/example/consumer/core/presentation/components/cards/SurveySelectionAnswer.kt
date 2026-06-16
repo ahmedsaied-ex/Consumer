@@ -83,19 +83,44 @@ fun SurveyButton(
     onClick: () -> Unit,
     text: String
 ) {
-    val surveyBackground =
-        if (selected) {
-            if (enabled ){
-                MaterialTheme.colorScheme.extendedColors.surveySelectedBackground }
-            else{
-                Color(0xFFf5f8fa)
-            }
-        } else {
-            if (enabled){ MaterialTheme.colorScheme.extendedColors.surveyUnSelectedBackground }else{
-                Color(0xFFfafcfc)
-            }
-        }
 
+
+    val containerColorEnabled = if (selected){
+        MaterialTheme.colorScheme.extendedColors.surveySelectedBackground
+    }else{
+        MaterialTheme.colorScheme.extendedColors.surveyUnSelectedBackground
+
+    }
+
+    val disabledContainerColor = if (selected){
+        Color(0xFFf5f8fa)
+
+    }else{
+        Color(0xFFfafcfc)
+
+    }
+
+    val textColor = if (enabled){
+        MaterialTheme.colorScheme.onBackground
+    }else{
+        Color(0xFF8d8ea1)
+    }
+
+    val unSelectedCircleColor = if (enabled){
+        MaterialTheme.colorScheme.extendedColors.darkBlue450
+    }else{
+        Color(0xFFd5d5de)
+    }
+
+    val selectedCircleColor = if (enabled){
+        MaterialTheme.colorScheme.tertiary
+    }else{
+        Color(0xFF95adad)
+    }
+    val borderColor = if (enabled){
+        MaterialTheme.colorScheme.extendedColors.blueSapphire700    }else{
+        Color(0xFF8fadbf)
+    }
     Button(
         onClick = onClick,
         modifier = modifier.fillMaxWidth(),
@@ -103,16 +128,14 @@ fun SurveyButton(
         border = if (selected) {
             BorderStroke(
                 width = 1.dp,
-                color = MaterialTheme.colorScheme.extendedColors.blueSapphire700
+                color = borderColor
             )
         } else null,
         contentPadding = PaddingValues(vertical = 14.dp, horizontal = 16.dp),
         shape = RoundedCornerShape(DesignSystem.Radius.RadiusMd),
         colors = ButtonDefaults.buttonColors(
-            containerColor = surveyBackground,
-            contentColor = MaterialTheme.colorScheme.onBackground,
-            disabledContainerColor = Color(0xFFfafcfc),
-            disabledContentColor =Color(0xFF8d8ea1)
+            containerColor = containerColorEnabled,
+            disabledContainerColor = disabledContainerColor,
         )
     ) {
         Row(
@@ -120,12 +143,12 @@ fun SurveyButton(
             verticalAlignment = Alignment.CenterVertically
         ) {
             if (selected) {
-                SelectedCircle(color = MaterialTheme.colorScheme.tertiary)
+                SelectedCircle(color = selectedCircleColor)
             } else {
-                UnSelectedCircularIcon(color = MaterialTheme.colorScheme.extendedColors.darkBlue450)
+                UnSelectedCircularIcon(color = unSelectedCircleColor, size = 18)
             }
             Spacer(Modifier.width(12.dp))
-            Text(text, style = Subtitle2.copy(color =Color(0xFF8d8ea1)))
+            Text(text, style = Subtitle2.copy(color = textColor))
         }
 
     }
@@ -143,30 +166,30 @@ fun SurveyButtonPreview() {
         ) {
             SurveyButton(
                 selected = false,
+                enabled = true,
+                onClick = { },
+                text = "الإجابة"
+            )
+
+            SurveyButton(
+                selected = false,
                 enabled = false,
                 onClick = { },
-                text = "5"
+                text = "الإجابة"
             )
 
             SurveyButton(
-                selected = false,
+                selected = true,
                 enabled = true,
                 onClick = { },
-                text = "5"
+                text = "الإجابة"
             )
 
             SurveyButton(
-                selected = false,
-                enabled = true,
+                selected = true,
+                enabled = false,
                 onClick = { },
-                text = "5"
-            )
-
-            SurveyButton(
-                selected = false,
-                enabled = true,
-                onClick = { },
-                text = "5"
+                text = "الإجابة"
             )
 
         }

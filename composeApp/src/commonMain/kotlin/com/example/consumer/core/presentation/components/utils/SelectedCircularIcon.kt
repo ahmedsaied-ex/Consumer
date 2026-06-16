@@ -64,10 +64,11 @@ fun CircularIconPreview() {
 @Composable
 fun UnSelectedCircularIcon(
     modifier: Modifier = Modifier,
+    size: Int = 20,
     color: Color = MaterialTheme.colorScheme.onPrimary
 ) {
     Box(
-        modifier = modifier.size(20.dp).border(
+        modifier = modifier.size(size.dp).border(
             width = 1.dp,
             brush = SolidColor(color),
             shape = CircleShape
