@@ -66,7 +66,11 @@
     <string name="implementation_date">تاريخ التنفيذ المستهدف</string>
 
 
-
+<!--upload file-->
+    <string name="upload_or_choose_file">تحميل/ اختيار الملف</string>
+    <string name="supported_files">الملفات المدعومة</string>
+    <string name="file_types">PDF, JPG or PNG</string>
+    <string name="mega">ميجا</string>
 
 
 

@@ -142,11 +142,11 @@ data class ExtendedColors(
     val onDisableTextTertiary  : Color,
     val onDisableTextDestructive   : Color,
     val buttonBorderColorAuth  : Color,
-    val surveyUnSelectedBackground  : Color,
+    val cadetBlue150  : Color,
     val surveySelectedBackground  : Color,
 
 
-)
+    )
 
 val extendedColors = ExtendedColors(
     newMissionTextColor = Color(0xFF1B6397),
@@ -196,7 +196,7 @@ val extendedColors = ExtendedColors(
     highPriorityColor = Color(0xFFE53935),
     // Logout button colors  #DC3545 #DC3545
     logOutButtonBackground = Color(0xFFfdf5f6),
-    surveyUnSelectedBackground =Color(0xFFF6FBFB),
+    cadetBlue150 =Color(0xFFF6FBFB),
     surveySelectedBackground = Color(0xFFE9EFF2),
     // text field
     focusedTextField = Color(0xFF377373),

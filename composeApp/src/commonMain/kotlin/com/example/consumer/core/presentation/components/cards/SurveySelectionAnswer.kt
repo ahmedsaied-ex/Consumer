@@ -41,7 +41,7 @@ fun SurveySelectionAnswer(
     text: String
 ) {
     val surveyBackground =
-        if (selected) MaterialTheme.colorScheme.extendedColors.surveySelectedBackground else MaterialTheme.colorScheme.extendedColors.surveyUnSelectedBackground
+        if (selected) MaterialTheme.colorScheme.extendedColors.surveySelectedBackground else MaterialTheme.colorScheme.extendedColors.cadetBlue150
     Box(
         modifier = modifier
             .fillMaxWidth()
@@ -88,7 +88,7 @@ fun SurveyButton(
     val containerColorEnabled = if (selected){
         MaterialTheme.colorScheme.extendedColors.surveySelectedBackground
     }else{
-        MaterialTheme.colorScheme.extendedColors.surveyUnSelectedBackground
+        MaterialTheme.colorScheme.extendedColors.cadetBlue150
 
     }
 

@@ -36,6 +36,7 @@ fun AsyncImageProduct(
     }
 }
 
+
 @Composable
 @Preview(showBackground=true , locale = "ar")
 fun AsyncImageProductPreview() {
