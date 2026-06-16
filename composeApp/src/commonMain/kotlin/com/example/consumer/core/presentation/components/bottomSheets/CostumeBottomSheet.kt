@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
@@ -48,7 +47,7 @@ fun CostumeBottomSheet(
             ) {
                 Box(
                     modifier = Modifier
-                        .width(width = 32.dp)
+                        .width(width = 36.dp)
                         .height(4.dp)
                         .clip(RoundedCornerShape(50))
                         .background(
@@ -60,6 +59,7 @@ fun CostumeBottomSheet(
         onDismissRequest = onDismiss,
         modifier = modifier.systemBarsPadding(),
         contentWindowInsets = { WindowInsets() },
+        sheetState = sheetState
     ) {
         content()
     }

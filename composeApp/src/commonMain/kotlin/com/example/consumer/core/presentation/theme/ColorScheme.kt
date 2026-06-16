@@ -103,11 +103,11 @@ data class ExtendedColors(
     val completedMissionBackgroundColor: Color,
 
     // circles
-    val unAssignedCircleColor: Color,
-    val inProgressCircleColor: Color,
-    val completedCircleColor: Color,
-    val reevaluateCircleColor: Color,
-    val newCircleColor: Color,
+    val starterCircleColor: Color,
+    val serveyStartedCircleColor: Color,
+    val approvedCircleColor: Color,
+    val reevaluationNeededCircleColor: Color,
+    val sentForEvaluationCircleColor: Color,
 
     //tabBar
     val tabBarColorTabsBackground: Color,
@@ -121,11 +121,19 @@ data class ExtendedColors(
     // other colors
     val darkBlue650: Color,
     val darkBlue450: Color,
+    val darkBlue400: Color,
     val darkBlue150: Color,
     val darkBlue100: Color,
     val cadetBlue: Color,
+    val blueSapphire700: Color,
+    val buttonSecondaryLabelIcon:Color,
+    val lowPriorityColor: Color,
+    val midPriorityColor: Color,
+    val highPriorityColor: Color,
 
 
+    //Log out backGround
+    val logOutButtonBackground: Color,
 
     // tex field
     val focusedTextField : Color,
@@ -134,6 +142,10 @@ data class ExtendedColors(
     val onDisableTextTertiary  : Color,
     val onDisableTextDestructive   : Color,
     val buttonBorderColorAuth  : Color,
+    val surveyUnSelectedBackground  : Color,
+    val surveySelectedBackground  : Color,
+
+
 )
 
 val extendedColors = ExtendedColors(
@@ -153,11 +165,11 @@ val extendedColors = ExtendedColors(
     reevaluateMissionBackgroundColor = Color(0xFFFFDEF8),
 
     //circles
-    unAssignedCircleColor = Color(0xFFC6C7D0),
-    inProgressCircleColor = Color(0xFFEFC900),
-    completedCircleColor = Color(0xFF2E7D32),
-    reevaluateCircleColor = Color(0xFFC00097),
-    newCircleColor = Color(0xFF1B6397),
+    starterCircleColor = Color(0xFFC6C7D0),
+    serveyStartedCircleColor = Color(0xFFEFC900),
+    approvedCircleColor = Color(0xFF2E7D32),
+    reevaluationNeededCircleColor = Color(0xFFC00097),
+    sentForEvaluationCircleColor = Color(0xFF1B6397),
 
     //tabBar
     tabBarColorTabsBackground = Color(0xFFE9EFF2),
@@ -173,10 +185,19 @@ val extendedColors = ExtendedColors(
     // other colors
     darkBlue650 = Color(0xFF6B6D85),
     darkBlue450 = Color(0xFFB0B0BE),
+    darkBlue400 = Color(0xFFC6C7D0),
     darkBlue150 = Color(0xFFEFEFF2),
     darkBlue100 = Color(0xFFF4F4F6),
     cadetBlue = Color(0xFF83C0C0),
-
+    blueSapphire700 = Color(0xFF225C80),
+    buttonSecondaryLabelIcon = Color(0xFF1F4242),
+    lowPriorityColor = Color(0xFF43A047),
+    midPriorityColor = Color(0xFFFB8C00),
+    highPriorityColor = Color(0xFFE53935),
+    // Logout button colors  #DC3545 #DC3545
+    logOutButtonBackground = Color(0xFFfdf5f6),
+    surveyUnSelectedBackground =Color(0xFFF6FBFB),
+    surveySelectedBackground = Color(0xFFE9EFF2),
     // text field
     focusedTextField = Color(0xFF377373),
 
@@ -184,6 +205,7 @@ val extendedColors = ExtendedColors(
     onDisableTextTertiary = Color(0xFF8E8FA2),
     onDisableTextDestructive = Color(0xFFEE9AA2),
     buttonBorderColorAuth = Color(0xFFE8E9EC),
+
 )
 
 // Brand color schemes

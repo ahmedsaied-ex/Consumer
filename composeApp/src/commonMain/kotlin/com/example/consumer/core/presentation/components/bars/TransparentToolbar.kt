@@ -6,18 +6,22 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.auctionex.expertapps.navigation.utils.guardedClick
 import com.auctionex.expertapps.navigation.utils.rememberClickGuard
-import com.example.consumer.core.presentation.components.Buttons.LocalizedIconButton
+import com.example.consumer.core.presentation.components.buttons.LocalizedIconButton
+import com.example.consumer.core.presentation.foundation.typography.Subtitle1
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.ic_back
 import org.jetbrains.compose.resources.painterResource
@@ -35,7 +39,7 @@ fun TransparentToolbar(
     val clickGuard = rememberClickGuard()
 
     Box(
-        modifier = modifier.fillMaxWidth().height(60.dp),
+        modifier = modifier.padding(vertical = 9.dp, horizontal = 20.dp).fillMaxWidth(),
         contentAlignment = Alignment.Center,
     ) {
         Row(
@@ -58,13 +62,14 @@ fun TransparentToolbar(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth(),
+                contentAlignment = Alignment.Center
             ) {
                 when {
                     centerContent != null -> centerContent()
                     title != null -> {
                         Text(
                             text = title,
-                            style = MaterialTheme.typography.titleLarge.copy(fontSize = 18.sp),
+                            style = Subtitle1.copy(fontWeight = FontWeight.Medium),
                             color = MaterialTheme.colorScheme.onBackground,
                             maxLines = 1
                         )
@@ -79,4 +84,13 @@ fun TransparentToolbar(
             }
         }
     }
+}
+
+@Composable
+@Preview(showBackground = true, locale = "ar")
+fun TransparentToolbarPreview() {
+    TransparentToolbar(
+        navController = rememberNavController(),
+        title = "ملفي الشخصي"
+    )
 }

@@ -69,6 +69,7 @@ kotlin {
             implementation(libs.compottie.dot)
             implementation(libs.compottie.lite)
 
+            implementation(libs.bignum)
 
 
             implementation(libs.kotlinx.serialization.json)

@@ -18,12 +18,14 @@ import androidx.compose.ui.unit.dp
 fun CostumeScaffold(
     modifier: Modifier = Modifier,
     snackbarHostState: SnackbarHostState= SnackbarHostState(),
+    topBar: @Composable () -> Unit={},
     content: @Composable () -> Unit
 ) {
     Scaffold(
         modifier = modifier,
         contentWindowInsets = WindowInsets.systemBars.union(WindowInsets.displayCutout)
             .union(WindowInsets.ime),
+        topBar = topBar,
         snackbarHost = {
             SnackbarHost(
                 hostState = snackbarHostState,

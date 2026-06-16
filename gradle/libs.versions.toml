@@ -19,6 +19,7 @@ kotlinx-serialization = "1.11.0"
 coil-compose = "3.4.0"
 kermit = "2.1.0"
 compottie="2.2.1"
+bignum = "0.3.10"
 
 
 
@@ -47,6 +48,9 @@ kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 ktor-client-websockets = { module = "io.ktor:ktor-client-websockets", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+
+#decimal
+bignum = { module = "com.ionspin.kotlin:bignum", version.ref = "bignum" }
 
 # Coil Libraries
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil-compose" }
