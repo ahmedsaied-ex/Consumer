@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -62,12 +63,13 @@ fun CircularIconPreview() {
 
 @Composable
 fun UnSelectedCircularIcon(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    color: Color = MaterialTheme.colorScheme.onPrimary
 ) {
     Box(
         modifier = modifier.size(20.dp).border(
             width = 1.dp,
-            brush = SolidColor(MaterialTheme.colorScheme.onPrimary),
+            brush = SolidColor(color),
             shape = CircleShape
         )
     )
