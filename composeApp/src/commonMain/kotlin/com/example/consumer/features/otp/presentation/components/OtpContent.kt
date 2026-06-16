@@ -1,4 +1,4 @@
-package com.auctionex.expertapps.features.auth_feature.otp.presentation.components
+package com.example.consumer.features.otp.presentation.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,14 +35,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.consumer.core.presentation.components.bars.TransparentToolbar
-import com.example.consumer.core.presentation.foundation.colors.OTPBoxBorderColor
 import com.example.consumer.core.presentation.foundation.typography.H4
 import com.example.consumer.core.presentation.foundation.typography.Subtitle2
 import org.jetbrains.compose.resources.stringResource
 import com.example.consumer.features.otp.presentation.viewModel.OtpSource
 import com.example.consumer.core.presentation.theme.ConsumerTheme
-import com.example.consumer.features.otp.presentation.components.OtpInput
-import com.example.consumer.features.otp.presentation.components.VerifyButton
+import com.example.consumer.core.presentation.theme.extendedColors
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.confirm
 
@@ -147,7 +145,7 @@ fun OtpContent(
                         text = "تم إرسال رمز مكون من 4 أرقام إلى بريدك الإلكتروني",
                         style = Subtitle2.copy(fontWeight = FontWeight.Medium),
                         modifier = Modifier.fillMaxWidth(),
-                        color = OTPBoxBorderColor,
+                        color = MaterialTheme.colorScheme.extendedColors.OTPBoxBorderColor,
                     )
 
                     Spacer(modifier = Modifier.height(40.dp))
@@ -168,7 +166,7 @@ fun OtpContent(
                     Text(
                         text = "لم يصلك رمز التحقق؟",
                         style = MaterialTheme.typography.bodyMedium,
-                        color = OTPBoxBorderColor,
+                        color = MaterialTheme.colorScheme.extendedColors.OTPBoxBorderColor,
                     )
 
                     Spacer(modifier = Modifier.height(20.dp))

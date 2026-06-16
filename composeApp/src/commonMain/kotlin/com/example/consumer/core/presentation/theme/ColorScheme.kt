@@ -101,7 +101,7 @@ data class ExtendedColors(
 
     val completedMissionTextColor: Color,
     val completedMissionBackgroundColor: Color,
-
+    val OTPBoxBorderColor:Color,
     // circles
     val starterCircleColor: Color,
     val serveyStartedCircleColor: Color,
@@ -200,6 +200,7 @@ val extendedColors = ExtendedColors(
     surveySelectedBackground = Color(0xFFE9EFF2),
     // text field
     focusedTextField = Color(0xFF377373),
+    OTPBoxBorderColor = Color(0xFF6B6D85),
 
     onDisablePrimaryLight = Color(0xFFDDDDE3),
     onDisableTextTertiary = Color(0xFF8E8FA2),

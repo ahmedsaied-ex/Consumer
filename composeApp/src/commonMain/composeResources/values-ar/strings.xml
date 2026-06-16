@@ -39,6 +39,10 @@
     <string name="AppName">صوت المستهلك</string>
     <string name="firstName">الاسم الأول</string>
     <string name="LastName">الاسم الأخير</string>
+    <string name="ID_Iqama_Number">رقم الهوية / رقم الإقامة</string>
+    <string name="gender">الجنس</string>
+    <string name="male">ذكر</string>
+    <string name="female">انثى</string>
 
     <!--  Cards -->
     <string name="price_start_with">سعر يبدأ من</string>

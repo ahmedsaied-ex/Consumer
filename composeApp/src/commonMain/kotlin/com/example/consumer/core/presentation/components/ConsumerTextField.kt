@@ -4,14 +4,17 @@ import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TextFieldLabelScope
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -25,10 +28,20 @@ import androidx.compose.ui.unit.dp
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.text.input.KeyboardActionHandler
+import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.input.ImeAction
+
 @Composable
 fun ConsumerTextField(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    readOnly: Boolean = false,
     state: TextFieldState,
     isError: Boolean = false,
     supportingText: @Composable (() -> Unit)? = null,
@@ -38,19 +51,33 @@ fun ConsumerTextField(
     placeholder: @Composable (() -> Unit)? = null,
     label: @Composable (TextFieldLabelScope.() -> Unit)? = null
 ) {
-    TextField(
-        trailingIcon = trailingIcon,
-        keyboardOptions = keyboardOptions,
-        enabled = enabled,
-        isError = isError,
-        state = state,
-        placeholder = placeholder,
-        supportingText = supportingText,
-        label = label,
-        modifier = modifier.onFocusChanged {
-            onFocusChanged?.invoke(it.isFocused)
-        },
-        colors = TextFieldDefaults.colors(
+    val focusManager = LocalFocusManager.current
+    Column(modifier = modifier) {
+        TextField(
+            trailingIcon = trailingIcon,
+            keyboardOptions = keyboardOptions,
+            enabled = enabled,
+            readOnly = readOnly,
+            isError = isError,
+            state = state,
+            placeholder = placeholder,
+            supportingText = null,
+            label = label,
+            lineLimits = TextFieldLineLimits.SingleLine,
+            onKeyboardAction = KeyboardActionHandler { performDefaultAction ->
+                if (keyboardOptions.imeAction == ImeAction.Next) {
+                    focusManager.moveFocus(FocusDirection.Next)
+                } else {
+                    performDefaultAction()
+                }
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp)
+                .onFocusChanged {
+                    onFocusChanged?.invoke(it.isFocused)
+                },
+            colors = TextFieldDefaults.colors(
             cursorColor = MaterialTheme.colorScheme.extendedColors.focusedTextField,
             focusedContainerColor = MaterialTheme.colorScheme.extendedColors.darkBlue150,
             unfocusedContainerColor = MaterialTheme.colorScheme.extendedColors.darkBlue150,
@@ -80,6 +107,17 @@ fun ConsumerTextField(
             unfocusedPlaceholderColor = MaterialTheme.colorScheme.extendedColors.darkBlue650,
         )
     )
+    if (isError && supportingText != null) {
+        Spacer(modifier = Modifier.height(4.dp))
+        Box(modifier = Modifier.padding(horizontal = 16.dp)) {
+            CompositionLocalProvider(
+                LocalTextStyle provides MaterialTheme.typography.bodySmall
+            ) {
+                supportingText()
+            }
+        }
+    }
+}
 }
 
 @Preview(showBackground = true, locale = "ar")

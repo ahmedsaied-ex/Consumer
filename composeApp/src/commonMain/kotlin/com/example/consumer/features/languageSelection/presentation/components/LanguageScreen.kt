@@ -20,8 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.consumer.core.data.AppLang
 import com.example.consumer.core.presentation.components.buttons.ConsumerFilledButton
-import com.example.consumer.core.presentation.foundation.colors.OTPBoxBorderColor
 import com.example.consumer.core.presentation.theme.ConsumerTheme
+import com.example.consumer.core.presentation.theme.extendedColors
 import consumer.composeapp.generated.resources.Continue
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.modify_language
@@ -69,7 +69,7 @@ fun LanguageScreen(
 
                 Text(
                     stringResource(Res.string.modify_language),
-                    color = OTPBoxBorderColor,
+                    color = MaterialTheme.colorScheme.extendedColors.OTPBoxBorderColor,
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier.padding(horizontal = 20.dp)

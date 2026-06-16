@@ -43,7 +43,6 @@
     <string name="country">الدولة</string>
     <string name="id_number">رقم الهوية / رقم الإقامة</string>
     <string name="birth_date">تاريخ الميلاد</string>
-    <string name="gender">الجنس</string>
 
     <string name="settings">الإعدادات</string>
     <string name="edit_info">تعديل بياناتي</string>
@@ -83,5 +82,12 @@
 
     <string name="firstName">First Name</string>
     <string name="LastName">Last Name</string>
+    <string name="ID_Iqama_Number">ID / Iqama Number</string>
+    <string name="gender">Gender</string>
+    <string name="male">ذكر</string>
+    <string name="female">انثى</string>
+
+    <string name="save_and_continue">حفظ ومتابعة</string>
+    حفظ ومتابعة"
 
 </resources>
