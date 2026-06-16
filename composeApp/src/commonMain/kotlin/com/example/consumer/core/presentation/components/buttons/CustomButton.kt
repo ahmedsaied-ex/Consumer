@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -22,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,6 +36,7 @@ import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.group
+import consumer.composeapp.generated.resources.ic_add
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
@@ -63,6 +66,7 @@ fun ConsumerFilledButton(
     type: ButtonsTypes = ButtonsTypes.PRIMARY,
     backgroundColor: Color? = null,
     textColor: Color? = null,
+    icon: Painter? = null,
     corner: Dp = ConsumerDimensions.Radius.radiusMd,
     size: ButtonSize = ButtonSize.LARGE,
     fontStyle: TextStyle = Button1.copy(fontWeight = FontWeight.SemiBold),
@@ -98,15 +102,35 @@ fun ConsumerFilledButton(
         ),
         contentPadding = contentPadding,
     ) {
-        if (isLoading) {
-            CircularProgressIndicator(
-                color = contentColor
-            )
-        } else {
-            Text(
-                text = text,
-                style = fontStyle,
-            )
+        when {
+            isLoading -> {
+                CircularProgressIndicator(
+                    color = contentColor
+                )
+            }
+
+            icon != null -> {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Image(
+                        painter = icon,
+                        contentDescription = "iconDescription",modifier=Modifier.size(24.dp)
+                    )
+
+                    Text(
+                        text = text,
+                        style = fontStyle,
+                    )
+                }
+            }
+
+            else ->
+                Text(
+                    text = text,
+                    style = fontStyle,
+                )
         }
     }
 }
@@ -171,7 +195,7 @@ fun ConsumerBorderIconButton(
             containerColor = Color.Transparent,
             contentColor = textColor,
 
-        ),
+            ),
         contentPadding = PaddingValues(
             horizontal = DesignSystem.Padding.PaddingMd,
             vertical = DesignSystem.Padding.PaddingSm,
@@ -188,19 +212,16 @@ fun ConsumerBorderIconButton(
                 horizontalArrangement = Arrangement.Center,
             ) {
 
-                    Text(
-                        text = text,
-                        style = fontStyle,
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
+                Text(
+                    text = text,
+                    style = fontStyle,
+                )
+                Spacer(modifier = Modifier.width(16.dp))
 
-                    Image(
-                        painter = painterResource(iconRes),
-                        contentDescription = null,
-                    )
-
-
-
+                Image(
+                    painter = painterResource(iconRes),
+                    contentDescription = null,
+                )
 
 
             }
@@ -265,6 +286,13 @@ private fun ConsumerButtonsPreview() {
                 text = "اضغط هنا",
                 type = ButtonsTypes.PRIMARY,
                 enabled = false,
+                onClick = {},
+                modifier = Modifier.fillMaxWidth(),
+            )
+            ConsumerFilledButton(
+                text = "اضغط هنا",
+                type = ButtonsTypes.PRIMARY,
+                icon = painterResource(Res.drawable.ic_add),
                 onClick = {},
                 modifier = Modifier.fillMaxWidth(),
             )

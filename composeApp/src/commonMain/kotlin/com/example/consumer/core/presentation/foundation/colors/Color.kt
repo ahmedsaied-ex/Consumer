@@ -102,8 +102,6 @@ internal val SurfaceContainerDark = Color(0xFF2A2635) // Bottom sheet background
 internal val SurfaceContainerHighDark = Color(0xFF353140)
 internal val SurfaceContainerHighestDark = Color(0xFF403C4A)
 //added
-internal val OTPBoxBorderColor = Color(0xFF6B6D85)
-internal val LanguageCardBackground = Color(0xFFF4F7F9)
 internal val SelectedLanguageItemBackground = Color(0xFF225C80)
 internal val UnSelectedLanguageItemBackground = Color(0xFFE9EFF2)
 internal val UnSelectedIRadioIndicatorBorder = Color(0xFFB0B0BE)

@@ -43,7 +43,6 @@
     <string name="country">الدولة</string>
     <string name="id_number">رقم الهوية / رقم الإقامة</string>
     <string name="birth_date">تاريخ الميلاد</string>
-    <string name="gender">تاكيد</string>
 
     <string name="settings">الإعدادات</string>
     <string name="edit_info">تعديل بياناتي</string>

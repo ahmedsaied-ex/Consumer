@@ -18,10 +18,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.consumer.core.data.AppLang
 import com.example.consumer.core.presentation.foundation.DesignSystem.DesignSystem
-import com.example.consumer.core.presentation.foundation.colors.LanguageCardBackground
-import com.example.consumer.core.presentation.foundation.typography.Button1
 import com.example.consumer.core.presentation.foundation.typography.H6
 import com.example.consumer.core.presentation.theme.ConsumerTheme
+import com.example.consumer.core.presentation.theme.extendedColors
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.language
 import org.jetbrains.compose.resources.stringResource
@@ -35,7 +34,7 @@ fun LanguageCard(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(DesignSystem.Radius.Radius4XL))
-            .background(LanguageCardBackground)
+            .background(MaterialTheme.colorScheme.extendedColors.profileSectionEvenItemBackgroundColor)
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
