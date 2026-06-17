@@ -25,7 +25,6 @@ internal val BackgroundLight = Color(0xFFFFFFFF)
 internal val OnBackgroundLight = Color(0xFF1C1E44) // Title text (verify your mobile number)
 internal val SurfaceLight = Color(0xFFFFFFFF)
 internal val OnSurfaceLight = Color(0xFF1E1346) // General text
-
 // Surface Variants
 internal val SurfaceVariantLight = Color(0xFFADA6C8) // Dimmed button background
 internal val OnSurfaceVariantLight = Color(0xFF9990BA) // Hint text, placeholder (Ex.10,000)
