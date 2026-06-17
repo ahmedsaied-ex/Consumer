@@ -17,7 +17,6 @@ internal val OnTertiaryContainerLight = Color(0xFF555673)
 
 // Error - Used for alerts, wallet amount, auction timer ends
 internal val ErrorDark = Color(0xFFDC3545) // Red for critical states
-
 internal val OnErrorLight = Color(0xFFDC3545)
 internal val ErrorContainerLight = Color(0xFFFFE5E5)
 internal val OnErrorContainerLight = Color(0xFFC70000)
@@ -26,7 +25,6 @@ internal val BackgroundLight = Color(0xFFFFFFFF)
 internal val OnBackgroundLight = Color(0xFF1C1E44) // Title text (verify your mobile number)
 internal val SurfaceLight = Color(0xFFFFFFFF)
 internal val OnSurfaceLight = Color(0xFF1E1346) // General text
-
 // Surface Variants
 internal val SurfaceVariantLight = Color(0xFFADA6C8) // Dimmed button background
 internal val OnSurfaceVariantLight = Color(0xFF9990BA) // Hint text, placeholder (Ex.10,000)
