@@ -4,6 +4,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import com.example.consumer.core.presentation.foundation.typography.AppTypography
+import com.example.consumer.core.presentation.utils.ProvideWindowInfo
 
 
 @Composable
@@ -15,7 +16,8 @@ fun ConsumerTheme(content: @Composable () -> Unit){
             colorScheme = LightColorScheme,
             typography = AppTypography,
         ) {
-            content()
+
+            ProvideWindowInfo{ content() }
         }
     }
 }

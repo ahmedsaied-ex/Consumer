@@ -5,11 +5,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.MaterialTheme
@@ -36,6 +38,7 @@ import com.example.consumer.core.presentation.foundation.typography.H4
 import com.example.consumer.core.presentation.foundation.typography.Subtitle2
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
+import com.example.consumer.core.presentation.utils.h
 import com.example.consumer.features.onBoarding.domain.models.AuthTabs
 import com.example.consumer.features.onBoarding.domain.models.OnBoardingData
 import com.example.consumer.features.onBoarding.presintation.viewModels.OnBoardingViewModel
@@ -112,8 +115,8 @@ fun OnBoardingScreenContent(
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Spacer(modifier = Modifier.height(40.dp))
+            Column(modifier = Modifier.weight(1f),horizontalAlignment = Alignment.CenterHorizontally) {
+                Spacer(modifier = Modifier.height(40.h()))
                 Text(
                     stringResource(Res.string.consumer_voice),
                     style = H4.copy(
@@ -128,24 +131,24 @@ fun OnBoardingScreenContent(
                 ) { page ->
                     val item = items[page]
                     Box(
-                        modifier = Modifier.fillMaxWidth().height(300.dp),
+                        modifier = Modifier.fillMaxWidth(),
                         contentAlignment = Alignment.Center
                     ) {
                         Image(
                             painter = painterResource(item.image),
                             contentDescription = stringResource(item.title),
-                            contentScale = ContentScale.FillWidth,
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier.size(255.dp)
                         )
                     }
                 }
             }
 
-            Column {
-                // ✅ Safe now — items is guaranteed non-empty above
+            Column(modifier = Modifier.height(IntrinsicSize.Min)) {
                 Text(
                     stringResource(items[pagerState.currentPage].title),
                     style = H4.copy(
-                        color = MaterialTheme.colorScheme.onBackground,
+                        color = MaterialTheme.colorScheme.extendedColors.blueSapphire700,
                         fontWeight = FontWeight.SemiBold
                     )
                 )
@@ -161,9 +164,9 @@ fun OnBoardingScreenContent(
                     totalDots = items.size,
                     selectedIndex = pagerState.currentPage
                 )
-            }
 
-            Column(modifier = Modifier.padding(bottom = 16.dp)) {
+                Spacer(modifier = Modifier.height(100.h()))
+
                 ConsumerFilledButton(
                     text = "اضغط هنا",
                     type = ButtonsTypes.PRIMARY,
@@ -171,6 +174,7 @@ fun OnBoardingScreenContent(
                     onClick = onContinueClick,
                     modifier = Modifier.fillMaxWidth(),
                 )
+                Spacer(modifier = Modifier.height(16.dp))
             }
         }
     }

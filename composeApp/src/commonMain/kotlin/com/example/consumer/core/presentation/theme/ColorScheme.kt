@@ -98,10 +98,10 @@ data class ExtendedColors(
     val reevaluateMissionTextColor: Color,
     val reevaluateMissionBackgroundColor: Color,
 
-
     val completedMissionTextColor: Color,
     val completedMissionBackgroundColor: Color,
     val OTPBoxBorderColor:Color,
+
     // circles
     val starterCircleColor: Color,
     val serveyStartedCircleColor: Color,
@@ -131,7 +131,6 @@ data class ExtendedColors(
     val midPriorityColor: Color,
     val highPriorityColor: Color,
 
-
     //Log out backGround
     val logOutButtonBackground: Color,
 
@@ -144,8 +143,6 @@ data class ExtendedColors(
     val buttonBorderColorAuth  : Color,
     val cadetBlue150  : Color,
     val surveySelectedBackground  : Color,
-
-
     )
 
 val extendedColors = ExtendedColors(
