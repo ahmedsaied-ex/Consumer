@@ -44,13 +44,13 @@ fun LanguageCard(
             style = H6.copy(fontWeight = FontWeight.Medium)
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         LanguageItem(
             title = "العربية",
             selected = selectedLanguage == AppLang.ARABIC,
             onClick = { onLanguageSelected(AppLang.ARABIC) }
         )
-        Spacer(modifier = Modifier.height(15.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         LanguageItem(
             title = "ENGLISH",
@@ -67,7 +67,7 @@ fun LanguageCard(
 @Preview(showBackground=true)
 fun PreviewLanguageCard() {
     ConsumerTheme {
-        LanguageCard(selectedLanguage = AppLang.ARABIC, onLanguageSelected = {})
+        LanguageCard(selectedLanguage = AppLang.ENGLISH, onLanguageSelected = {})
     }
 
 }

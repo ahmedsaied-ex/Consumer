@@ -39,6 +39,7 @@ import com.example.consumer.core.presentation.foundation.typography.Subtitle2
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
 import com.example.consumer.core.presentation.utils.h
+import com.example.consumer.core.presentation.utils.s
 import com.example.consumer.features.onBoarding.domain.models.AuthTabs
 import com.example.consumer.features.onBoarding.domain.models.OnBoardingData
 import com.example.consumer.features.onBoarding.presintation.viewModels.OnBoardingViewModel
@@ -142,7 +143,7 @@ fun OnBoardingScreenContent(
                             painter = painterResource(item.image),
                             contentDescription = stringResource(item.title),
                             contentScale = ContentScale.Fit,
-                            modifier = Modifier.size(255.dp)
+                            modifier = Modifier.size(300.s())
                         )
                     }
                 }
