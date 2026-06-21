@@ -57,7 +57,8 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun OnBoardingScreen(
     modifier: Modifier = Modifier,
-    viewModel: OnBoardingViewModel = koinViewModel()
+    viewModel: OnBoardingViewModel = koinViewModel(),
+    onContinue: () -> Unit = {}
 ) {
     val items by viewModel.onBoardingUiState.collectAsState()
 
@@ -70,7 +71,10 @@ fun OnBoardingScreen(
         onDismiss = { viewModel.closeBottomSheet() },
         onSelected = { viewModel.onTabSelected(it) },
 
-        onContinueClick = { viewModel.openBottomSheet() }
+        onContinueClick = {
+            viewModel.testSetData()
+            onContinue()
+        }
     )
 
 }

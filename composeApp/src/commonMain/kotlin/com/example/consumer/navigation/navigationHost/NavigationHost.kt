@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.consumer.core.presentation.components.CostumeScaffold
 import com.example.consumer.core.presentation.foundation.DesignSystem.DesignSystem
 import com.example.consumer.core.presentation.foundation.typography.H1
 import com.example.consumer.core.presentation.theme.ConsumerTheme
@@ -82,7 +83,7 @@ fun NavigationHost(
         splashGraph(navController = navController)
         authGraph(navController = navController)
         composable<MainGraphRoot.MainGraph> {
-
+            TestMainScreen()
         }
     }
 }
@@ -92,9 +93,12 @@ fun NavigationHost(
 fun TestMainScreen(
     modifier: Modifier = Modifier
 ) {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center)
-    {
-        Text("MainScreen", style = H1)
+
+    CostumeScaffold{
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center)
+        {
+            Text("MainScreen", style = H1)
+        }
     }
 }
 
