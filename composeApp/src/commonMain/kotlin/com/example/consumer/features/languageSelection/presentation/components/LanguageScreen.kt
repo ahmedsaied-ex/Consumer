@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.White
@@ -22,17 +24,23 @@ import com.example.consumer.core.data.AppLang
 import com.example.consumer.core.presentation.components.buttons.ConsumerFilledButton
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
+import com.example.consumer.features.languageSelection.presentation.viewModel.LanguageViewModel
 import consumer.composeapp.generated.resources.Continue
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.modify_language
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 @Preview(showBackground = true)
 @Suppress("SuspiciousIndentation")
 @Composable
 fun LanguageScreen(
-//    onContinue: () -> Unit = {},
+    onContinue: () -> Unit = {},
+    viewModel: LanguageViewModel = koinViewModel()
+
 ) {
+    val selectedLanguage by viewModel.selectedLanguage.collectAsState()
+
     ConsumerTheme {
         Box(
             modifier = Modifier
@@ -59,10 +67,9 @@ fun LanguageScreen(
                 )
 
                 LanguageCard(
-                    selectedLanguage = AppLang.ARABIC,
-//                        selectedLanguage = selectedLanguage,
+                    selectedLanguage = selectedLanguage,
                     onLanguageSelected = {
-//                            viewModel.onLanguageSelected(it)
+                            viewModel.onLanguageSelected(it)
                     }
                 )
                 Spacer(modifier = Modifier.height(15.dp))
@@ -80,7 +87,7 @@ fun LanguageScreen(
                 ConsumerFilledButton(
                     text = stringResource(Res.string.Continue),
                     onClick = {
-//                            viewModel.onContinue(onContinue)
+                            viewModel.onContinue(onContinue)
                     },
                     backgroundColor = MaterialTheme.colorScheme.tertiary,
                     modifier = Modifier.fillMaxWidth(),

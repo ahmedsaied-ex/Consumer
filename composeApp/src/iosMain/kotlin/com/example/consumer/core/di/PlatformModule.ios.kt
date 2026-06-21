@@ -1,6 +1,7 @@
 package com.example.consumer.core.di
 
 import com.example.consumer.core.config.AppConfig
+import com.example.consumer.core.data.dataSrore.createDataStore
 import com.example.consumer.core.domain.model.AnalyticsLogger
 import com.example.consumer.core.domain.model.IOSAnalyticsLogger
 import com.example.consumer.core.domain.model.IOSLogger
@@ -18,5 +19,6 @@ actual val platformModule =
         single<Logger> { IOSLogger(get<AppConfig>()) }
         single<AnalyticsLogger> { IOSAnalyticsLogger(get<AppConfig>()) }
 
+        single { createDataStore() }
 
     }

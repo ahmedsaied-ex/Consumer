@@ -8,17 +8,19 @@ import com.example.consumer.core.presentation.utils.ProvideWindowInfo
 
 
 @Composable
-fun ConsumerTheme(content: @Composable () -> Unit){
+fun ConsumerTheme(content: @Composable () -> Unit) {
     val extendedColors = extendedColors
 
-    CompositionLocalProvider(LocalExtendedColors provides extendedColors){
-        MaterialTheme(
-            colorScheme = LightColorScheme,
-            typography = AppTypography,
-        ) {
-
-            ProvideWindowInfo{ content() }
+    CompositionLocalProvider(LocalExtendedColors provides extendedColors) {
+        PlatformThemeAdjustments {
+            MaterialTheme(
+                colorScheme = LightColorScheme,
+                typography = AppTypography,
+            ) {
+                ProvideWindowInfo { content() }
+            }
         }
     }
+
 }
 

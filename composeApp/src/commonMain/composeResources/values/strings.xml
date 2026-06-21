@@ -79,8 +79,8 @@
 
     <string name="log_out">تسجيل الخروج</string>
     <string name="confirm">تاكيد</string>
-    <string name="language">اختر اللغة</string>
-    <string name="modify_language">يمكن تغيير اللغة من داخل اعدادات التطبيق في أي وقت</string>
+    <string name="language">Choose language</string>
+    <string name="modify_language">You can change the language of the application </string>
     <string name="Continue">التالي</string>
     <string name="AppName">صوت المستهلك</string>
 

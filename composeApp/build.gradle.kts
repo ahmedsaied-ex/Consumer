@@ -9,6 +9,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinSerialization)
+
 }
 val localProperties =
     Properties().apply {
@@ -51,6 +53,9 @@ kotlin {
             implementation(libs.koin.androidx.compose)
         }
         commonMain.dependencies {
+//            implementation("")
+
+            implementation(libs.datastore.preferences)
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
             implementation(libs.compose.material3)
