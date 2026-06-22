@@ -23,6 +23,8 @@ import com.example.consumer.core.presentation.components.CostumeScaffold
 import com.example.consumer.core.presentation.foundation.DesignSystem.DesignSystem
 import com.example.consumer.core.presentation.foundation.typography.H1
 import com.example.consumer.core.presentation.theme.ConsumerTheme
+import com.example.consumer.features.profile.presentation.UserProfile
+import com.example.consumer.features.profile.presentation.components.ProfileSection
 import com.example.consumer.navigation.graphs.authGraph
 import com.example.consumer.navigation.graphs.splashGraph
 import com.example.consumer.navigation.routes.MainGraphRoot
@@ -83,7 +85,7 @@ fun NavigationHost(
         splashGraph(navController = navController)
         authGraph(navController = navController)
         composable<MainGraphRoot.MainGraph> {
-            TestMainScreen()
+            UserProfile()
         }
     }
 }

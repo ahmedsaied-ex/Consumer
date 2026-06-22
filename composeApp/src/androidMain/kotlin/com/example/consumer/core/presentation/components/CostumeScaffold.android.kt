@@ -1,12 +1,16 @@
 package com.example.consumer.core.presentation.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.union
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -22,8 +26,8 @@ actual fun CostumeScaffold(
     content: @Composable () -> Unit
 ) {
     Scaffold(
-        modifier = modifier,
-        contentWindowInsets = WindowInsets.systemBars.union(WindowInsets.displayCutout)
+        modifier = modifier.background(MaterialTheme.colorScheme.background).systemBarsPadding(),
+        contentWindowInsets = WindowInsets.statusBars.union(WindowInsets.displayCutout)
             .union(WindowInsets.ime),
         topBar = topBar,
         snackbarHost = {

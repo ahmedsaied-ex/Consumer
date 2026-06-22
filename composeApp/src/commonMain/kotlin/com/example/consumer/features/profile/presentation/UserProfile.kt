@@ -28,6 +28,7 @@ import com.example.consumer.core.presentation.components.CostumeScaffold
 import com.example.consumer.core.presentation.components.bars.TransparentToolbar
 import com.example.consumer.core.presentation.components.cards.AIAssistantCard
 import com.example.consumer.core.presentation.components.lines.HorizontalLine
+import com.example.consumer.core.presentation.components.utils.LocalizedImage
 import com.example.consumer.core.presentation.foundation.DesignSystem.DesignSystem
 import com.example.consumer.core.presentation.foundation.typography.Subtitle3
 import com.example.consumer.core.presentation.theme.ConsumerTheme
@@ -36,6 +37,7 @@ import com.example.consumer.features.profile.domain.models.SectionItem
 import com.example.consumer.features.profile.domain.models.SuffixType
 import com.example.consumer.features.profile.presentation.components.ProfileSection
 import com.example.consumer.features.profile.presentation.components.ProfileTopPart
+import consumer.composeapp.generated.resources.Current_lang
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.app_lang
 import consumer.composeapp.generated.resources.basic_info
@@ -45,8 +47,10 @@ import consumer.composeapp.generated.resources.country
 import consumer.composeapp.generated.resources.edit_info
 import consumer.composeapp.generated.resources.gender
 import consumer.composeapp.generated.resources.id_number
+import consumer.composeapp.generated.resources.language
 import consumer.composeapp.generated.resources.log_out
 import consumer.composeapp.generated.resources.logout_icon
+import consumer.composeapp.generated.resources.my_account
 import consumer.composeapp.generated.resources.privacy_policy
 import consumer.composeapp.generated.resources.settings
 import consumer.composeapp.generated.resources.terms_and_conditions
@@ -73,19 +77,19 @@ fun UserProfile(
             onClick = { /* navigate */ }
         ),
         SectionItem.Clickable(
-            title =  Res.string.change_email,
+            title = Res.string.change_email,
             suffix = SuffixType.ChevronOnly,
             onClick = { /* navigate */ }
         ),
         SectionItem.Clickable(
-            title =  Res.string.app_lang,
-            suffix = SuffixType.TextAndChevron("العربية"),
+            title = Res.string.app_lang,
+            suffix = SuffixType.TextAndChevron(stringResource(Res.string.Current_lang)),
             onClick = { /* open language picker */ }
         ),
     )
     val privacyAndTerms = listOf(
         SectionItem.Clickable(
-            title =  Res.string.privacy_policy,
+            title = Res.string.privacy_policy,
             suffix = SuffixType.ChevronOnly,
             onClick = { /* navigate */ }
         ),
@@ -99,7 +103,7 @@ fun UserProfile(
         modifier = modifier.fillMaxSize(),
         topBar = {
             TransparentToolbar(
-                navController = navController, title = "ملفي الشخصي"
+                navController = navController, title = stringResource(Res.string.my_account)
             )
         }
     ) {
@@ -107,7 +111,8 @@ fun UserProfile(
             modifier = Modifier
                 .padding(horizontal = DesignSystem.Padding.Padding2XL).fillMaxSize()
                 .background(MaterialTheme.colorScheme.background),
-            verticalArrangement = Arrangement.spacedBy(DesignSystem.Padding.Padding2XL)
+            verticalArrangement = Arrangement.spacedBy(DesignSystem.Padding.Padding2XL),
+            contentPadding = PaddingValues(vertical = DesignSystem.Padding.Padding2XL)
         ) {
             item {
                 ProfileTopPart(
@@ -115,6 +120,7 @@ fun UserProfile(
                     imageUrl = "",
                     selectedImageBytes = null,
                     isUploadingImage = false,
+                    initials = "AR",
                     onImageClick = {}
                 )
             }
@@ -149,11 +155,18 @@ fun UserProfile(
                         containerColor = MaterialTheme.colorScheme.extendedColors.logOutButtonBackground,
                         contentColor = MaterialTheme.colorScheme.onError
                     ),
-                ){
+                ) {
                     Row(modifier = Modifier.fillMaxWidth()) {
-                        Image(painterResource(Res.drawable.logout_icon),contentDescription = null, modifier = Modifier.size(20.dp))
+                        LocalizedImage(
+                            painterResource(Res.drawable.logout_icon),
+                            contentDescription = null,
+                            modifier = Modifier.size(20.dp)
+                        )
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text(stringResource(Res.string.log_out), style = Subtitle3.copy(fontWeight = FontWeight.SemiBold))
+                        Text(
+                            stringResource(Res.string.log_out),
+                            style = Subtitle3.copy(fontWeight = FontWeight.SemiBold)
+                        )
                     }
                 }
             }

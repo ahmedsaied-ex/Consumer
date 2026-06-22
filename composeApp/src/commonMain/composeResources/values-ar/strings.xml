@@ -55,6 +55,12 @@
     <string name="usage_policy">سياسية الاستخدام</string>
     <string name="privacy_policy">سياسة الخصوصية</string>
     <string name="terms_and_conditions">الشروط والأحكام</string>
+    <string name="Current_lang">العربية</string>
+    <string name="my_account">ملفي الشخصي</string>
+
+
+
+
 
     <!--    priority types-->
     <string name="low_priority">أولوية منخفضة</string>

@@ -20,8 +20,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.consumer.core.presentation.components.utils.LocalizedImage
+import com.example.consumer.core.presentation.foundation.typography.Subtitle1
+import com.example.consumer.core.presentation.foundation.typography.Subtitle3
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
 import com.example.consumer.features.profile.domain.models.SectionItem
@@ -53,7 +57,7 @@ fun ProfileSection(
     Column(modifier = modifier.fillMaxWidth()) {
         Text(
             text = stringResource(title),
-            style = MaterialTheme.typography.titleLarge,
+            style = Subtitle1,
             color = MaterialTheme.colorScheme.extendedColors.darkBlue650
         )
         Spacer(modifier = Modifier.fillMaxWidth().height(12.dp))
@@ -79,46 +83,55 @@ fun ProfileSectionItem(
     else
         MaterialTheme.colorScheme.extendedColors.profileSectionOddItemBackgroundColor
 
-    val baseModifier = modifier
-        .fillMaxWidth()
-        .background(background)
-        .padding(vertical = 12.dp, horizontal = 16.dp)
+
 
     when (item) {
         is SectionItem.Static -> {
             Row(
-                modifier = baseModifier,
+                modifier = modifier
+                    .fillMaxWidth()
+                    .background(background)
+                    .padding(vertical = 12.dp, horizontal = 16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
+                    modifier = Modifier.weight(1f),
                     text = item.key,
-                    style = MaterialTheme.typography.titleSmall,
+                    style = Subtitle3,
                     color = MaterialTheme.colorScheme.extendedColors.darkBlue650
                 )
+                Spacer(modifier = Modifier.width(8.dp))
                 Text(
+                    modifier = Modifier.weight(1f),
                     text = item.value,
-                    style = MaterialTheme.typography.titleSmall,
+                    style = Subtitle3,
                     color = MaterialTheme.colorScheme.onBackground,
-                    fontWeight = FontWeight.SemiBold
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign = TextAlign.End
                 )
             }
         }
 
         is SectionItem.Clickable -> {
             Row(
-                modifier = baseModifier.clickable { item.onClick() },
+                modifier = modifier
+                    .fillMaxWidth()
+                    .clickable { item.onClick() }
+                    .background(background)
+                    .padding(vertical = 12.dp, horizontal = 16.dp)
+                    ,
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     text = stringResource(item.title),
-                    style = MaterialTheme.typography.titleSmall,
+                    style = Subtitle3,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onBackground
                 )
                 when (val suffix = item.suffix) {
                     is SuffixType.ChevronOnly -> {
-                        Image(
+                        LocalizedImage(
                             painter = painterResource(Res.drawable.chevron_left),
                             contentDescription = null
                         )
@@ -128,11 +141,11 @@ fun ProfileSectionItem(
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(
                                 text = suffix.label,
-                                style = MaterialTheme.typography.titleSmall,
+                                style = Subtitle3,
                                 color = MaterialTheme.colorScheme.extendedColors.darkBlue650
                             )
                             Spacer(modifier = Modifier.width(8.dp))
-                            Image(
+                            LocalizedImage(
                                 painter = painterResource(Res.drawable.chevron_left),
                                 contentDescription = null
                             )
@@ -248,7 +261,7 @@ fun SettingSection(
                         color = MaterialTheme.colorScheme.extendedColors.darkBlue650,
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    Image(
+                    LocalizedImage(
                         painter = painterResource(Res.drawable.chevron_left),
                         contentDescription = null
                     )

@@ -71,7 +71,7 @@ fun MissionLog(
             )
             Spacer(Modifier.height(2.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                ProfilePictureOrInitials(canPick = false, size = 28.dp, thickness = 0.5.dp)
+//                ProfilePictureOrInitials(canPick = false, size = 28.dp, thickness = 0.5.dp)
                 Spacer(Modifier.width(8.dp))
                 Text(senderName, style = Subtitle3.copy(MaterialTheme.colorScheme.extendedColors.darkBlue650))
             }

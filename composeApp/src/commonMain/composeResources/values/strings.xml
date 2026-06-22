@@ -39,6 +39,7 @@
     <string name="sold_from">Sold by</string>
 
 
+
 <!--Profile -->
     <string name="basic_info">My Basic Information</string>
     <string name="country">Country</string>
@@ -53,6 +54,14 @@
     <string name="usage_policy">Usage Policy</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="Current_lang">English</string>
+    <string name="my_account">My profile</string>
+
+
+
+
+
+
 
     <!--    priority types-->
     <string name="low_priority">Low Priority</string>

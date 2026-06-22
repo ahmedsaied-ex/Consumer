@@ -22,17 +22,19 @@ import com.example.consumer.core.presentation.theme.ConsumerTheme
 fun ProfileTopPart(
     modifier: Modifier = Modifier,
     name: String,
+    initials: String,
     imageUrl: String,
     selectedImageBytes: ByteArray? = null,
     isUploadingImage: Boolean = false,
     onImageClick: () -> Unit = {}
 ) {
-    Column(modifier = modifier.fillMaxWidth().padding(vertical = DesignSystem.Padding.Padding2XL), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         ProfilePictureOrInitials(
             imageUrl = imageUrl,
             selectedImageBytes = selectedImageBytes,
             isUploadingImage = isUploadingImage,
-            onImageClick = onImageClick
+            onImageClick = onImageClick,
+            initials = initials
         )
         Spacer(Modifier.height(16.dp))
         Text(
@@ -54,7 +56,8 @@ fun ProfileTopPartPreview() {
                 imageUrl = "",
                 selectedImageBytes = null,
                 isUploadingImage = false,
-                onImageClick = {}
+                onImageClick = {},
+                initials = "AR"
             )
     }
 

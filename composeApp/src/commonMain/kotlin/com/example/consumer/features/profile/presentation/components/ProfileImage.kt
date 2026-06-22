@@ -24,8 +24,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.example.consumer.core.presentation.foundation.typography.H1
+import com.example.consumer.core.presentation.foundation.typography.H2
 import com.example.consumer.core.presentation.foundation.typography.H4
 import com.example.consumer.core.presentation.foundation.typography.H5
+import com.example.consumer.core.presentation.foundation.typography.H6
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
 import consumer.composeapp.generated.resources.Res
@@ -38,22 +40,14 @@ import org.jetbrains.compose.resources.painterResource
 fun ProfileImage(
     imageUrl: String? = null,
     imageData: ByteArray? = null,
-    iconWidth: Dp = 28.dp,
-    iconHeight: Dp = 28.dp,
+    firstCharsOfName: String = "",
     modifier: Modifier = Modifier,
-    size: Dp,
-    thickness: Dp=1.5.dp
 ) {
     var imageLoadFailed by remember { mutableStateOf(false) }
 
     if (imageLoadFailed) {
         // Show initials if image failed to load
-        ProfileInitials(
-            iconWidth = iconWidth,
-            iconHeight = iconHeight,
-            size = size,
-            thickness = thickness
-        )
+        ProfileInitials(firstCharsOfName = firstCharsOfName)
     } else {
         AsyncImage(
             model = imageData ?: imageUrl,
@@ -62,6 +56,7 @@ fun ProfileImage(
             modifier = modifier.fillMaxSize(),
             placeholder = painterResource(Res.drawable.ic_profile_active),
             onError = {
+                // Track that the image failed to load
                 imageLoadFailed = true
             }
         )
@@ -72,38 +67,25 @@ fun ProfileImage(
 @Preview(showBackground=true)
 fun ProfileImagePreview() {
     ConsumerTheme {
-        ProfileImage(size = 100.dp)
+        ProfileImage()
     }
 
 }
-
 @Composable
 fun ProfileInitials(
-    iconWidth: Dp = 28.dp,
-    iconHeight: Dp = 28.dp,
-    modifier: Modifier = Modifier,
-    size : Dp,
-    thickness : Dp =1.5.dp
+    firstCharsOfName: String,
+    modifier: Modifier = Modifier
 ) {
-    Box( contentAlignment = Alignment.Center,
+    Box(
+        contentAlignment = Alignment.Center,
         modifier = modifier
-            .size(size)
-            .border(
-                width = thickness,
-                color = MaterialTheme.colorScheme.outline,
-                shape = CircleShape
-            )
-            .background(
-                MaterialTheme.colorScheme.extendedColors.tabBarColorTabsBackground,
-                CircleShape
-            )){
-        Image(
-            painter = painterResource(Res.drawable.profile_icon),
-            contentDescription = null,
-            modifier = Modifier.size(
-                width = iconWidth,
-                height = iconHeight
-            )
+            .fillMaxSize()
+            .background(color = MaterialTheme.colorScheme.extendedColors.tabBarColorTabsBackground)
+    ) {
+        Text(
+            text = firstCharsOfName,
+            style = H5.copy(fontWeight = FontWeight.SemiBold),
+            color = MaterialTheme.colorScheme.primary
         )
     }
 }
