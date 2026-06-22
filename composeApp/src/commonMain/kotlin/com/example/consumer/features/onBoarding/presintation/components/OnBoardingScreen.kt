@@ -51,6 +51,7 @@ import consumer.composeapp.generated.resources.illustration_onboarding_my_cart
 import consumer.composeapp.generated.resources.illustration_smart_shopping
 import consumer.composeapp.generated.resources.shop_smart_description
 import consumer.composeapp.generated.resources.shop_smart_title
+import consumer.composeapp.generated.resources.start_now
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -173,7 +174,7 @@ fun OnBoardingScreenContent(
                 Spacer(modifier = Modifier.height(100.h()))
 
                 ConsumerFilledButton(
-                    text = "اضغط هنا",
+                    text = stringResource(Res.string.start_now),
                     type = ButtonsTypes.PRIMARY,
                     enabled = true,
                     onClick = onContinueClick,

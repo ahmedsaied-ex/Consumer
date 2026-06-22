@@ -17,6 +17,7 @@
     <string name="error_socket_auction_not_valid">هذا المزاد لم يعد متاحا بعد الان</string>
     <string name="otp_verified_successfully">تم التحقق من حسابك بنجاح</string>
 
+
     <!-- OnBoarding -->
     <string name="consumer_voice">صوت المستهلك</string>
     <string name="shop_smart_title">تسوّق بذكاء، ووفر وقتك</string>
@@ -25,18 +26,62 @@
     <string name="compare_your_bucket_description">بلمحة واحدة، اكتشف المتجر الذي يوفر لك أفضل سعر لمجموعة منتجاتك المختارة في سلة واحدة</string>
     <string name="ambassador">سفير مستهلك</string>
     <string name="consumer">مستهلك</string>
-    <string name="email">البريد الإلكتروني</string>
-    <string name="password">كلمة المرور</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="complete_with_email">البدء باستخدام البريد الإلكتروني</string>
+    <string name="complete_with_google">البدء باستخدام حساب باستخدام Google</string>
+    <string name="complete_with_apple">البدء باستخدام حساب باستخدام Apple</string>
+    <string name="start_now">ابدء الآن</string>
 
-    <string name="complete_with_email">اكمل باستخدام البريد الإلكتروني</string>
-    <string name="complete_with_google">اكمل باستخدام Google</string>
-    <string name="complete_with_apple">اكمل باستخدام Apple</string>
 
-    <string name="confirm">تأكيد</string>
+    <!--  Cards -->
+    <string name="price_start_with">سعر يبدأ من</string>
+    <string name="questions">الاسئلة</string>
+    <string name="best_price">أفضل سعر</string>
+    <string name="sold_from">يباع من</string>
+
+
+    <!--Profile -->
+    <string name="basic_info">بياناتي الأساسية</string>
+    <string name="country">الدولة</string>
+    <string name="id_number">رقم الهوية / رقم الإقامة</string>
+    <string name="birth_date">تاريخ الميلاد</string>
+
+    <string name="settings">الإعدادات</string>
+    <string name="edit_info">تعديل بياناتي</string>
+    <string name="change_email">تغيير البريد الإلكتروني</string>
+    <string name="app_lang">لغة التطبيق</string>
+
+    <string name="usage_policy">سياسية الاستخدام</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="terms_and_conditions">الشروط والأحكام</string>
+
+    <!--    priority types-->
+    <string name="low_priority">أولوية منخفضة</string>
+    <string name="mid_priority">أولوية متوسطة</string>
+    <string name="high_priority">عاجل ومهم</string>
+    <string name="branches">فروع</string>
+    <string name="free_discovery_mission">مهمة اكتشاف مفتوحة</string>
+
+    <!--Assessment Task-->
+    <string name="branch">فرع</string>
+    <string name="sector">القطاع</string>
+    <string name="implementation_date">تاريخ التنفيذ المستهدف</string>
+
+
+    <!--upload file-->
+    <string name="upload_or_choose_file">تحميل/ اختيار الملف</string>
+    <string name="supported_files">الملفات المدعومة</string>
+    <string name="file_types">PDF, JPG or PNG</string>
+    <string name="mega">ميجا</string>
+
+    <string name="log_out">تسجيل الخروج</string>
+    <string name="confirm">تاكيد</string>
     <string name="language">اختر اللغة</string>
     <string name="modify_language">يمكن تغيير اللغة من داخل اعدادات التطبيق في أي وقت</string>
     <string name="Continue">التالي</string>
     <string name="AppName">صوت المستهلك</string>
+
     <string name="firstName">الاسم الأول</string>
     <string name="LastName">الاسم الأخير</string>
     <string name="ID_Iqama_Number">رقم الهوية / رقم الإقامة</string>
@@ -44,10 +89,7 @@
     <string name="male">ذكر</string>
     <string name="female">انثى</string>
 
-    <!--  Cards -->
-    <string name="price_start_with">سعر يبدأ من</string>
-    <string name="sold_from">يباع من</string>
-    <string name="questions">أسئلة</string>
-
+    <string name="save_and_continue">حفظ ومتابعة</string>
 
 </resources>
+

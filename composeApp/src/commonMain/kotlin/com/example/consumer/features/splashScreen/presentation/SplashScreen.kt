@@ -27,8 +27,8 @@ import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
 import com.example.consumer.features.splashScreen.domain.model.SplashDestination
 import com.example.consumer.features.splashScreen.presentation.viewModel.SplashScreenViewModel
+import consumer.composeapp.generated.resources.AppName
 import consumer.composeapp.generated.resources.Res
-import consumer.composeapp.generated.resources.consumer_voice
 import consumer.composeapp.generated.resources.splash_screen_image
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
@@ -72,7 +72,7 @@ fun SplashScreenUi(
         HorizontalLine(modifier = Modifier.width(206.dp))
         Spacer(Modifier.height(16.dp))
         Text(
-            stringResource(Res.string.consumer_voice),
+            stringResource(Res.string.AppName),
             style = H5.copy(color = MaterialTheme.colorScheme.extendedColors.blueSapphire700)
         )
     }

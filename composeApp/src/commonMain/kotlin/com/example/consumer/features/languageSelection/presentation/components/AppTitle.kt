@@ -8,15 +8,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.consumer.core.presentation.foundation.typography.H4
 import com.example.consumer.core.presentation.theme.ConsumerTheme
-import consumer.composeapp.generated.resources.AppName
 import consumer.composeapp.generated.resources.Res
+import consumer.composeapp.generated.resources.consumer_voice
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AppTitle(
     modifier: Modifier = Modifier
 ) {
-    Text(stringResource(Res.string.AppName),
+    Text(stringResource(Res.string.consumer_voice),
+        modifier = modifier,
         style = H4.copy(fontWeight = FontWeight.Bold), color = MaterialTheme.colorScheme.primary
     )
 }

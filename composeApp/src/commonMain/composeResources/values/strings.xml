@@ -18,67 +18,64 @@
 
 
     <!-- OnBoarding -->
-    <string name="consumer_voice">صوت المستهلك</string>
-    <string name="shop_smart_title">تسوّق بذكاء، ووفر وقتك</string>
-    <string name="shop_smart_description">ابحث عن أي منتج وقارن سعره بين مختلف المتاجر لتضمن الحصول على أفضل صفقة دائماً</string>
-    <string name="compare_your_bucket_title">قارن سلتك بالكامل</string>
-    <string name="compare_your_bucket_description">بلمحة واحدة، اكتشف المتجر الذي يوفر لك أفضل سعر لمجموعة منتجاتك المختارة في سلة واحدة</string>
-    <string name="ambassador">سفير مستهلك</string>
-    <string name="consumer">مستهلك</string>
+    <string name="consumer_voice">Consumer Voice</string>
+    <string name="shop_smart_title">Shop smarter and save time</string>
+    <string name="shop_smart_description">Search for any product and compare its price across different stores to make sure you always get the best deal.</string>
+    <string name="compare_your_bucket_title">Compare your full basket</string>
+    <string name="compare_your_bucket_description">At a glance, find the store that offers the best price for your selected basket items.</string>
+    <string name="ambassador">Consumer Ambassador</string>
+    <string name="consumer">Consumer</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="complete_with_email">Complete with Email</string>
-    <string name="complete_with_google">Complete with Google</string>
-    <string name="complete_with_apple">Complete with Apple</string>
+    <string name="complete_with_email">Start with Email account</string>
+    <string name="complete_with_google">start with Google</string>
+    <string name="complete_with_apple">start with Apple</string>
+    <string name="start_now">start now</string>
 
     <!--  Cards -->
-    <string name="price_start_with">سعر يبدأ من</string>
+    <string name="price_start_with">Price starts from</string>
     <string name="questions">questions</string>
-    <string name="best_price">أفضل سعر</string>
-    <string name="sold_from">يباع من</string>
+    <string name="best_price">Best Price</string>
+    <string name="sold_from">Sold by</string>
 
 
 <!--Profile -->
-    <string name="basic_info">بياناتي الأساسية</string>
-    <string name="country">الدولة</string>
-    <string name="id_number">رقم الهوية / رقم الإقامة</string>
-    <string name="birth_date">تاريخ الميلاد</string>
+    <string name="basic_info">My Basic Information</string>
+    <string name="country">Country</string>
+    <string name="id_number">National ID / Iqama Number</string>
+    <string name="birth_date">Birth Date</string>
 
-    <string name="settings">الإعدادات</string>
-    <string name="edit_info">تعديل بياناتي</string>
-    <string name="change_email">تغيير البريد الإلكتروني</string>
-    <string name="app_lang">لغة التطبيق</string>
+    <string name="settings">Settings</string>
+    <string name="edit_info">Edit My Information</string>
+    <string name="change_email">Change Email</string>
+    <string name="app_lang">App Language</string>
 
-    <string name="usage_policy">سياسية الاستخدام</string>
-    <string name="privacy_policy">سياسة الخصوصية</string>
-    <string name="terms_and_conditions">الشروط والأحكام</string>
+    <string name="usage_policy">Usage Policy</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
 
     <!--    priority types-->
-    <string name="low_priority">أولوية منخفضة</string>
-    <string name="mid_priority">أولوية متوسطة</string>
-    <string name="high_priority">عاجل ومهم</string>
-    <string name="branches">فروع</string>
-    <string name="free_discovery_mission">مهمة اكتشاف مفتوحة</string>
+    <string name="low_priority">Low Priority</string>
+    <string name="mid_priority">Medium Priority</string>
+    <string name="high_priority">Urgent and Important</string>
+    <string name="branches">Branches</string>
+    <string name="free_discovery_mission">Open Discovery Task</string>
 
     <!--Assessment Task-->
-    <string name="branch">فرع</string>
-    <string name="sector">القطاع</string>
-    <string name="implementation_date">تاريخ التنفيذ المستهدف</string>
+    <string name="branch">Branch</string>
+    <string name="sector">Sector</string>
+    <string name="implementation_date">Target Execution Date</string>
 
 
 <!--upload file-->
-    <string name="upload_or_choose_file">تحميل/ اختيار الملف</string>
-    <string name="supported_files">الملفات المدعومة</string>
+    <string name="upload_or_choose_file">Upload / Choose File</string>
+    <string name="supported_files">Supported Files</string>
     <string name="file_types">PDF, JPG or PNG</string>
-    <string name="mega">ميجا</string>
+    <string name="mega">MB</string>
 
 
-
-
-
-
-    <string name="log_out">تسجيل الخروج</string>
-    <string name="confirm">تاكيد</string>
+    <string name="log_out">Log Out</string>
+    <string name="confirm">Confirm</string>
     <string name="language">Choose language</string>
     <string name="modify_language">You can change the language of the application </string>
     <string name="Continue">Continue</string>
@@ -88,10 +85,9 @@
     <string name="LastName">Last Name</string>
     <string name="ID_Iqama_Number">ID / Iqama Number</string>
     <string name="gender">Gender</string>
-    <string name="male">ذكر</string>
-    <string name="female">انثى</string>
+    <string name="male">male</string>
+    <string name="female">female</string>
 
     <string name="save_and_continue">حفظ ومتابعة</string>
-    حفظ ومتابعة"
 
 </resources>
