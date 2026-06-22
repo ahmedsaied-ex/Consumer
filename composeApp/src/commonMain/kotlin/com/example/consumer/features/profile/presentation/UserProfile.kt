@@ -37,6 +37,7 @@ import com.example.consumer.core.presentation.foundation.DesignSystem.DesignSyst
 import com.example.consumer.core.presentation.foundation.typography.Subtitle3
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
+import com.example.consumer.core.presentation.utils.toDisplayDate
 import com.example.consumer.features.profile.domain.models.Gender
 import com.example.consumer.features.profile.domain.models.SectionItem
 import com.example.consumer.features.profile.domain.models.SuffixType
@@ -71,24 +72,35 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun UserProfile(
     modifier: Modifier = Modifier,
-    userProfileViewModel : UserProfileViewModel = koinViewModel(),
+    userProfileViewModel: UserProfileViewModel = koinViewModel(),
     navController: NavHostController = rememberNavController(),
     languageViewModel: ProfileLanguageViewModel = koinViewModel()
 ) {
-    val languageState= languageViewModel.selectedLanguage.collectAsState()
-    val profileUiState= userProfileViewModel.uiState.collectAsState()
+    val languageState = languageViewModel.selectedLanguage.collectAsState()
+    val profileUiState = userProfileViewModel.uiState.collectAsState()
     val profileData = profileUiState.value.consumerData
 
     val basicItems = listOf(
-        SectionItem.Static(stringResource(Res.string.country), profileData?.country?.name.orEmpty()),
-        SectionItem.Static(stringResource(Res.string.id_number), profileData?.identityNumber.orEmpty()),
-        SectionItem.Static(stringResource(Res.string.birth_date), profileData?.dateOfBirth.orEmpty()),
-        SectionItem.Static(stringResource(Res.string.gender), stringResource(
-            when (profileData?.gender) {
-                Gender.MALE -> Res.string.male
-                else -> Res.string.female
-            }
-        )),
+        SectionItem.Static(
+            stringResource(Res.string.country),
+            profileData?.country?.name.orEmpty()
+        ),
+        SectionItem.Static(
+            stringResource(Res.string.id_number),
+            profileData?.identityNumber.orEmpty()
+        ),
+        SectionItem.Static(
+            stringResource(Res.string.birth_date),
+            profileData?.dateOfBirth?.toDisplayDate().orEmpty()
+        ),
+        SectionItem.Static(
+            stringResource(Res.string.gender), stringResource(
+                when (profileData?.gender) {
+                    Gender.MALE -> Res.string.male
+                    else -> Res.string.female
+                }
+            )
+        ),
     )
 
     val settingsItems = listOf(
@@ -122,10 +134,10 @@ fun UserProfile(
             onClick = { /* navigate */ }
         ),
     )
-    if (languageState.value.isBottomSheetOpened){
+    if (languageState.value.isBottomSheetOpened) {
         LanguageBottomSheet(
             selectedLanguage = languageState.value.appLang,
-            onDismiss = { languageViewModel.closeBottomSheet()},
+            onDismiss = { languageViewModel.closeBottomSheet() },
             onLanguageSelected = {
                 languageViewModel.changeLanguage(it)
             }
@@ -145,85 +157,88 @@ fun UserProfile(
                     CircularProgressIndicator()
                 }
             }
+
             profileUiState.value.isError -> {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     Text(profileUiState.value.error?.asStringComposable() ?: "")
                 }
             }
-            else -> {
-        LazyColumn(
-            modifier = Modifier
-                .padding(horizontal = DesignSystem.Padding.Padding2XL).fillMaxSize()
-                .background(MaterialTheme.colorScheme.background),
-            verticalArrangement = Arrangement.spacedBy(DesignSystem.Padding.Padding2XL),
-            contentPadding = PaddingValues(vertical = DesignSystem.Padding.Padding2XL)
-        ) {
-            item {
-                ProfileTopPart(
-                    name = profileData?.fullName.orEmpty(),
-                    imageUrl = profileData?.userImage.orEmpty(),
-                    selectedImageBytes = null,
-                    isUploadingImage = false,
-                    initials = buildInitials(profileData?.firstName, profileData?.lastName),
-                    onImageClick = {}
-                )
-            }
-            item { AIAssistantCard() }
-            item { HorizontalLine() }
-            item {
-                ProfileSection(
-                    title = Res.string.basic_info,
-                    items = basicItems
-                )
-            }
-            item { HorizontalLine() }
-            item {
-                ProfileSection(
-                    title = Res.string.settings,
-                    items = settingsItems
-                )
-            }
-            item { HorizontalLine() }
-            item {
-                ProfileSection(
-                    title = Res.string.usage_policy,
-                    items = privacyAndTerms
-                )
-            }
-            item {
-                Button(
-                    contentPadding = PaddingValues(vertical = 16.dp, horizontal = 16.dp),
-                    onClick = {
 
-                    },
-                    shape = RoundedCornerShape(DesignSystem.Radius.RadiusSm),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.extendedColors.logOutButtonBackground,
-                        contentColor = MaterialTheme.colorScheme.onError
-                    ),
+            else -> {
+                LazyColumn(
+                    modifier = Modifier
+                        .padding(horizontal = DesignSystem.Padding.Padding2XL).fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background),
+                    verticalArrangement = Arrangement.spacedBy(DesignSystem.Padding.Padding2XL),
+                    contentPadding = PaddingValues(vertical = DesignSystem.Padding.Padding2XL)
                 ) {
-                    Row(modifier = Modifier.fillMaxWidth()) {
-                        LocalizedImage(
-                            painterResource(Res.drawable.logout_icon),
-                            contentDescription = null,
-                            modifier = Modifier.size(20.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            stringResource(Res.string.log_out),
-                            style = Subtitle3.copy(fontWeight = FontWeight.SemiBold)
+                    item {
+                        ProfileTopPart(
+                            name = profileData?.fullName.orEmpty(),
+                            imageUrl = profileData?.userImage.orEmpty(),
+                            selectedImageBytes = null,
+                            isUploadingImage = false,
+                            initials = buildInitials(profileData?.firstName, profileData?.lastName),
+                            onImageClick = {}
                         )
                     }
+                    item { AIAssistantCard() }
+                    item { HorizontalLine() }
+                    item {
+                        ProfileSection(
+                            title = Res.string.basic_info,
+                            items = basicItems
+                        )
+                    }
+                    item { HorizontalLine() }
+                    item {
+                        ProfileSection(
+                            title = Res.string.settings,
+                            items = settingsItems
+                        )
+                    }
+                    item { HorizontalLine() }
+                    item {
+                        ProfileSection(
+                            title = Res.string.usage_policy,
+                            items = privacyAndTerms
+                        )
+                    }
+                    item {
+                        Button(
+                            contentPadding = PaddingValues(vertical = 16.dp, horizontal = 16.dp),
+                            onClick = {
+
+                            },
+                            shape = RoundedCornerShape(DesignSystem.Radius.RadiusSm),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.extendedColors.logOutButtonBackground,
+                                contentColor = MaterialTheme.colorScheme.onError
+                            ),
+                        ) {
+                            Row(modifier = Modifier.fillMaxWidth()) {
+                                LocalizedImage(
+                                    painterResource(Res.drawable.logout_icon),
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(
+                                    stringResource(Res.string.log_out),
+                                    style = Subtitle3.copy(fontWeight = FontWeight.SemiBold)
+                                )
+                            }
+                        }
+                    }
+
+
                 }
+
             }
-
-
         }
+    }
+}
 
-    }
-}
-    }
-}
 private fun buildInitials(firstName: String?, lastName: String?): String {
     val f = firstName?.firstOrNull()?.uppercaseChar() ?: ""
     val l = lastName?.firstOrNull()?.uppercaseChar() ?: ""
