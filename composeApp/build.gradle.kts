@@ -136,10 +136,9 @@ android {
                 localProperties.getProperty("DEV_API_KEY")
                     ?: System.getenv("DEV_API_KEY")
                     ?: ""
-            val devApiUrl =
-                localProperties.getProperty("DEV_API_BASE_URL")
-                    ?: System.getenv("DEV_API_BASE_URL")
-                    ?: "https://dev.example.com/api/"
+            val devApiUrl = localProperties.getProperty("DEV_API_BASE_URL")
+                ?: System.getenv("DEV_API_BASE_URL")
+                ?: "https://consumervoicegateway.expertapps.com.sa"
 
             buildConfigField("String", "ENVIRONMENT", "\"development\"")
             buildConfigField("String", "API_KEY", "\"$devApiKey\"")
