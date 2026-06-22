@@ -32,7 +32,9 @@ object ApiConfig {
         get() = appConfig.maxRetryAttempts
 
     const val CACHE_SIZE_MB = 10L
-
+    object Endpoints {
+        const val GET_USER_DATA = "/api/Consumer/GetConsumerProfile"
+    }
     fun getHeaders(): Map<String, String> =
         buildMap {
             put("Accept", "application/json")

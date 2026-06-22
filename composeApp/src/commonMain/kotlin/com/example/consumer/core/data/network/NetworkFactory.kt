@@ -3,12 +3,14 @@ package com.example.consumer.core.data.network
 import com.example.consumer.core.config.AppConfig
 import com.example.consumer.core.data.logging.formatIfJson
 import com.example.consumer.core.data.logging.logLong
+import com.example.consumer.core.domain.auth.AuthTokenProvider
 import com.example.consumer.core.domain.utils.CostumeLogger
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpRequestRetry
 import io.ktor.client.plugins.HttpResponseValidator
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.auth.Auth
+import io.ktor.client.plugins.auth.providers.BearerTokens
 import io.ktor.client.plugins.auth.providers.bearer
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
@@ -23,7 +25,8 @@ class NetworkFactory(
     private val json: Json,
     private val auctionLogger: CostumeLogger,
     private val appConfig: AppConfig,
-    private val onForceLogout: () -> Unit,
+    private val authTokenProvider: AuthTokenProvider,
+//    private val onForceLogout: () -> Unit,
 ) {
     private val clientCache = mutableMapOf<String, HttpClient>()
 
@@ -50,7 +53,7 @@ class NetworkFactory(
                 validateResponse { response ->
                     // Force logout on 401 Unauthorized
                     if (response.status.value == 401) {
-                        onForceLogout()
+//                        onForceLogout()
                     }
                 }
             }
@@ -82,20 +85,20 @@ class NetworkFactory(
             }
 
             // Auth
-//            install(Auth) {
-//                bearer {
-//                    loadTokens {
-//                        authTokenProvider.getAccessToken()?.let {
-//                            BearerTokens(it, "")
-//                        }
-//                    }
-//                    refreshTokens {
-//                        authTokenProvider.getAccessToken()?.let {
-//                            BearerTokens(it, "")
-//                        }
-//                    }
-//                }
-//            }
+            install(Auth) {
+                bearer {
+                    loadTokens {
+                        authTokenProvider.getAccessToken()?.let {
+                            BearerTokens(it, "")
+                        }
+                    }
+                    refreshTokens {
+                        authTokenProvider.getAccessToken()?.let {
+                            BearerTokens(it, "")
+                        }
+                    }
+                }
+            }
 
             // Logging
             if (enableLogging) {

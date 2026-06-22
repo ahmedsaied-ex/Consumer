@@ -6,6 +6,7 @@ import com.example.consumer.core.data.dataStore.DataStoreSessionStorage
 import com.example.consumer.core.data.dataStore.language.LanguageDataStore
 import com.example.consumer.core.data.dataStore.language.LanguageDataStoreImpl
 import com.example.consumer.core.data.logging.KermitLogger
+import com.example.consumer.core.data.network.DataStoreAuthTokenProvider
 import com.example.consumer.core.data.network.NetworkFactory
 import com.example.consumer.core.domain.dataStorage.SessionStorage
 import com.example.consumer.core.domain.model.DefaultDispatcherProvider
@@ -13,6 +14,7 @@ import com.example.consumer.core.domain.model.DispatcherProvider
 import com.example.consumer.core.domain.utils.CostumeLogger
 import com.example.consumer.core.data.useCases.language.GetSelectedLanguageUseCase
 import com.example.consumer.core.data.useCases.language.SaveLanguageOnlyUseCase
+import com.example.consumer.core.domain.auth.AuthTokenProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -39,6 +41,7 @@ val coreModule =
         }
         single<CostumeLogger> { KermitLogger }
         singleOf(::NetworkFactory)
+
         // Language
         single<SessionStorage> {
             DataStoreSessionStorage(get())
@@ -47,4 +50,7 @@ val coreModule =
         singleOf(::GetSelectedLanguageUseCase)
         singleOf(::SaveLanguageOnlyUseCase)
 
+
+        // Network
+        singleOf(::DataStoreAuthTokenProvider) bind AuthTokenProvider::class
     }

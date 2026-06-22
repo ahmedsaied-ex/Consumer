@@ -3,6 +3,7 @@ package com.example.consumer.core.data.network
 import com.example.consumer.core.domain.model.CostumeResult
 import com.example.consumer.core.domain.model.DataError
 import com.example.consumer.core.domain.model.ErrorModel
+import com.example.consumer.core.domain.utils.Error
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.HttpRequestBuilder
@@ -115,4 +116,11 @@ suspend inline fun <reified T> responseToResult(response: HttpResponse): Costume
             CostumeResult.Error(DataError.Remote.SERIALIZATION)
         }
         else -> CostumeResult.Error(DataError.Remote.UNKNOWN)
+    }
+
+
+fun <T, E : Error, R> CostumeResult<T, E>.map(transform: (T) -> R): CostumeResult<R, E> =
+    when (this) {
+        is CostumeResult.Success -> CostumeResult.Success(transform(data))
+        is CostumeResult.Error -> this
     }

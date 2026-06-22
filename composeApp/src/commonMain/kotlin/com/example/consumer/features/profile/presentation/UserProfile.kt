@@ -3,6 +3,7 @@ package com.example.consumer.features.profile.presentation
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,10 +16,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,12 +37,14 @@ import com.example.consumer.core.presentation.foundation.DesignSystem.DesignSyst
 import com.example.consumer.core.presentation.foundation.typography.Subtitle3
 import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
+import com.example.consumer.features.profile.domain.models.Gender
 import com.example.consumer.features.profile.domain.models.SectionItem
 import com.example.consumer.features.profile.domain.models.SuffixType
 import com.example.consumer.features.profile.presentation.components.LanguageBottomSheet
 import com.example.consumer.features.profile.presentation.components.ProfileSection
 import com.example.consumer.features.profile.presentation.components.ProfileTopPart
 import com.example.consumer.features.profile.presentation.viewModels.ProfileLanguageViewModel
+import com.example.consumer.features.profile.presentation.viewModels.UserProfileViewModel
 import consumer.composeapp.generated.resources.Current_lang
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.app_lang
@@ -48,10 +53,12 @@ import consumer.composeapp.generated.resources.birth_date
 import consumer.composeapp.generated.resources.change_email
 import consumer.composeapp.generated.resources.country
 import consumer.composeapp.generated.resources.edit_info
+import consumer.composeapp.generated.resources.female
 import consumer.composeapp.generated.resources.gender
 import consumer.composeapp.generated.resources.id_number
 import consumer.composeapp.generated.resources.log_out
 import consumer.composeapp.generated.resources.logout_icon
+import consumer.composeapp.generated.resources.male
 import consumer.composeapp.generated.resources.my_account
 import consumer.composeapp.generated.resources.privacy_policy
 import consumer.composeapp.generated.resources.settings
@@ -64,15 +71,24 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun UserProfile(
     modifier: Modifier = Modifier,
+    userProfileViewModel : UserProfileViewModel = koinViewModel(),
     navController: NavHostController = rememberNavController(),
     languageViewModel: ProfileLanguageViewModel = koinViewModel()
 ) {
     val languageState= languageViewModel.selectedLanguage.collectAsState()
+    val profileUiState= userProfileViewModel.uiState.collectAsState()
+    val profileData = profileUiState.value.consumerData
+
     val basicItems = listOf(
-        SectionItem.Static(stringResource(Res.string.country), "المملكة العربية السعودية"),
-        SectionItem.Static(stringResource(Res.string.id_number), "9545121704552255"),
-        SectionItem.Static(stringResource(Res.string.birth_date), "19/5/2000"),
-        SectionItem.Static(stringResource(Res.string.gender), "ذكر"),
+        SectionItem.Static(stringResource(Res.string.country), profileData?.country?.name.orEmpty()),
+        SectionItem.Static(stringResource(Res.string.id_number), profileData?.identityNumber.orEmpty()),
+        SectionItem.Static(stringResource(Res.string.birth_date), profileData?.dateOfBirth.orEmpty()),
+        SectionItem.Static(stringResource(Res.string.gender), stringResource(
+            when (profileData?.gender) {
+                Gender.MALE -> Res.string.male
+                else -> Res.string.female
+            }
+        )),
     )
 
     val settingsItems = listOf(
@@ -123,6 +139,18 @@ fun UserProfile(
             )
         }
     ) {
+        when {
+            profileUiState.value.isLoading -> {
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    CircularProgressIndicator()
+                }
+            }
+            profileUiState.value.isError -> {
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    Text(profileUiState.value.error?.asStringComposable() ?: "")
+                }
+            }
+            else -> {
         LazyColumn(
             modifier = Modifier
                 .padding(horizontal = DesignSystem.Padding.Padding2XL).fillMaxSize()
@@ -132,11 +160,11 @@ fun UserProfile(
         ) {
             item {
                 ProfileTopPart(
-                    name = "عمرو عبد الله",
-                    imageUrl = "",
+                    name = profileData?.fullName.orEmpty(),
+                    imageUrl = profileData?.userImage.orEmpty(),
                     selectedImageBytes = null,
                     isUploadingImage = false,
-                    initials = "AR",
+                    initials = buildInitials(profileData?.firstName, profileData?.lastName),
                     onImageClick = {}
                 )
             }
@@ -194,7 +222,13 @@ fun UserProfile(
 
     }
 }
-
+    }
+}
+private fun buildInitials(firstName: String?, lastName: String?): String {
+    val f = firstName?.firstOrNull()?.uppercaseChar() ?: ""
+    val l = lastName?.firstOrNull()?.uppercaseChar() ?: ""
+    return "$f$l"
+}
 
 @Composable
 @Preview(showBackground = true, locale = "ar", heightDp = 1200)

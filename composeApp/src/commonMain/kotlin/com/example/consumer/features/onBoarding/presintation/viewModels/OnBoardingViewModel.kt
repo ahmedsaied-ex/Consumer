@@ -39,9 +39,9 @@ class OnBoardingViewModel(
     }
 
 
-    fun testSetData(){
+    fun testSetData() {
         val fakeData = Data(
-            token = "112233",
+            token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWhtZWRkYXJkZXJ5QHlvcG1haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiYWhtZWRkYXJkZXJ5QHlvcG1haWwuY29tIiwiRnVsbE5hbWUiOiJhaG1lZCBkYXJkZXJ5IiwiVXNlclR5cGUiOiJDT05TVU1FUiIsIkxhc3RVcGRhdGUiOiI2MzkxNzczNDI1Mjk2NTMwNTYiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImI5MWFiNjU3LTkyYzYtNGQ0Mi04MDJiLTM2ZWJlYzA4OGZiMSIsInN1YiI6ImI5MWFiNjU3LTkyYzYtNGQ0Mi04MDJiLTM2ZWJlYzA4OGZiMSIsIkFjdGl2ZVNsYSI6InRydWUiLCJqdGkiOiI0YzcxM2Q2NS01MzU0LTRlY2EtYWE4YS04N2YzZDlhNWU3ZmMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJDb25zdW1lciIsImV4cCI6MTc4MjE2OTg1MiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo2MTk1NSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9.c0OvNJfkVhiei3jnlP8MlBGXbQTumcBSwfkyomzGs5c",
             user = UserDto(
                 balance = 12.3,
                 created_at = "asdsad",
@@ -61,7 +61,7 @@ class OnBoardingViewModel(
         )
 
 
-        launchSafe{ setUserDataUseCase.invoke(fakeData) }
+        launchSafe { setUserDataUseCase.invoke(fakeData) }
     }
 
     fun onTabSelected(selectedTap: TabItem) {
@@ -70,14 +70,14 @@ class OnBoardingViewModel(
         }
     }
 
-    fun openBottomSheet(){
+    fun openBottomSheet() {
         _onBoardingUiState.update {
             it.copy(isBottomSheetOpened = true)
         }
 
     }
 
-    fun closeBottomSheet(){
+    fun closeBottomSheet() {
         _onBoardingUiState.update {
             it.copy(isBottomSheetOpened = false)
         }
