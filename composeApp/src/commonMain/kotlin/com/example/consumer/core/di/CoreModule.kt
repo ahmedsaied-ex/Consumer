@@ -11,14 +11,13 @@ import com.example.consumer.core.domain.dataStorage.SessionStorage
 import com.example.consumer.core.domain.model.DefaultDispatcherProvider
 import com.example.consumer.core.domain.model.DispatcherProvider
 import com.example.consumer.core.domain.utils.CostumeLogger
-import com.example.consumer.features.languageSelection.data.GetSelectedLanguageUseCase
-import com.example.consumer.features.languageSelection.data.SaveLanguageOnlyUseCase
+import com.example.consumer.core.data.useCases.language.GetSelectedLanguageUseCase
+import com.example.consumer.core.data.useCases.language.SaveLanguageOnlyUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.json.Json
 import org.koin.core.module.dsl.singleOf
-import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 

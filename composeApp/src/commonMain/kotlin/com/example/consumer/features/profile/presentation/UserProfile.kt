@@ -18,6 +18,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,8 +36,10 @@ import com.example.consumer.core.presentation.theme.ConsumerTheme
 import com.example.consumer.core.presentation.theme.extendedColors
 import com.example.consumer.features.profile.domain.models.SectionItem
 import com.example.consumer.features.profile.domain.models.SuffixType
+import com.example.consumer.features.profile.presentation.components.LanguageBottomSheet
 import com.example.consumer.features.profile.presentation.components.ProfileSection
 import com.example.consumer.features.profile.presentation.components.ProfileTopPart
+import com.example.consumer.features.profile.presentation.viewModels.ProfileLanguageViewModel
 import consumer.composeapp.generated.resources.Current_lang
 import consumer.composeapp.generated.resources.Res
 import consumer.composeapp.generated.resources.app_lang
@@ -47,7 +50,6 @@ import consumer.composeapp.generated.resources.country
 import consumer.composeapp.generated.resources.edit_info
 import consumer.composeapp.generated.resources.gender
 import consumer.composeapp.generated.resources.id_number
-import consumer.composeapp.generated.resources.language
 import consumer.composeapp.generated.resources.log_out
 import consumer.composeapp.generated.resources.logout_icon
 import consumer.composeapp.generated.resources.my_account
@@ -57,12 +59,15 @@ import consumer.composeapp.generated.resources.terms_and_conditions
 import consumer.composeapp.generated.resources.usage_policy
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun UserProfile(
     modifier: Modifier = Modifier,
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
+    languageViewModel: ProfileLanguageViewModel = koinViewModel()
 ) {
+    val languageState= languageViewModel.selectedLanguage.collectAsState()
     val basicItems = listOf(
         SectionItem.Static(stringResource(Res.string.country), "المملكة العربية السعودية"),
         SectionItem.Static(stringResource(Res.string.id_number), "9545121704552255"),
@@ -84,7 +89,9 @@ fun UserProfile(
         SectionItem.Clickable(
             title = Res.string.app_lang,
             suffix = SuffixType.TextAndChevron(stringResource(Res.string.Current_lang)),
-            onClick = { /* open language picker */ }
+            onClick = {
+                languageViewModel.openBottomSheet()
+            }
         ),
     )
     val privacyAndTerms = listOf(
@@ -99,6 +106,15 @@ fun UserProfile(
             onClick = { /* navigate */ }
         ),
     )
+    if (languageState.value.isBottomSheetOpened){
+        LanguageBottomSheet(
+            selectedLanguage = languageState.value.appLang,
+            onDismiss = { languageViewModel.closeBottomSheet()},
+            onLanguageSelected = {
+                languageViewModel.changeLanguage(it)
+            }
+        )
+    }
     CostumeScaffold(
         modifier = modifier.fillMaxSize(),
         topBar = {
@@ -149,7 +165,9 @@ fun UserProfile(
             item {
                 Button(
                     contentPadding = PaddingValues(vertical = 16.dp, horizontal = 16.dp),
-                    onClick = {},
+                    onClick = {
+
+                    },
                     shape = RoundedCornerShape(DesignSystem.Radius.RadiusSm),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.extendedColors.logOutButtonBackground,

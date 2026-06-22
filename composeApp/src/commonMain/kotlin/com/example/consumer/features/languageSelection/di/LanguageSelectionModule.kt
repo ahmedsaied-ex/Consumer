@@ -1,6 +1,6 @@
 package com.example.consumer.features.languageSelection.di
 
-import com.example.consumer.features.languageSelection.data.usecase.ConfirmLanguageSelectionUseCaseImpl
+import com.example.consumer.core.data.useCases.language.ConfirmLanguageSelectionUseCaseImpl
 import com.example.consumer.features.languageSelection.domain.ConfirmLanguageSelectionUseCase
 import com.example.consumer.features.languageSelection.presentation.viewModel.LanguageViewModel
 import org.koin.core.module.dsl.bind

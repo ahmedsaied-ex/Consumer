@@ -7,8 +7,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -57,10 +58,12 @@ fun CostumeBottomSheet(
             }
         },
         onDismissRequest = onDismiss,
-        modifier = modifier.systemBarsPadding(),
+        modifier = modifier.statusBarsPadding(),
         contentWindowInsets = { WindowInsets() },
         sheetState = sheetState
     ) {
-        content()
+        Box(modifier = Modifier.navigationBarsPadding()) {
+            content()
+        }
     }
 }

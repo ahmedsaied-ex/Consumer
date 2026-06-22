@@ -6,8 +6,8 @@ import com.example.consumer.core.domain.model.AnalyticsLogger
 import com.example.consumer.core.domain.model.DispatcherProvider
 import com.example.consumer.core.domain.utils.CostumeLogger
 import com.example.consumer.core.presentation.base.BaseViewModel
-import com.example.consumer.features.languageSelection.data.GetSelectedLanguageUseCase
-import com.example.consumer.features.languageSelection.data.SaveLanguageOnlyUseCase
+import com.example.consumer.core.data.useCases.language.GetSelectedLanguageUseCase
+import com.example.consumer.core.data.useCases.language.SaveLanguageOnlyUseCase
 import com.example.consumer.features.languageSelection.domain.ConfirmLanguageSelectionUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

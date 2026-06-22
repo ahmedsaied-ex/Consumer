@@ -1,4 +1,4 @@
-package com.example.consumer.features.languageSelection.data
+package com.example.consumer.core.data.useCases.language
 
 import com.example.consumer.core.data.dataStore.language.LanguageDataStore
 
